@@ -94,64 +94,71 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         jTextArea1.append(evt.getKeyChar()+"\n");
-        
-        if (evt.getKeyChar() == 'h') {
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x +100, y, x + 100, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 150, x + 100, y + 150);
-            x = 150 + x;
-        }
-        if (evt.getKeyChar() == 'o') {
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x +100, y);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 100, y + 300);
-            x = 150 + x;
-        }
-        if (evt.getKeyChar() == 'l'){
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y + 300);
-            x = 150 + x;
-        }
-        if (evt.getKeyChar() == 'a'){
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 100, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 150, x + 100, y + 150);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 100, y);
-            x = 150 + x;
-        }
-        if(evt.getKeyChar() == 'm'){
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 100, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 50, y + 150);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 50, y + 150);
-            x = 150 + x;
-        }
-        if(evt.getKeyChar() == 'u'){
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y + 300, x + 100, y);
-            x = 150 + x;
-        }
-        if (evt.getKeyChar() == 'n') {
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x +100, y, x + 100, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 100, y + 300);
-            x = 150 + x;
-        }
-        if (evt.getKeyChar() == 'd'){
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x , y, x, y + 300);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y + 50, x + 100, y + 250);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 100, y + 50);
-            Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y +250);
-            x = 150 + x;
-        }
-        if (evt.getKeyChar() == ' '){
-            x = 150 + x;
-        }
-        if (evt.getKeyChar() == '\n'){
-            x = 100;
-            y =  y + 400;
+        switch(evt.getKeyChar()){
+            case 'h':
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x +100, y, x + 100, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 150, x + 100, y + 150);
+                x = 150 + x;
+                break;
+            case 'o':
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x +100, y);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 100, y + 300);
+                x = 150 + x;
+                break;
+            case 'l':
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y + 300);
+                x = 150 + x;
+                break;
+            case 'a':
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 100, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 150, x + 100, y + 150);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 100, y);
+                x = 150 + x;
+                break;
+            case 'm':
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 100, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 50, y + 150);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 50, y + 150);
+                x = 150 + x;
+                break;
+            case 'u':
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y + 300, x + 100, y);
+                x = 150 + x;
+                break;
+            case 'n':
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x +100, y, x + 100, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 100, y + 300);
+                x = 150 + x;
+                break;
+            case 'd':
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x , y, x, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y + 50, x + 100, y + 250);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 100, y + 50);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y +250);
+                x = 150 + x;
+                break;
+            case 'x':
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x , y, x + 100, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x, y + 300);
+                x = 150 + x;
+                break;
+            case ' ':
+                x = 150 + x;
+                break;
+            case '\n':
+                x = 100;
+                y =  y + 400;
+                break;
+                
         }
         
     }//GEN-LAST:event_jTextField1KeyPressed
