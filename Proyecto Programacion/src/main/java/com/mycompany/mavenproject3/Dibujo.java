@@ -14,4 +14,7 @@ public class Dibujo {
     public static void hacerLinea(Graphics g,int x, int y, int x1, int y1) {
         g.drawLine(x, y, x1, y1);
     }
+    public static void hacerArco(Graphics g, int x, int y,int ancho, int alto, int anguloInicio,int tamañoArco) {
+        g.drawArc(x, y, alto, ancho, anguloInicio, tamañoArco);
+    }
 }

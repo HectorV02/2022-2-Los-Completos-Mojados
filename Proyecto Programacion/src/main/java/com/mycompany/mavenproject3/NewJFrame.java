@@ -102,10 +102,10 @@ public class NewJFrame extends javax.swing.JFrame {
                 x = 150 + x;
                 break;
             case 'o':
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x +100, y);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y + 300);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 100, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y+50, x, y + 250);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y+50, x + 100, y + 250);
+                Dibujo.hacerArco(jPanel1.getGraphics(), x, y+200, 100, 100, 180, 180);
+                Dibujo.hacerArco(jPanel1.getGraphics(), x, y, 100, 100, 0, 180);
                 x = 150 + x;
                 break;
             case 'l':
@@ -114,10 +114,10 @@ public class NewJFrame extends javax.swing.JFrame {
                 x = 150 + x;
                 break;
             case 'a':
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y, x + 100, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y+50, x, y + 300);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y+50, x + 100, y + 300);
                 Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 150, x + 100, y + 150);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 100, y);
+                Dibujo.hacerArco(jPanel1.getGraphics(), x, y, 100, 100, 0, 180);
                 x = 150 + x;
                 break;
             case 'm':
@@ -128,9 +128,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 x = 150 + x;
                 break;
             case 'u':
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 300);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y + 300);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y + 300, x + 100, y);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x, y + 250);
+                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y + 250, x + 100, y);
+                Dibujo.hacerArco(jPanel1.getGraphics(), x, y+200, 100, 100, 180, 180);
                 x = 150 + x;
                 break;
             case 'n':
@@ -141,9 +141,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 break;
             case 'd':
                 Dibujo.hacerLinea(jPanel1.getGraphics(), x , y, x, y + 300);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x + 100, y + 50, x + 100, y + 250);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y, x + 100, y + 50);
-                Dibujo.hacerLinea(jPanel1.getGraphics(), x, y + 300, x + 100, y +250);
+                Dibujo.hacerArco(jPanel1.getGraphics(), x - 100, y, 300, 200, 270, 180);
                 x = 150 + x;
                 break;
             case 'x':
