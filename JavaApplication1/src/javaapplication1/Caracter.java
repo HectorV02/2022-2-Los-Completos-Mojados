@@ -5,6 +5,7 @@
 package javaapplication1;
 
 import java.util.ArrayList;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.CubicCurve;
@@ -16,9 +17,9 @@ import javafx.scene.shape.CubicCurve;
 public class Caracter {
     int lineas;
     ArrayList<Integer> Ix,Iy,Fx,Fy,ch1x,ch1y,ch2x,ch2y = new ArrayList();
-    StackPane root;
+    Pane root;
     public Caracter(ArrayList<Integer> Ix,ArrayList<Integer> Iy,ArrayList<Integer> Fx,ArrayList<Integer> Fy,
-                    ArrayList<Integer> ch1x,ArrayList<Integer> ch1y,ArrayList<Integer> ch2x,ArrayList<Integer> ch2y,StackPane root, int lineas){
+                    ArrayList<Integer> ch1x,ArrayList<Integer> ch1y,ArrayList<Integer> ch2x,ArrayList<Integer> ch2y,Pane root, int lineas){
         this.Ix = Ix;
         this.Iy = Iy;
         this.Fx = Fx;
