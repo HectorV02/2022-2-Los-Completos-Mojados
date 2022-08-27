@@ -5,13 +5,16 @@
 package javaapplication1;
 
 import java.util.ArrayList;
+import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.shape.CubicCurve;
 
 /**
- *
+ *  
  * @author PC GAMER
  */
 public class Caracter {
@@ -37,7 +40,11 @@ public class Caracter {
              c.setFill(Color.TRANSPARENT);
              c.setStroke(Color.BLACK);
              root.getChildren().add(c);
+             //System.out.println("llega");
         }
+    }
+    public Pane getPanel(){
+        return root;
     }
 }
 
