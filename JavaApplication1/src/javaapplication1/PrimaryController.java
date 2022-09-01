@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -32,9 +33,17 @@ public class PrimaryController {
     public TextField cuadroTexto;
     @FXML
     public Label canvas;
-    
+
     @FXML
-    public ArrayList<Caracter> Empezar(){
+    public ArrayList<Caracter> Empezar(int x ,int y){
+        Pane p = new Pane();
+        //p.setPrefSize(100, 100);
+        p.setMaxSize(100, 100);
+        p.setMinSize(100, 100);
+        p.setStyle("-fx-background-color: blue;");
+        //p.relocate(x, y);
+        p.setTranslateX(x);
+        p.setTranslateY(y);
         ArrayList<ArrayList> puntos = new ArrayList();
         for (int i = 0; i < 6; i++) { 
             for (int j = 0; j < 6; j++) {
@@ -53,17 +62,32 @@ public class PrimaryController {
         ArrayList<Integer> ch1y = new ArrayList(Arrays.asList(puntos.get(8).get(1),puntos.get(30).get(1)));
         ArrayList<Integer> ch2x = new ArrayList(Arrays.asList(puntos.get(10).get(0),puntos.get(33).get(0)));
         ArrayList<Integer> ch2y = new ArrayList(Arrays.asList(puntos.get(10).get(1),puntos.get(33).get(1)));
-        Caracter a = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,canvas,2);
+        Caracter a = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
         ArrayList<Caracter> letras = new ArrayList();
         letras.add(a);
+        
         return letras;
     }
     @FXML
     public void dibuja() throws IOException {
+        int x = 0;
+        int y = 0;
+        Pane pane = new Pane();
         String frase=(this.cuadroTexto.getText());
-        ArrayList<Caracter> letras=Empezar();
-        letras.get(0).dibujar();
-        //System.out.println("llega2");
+        
+        for (int i = 0; i < frase.length(); i++) {
+            ArrayList<Caracter> letras=Empezar(x,y);
+            letras.get((int)frase.charAt(i)-97).dibujar();
+            pane.getChildren().add(letras.get((int)frase.charAt(i)-97).getPanel());
+            x = x + 100;
+        }
+        
+        canvas.setGraphic(pane);
+        
+        
+        
+        
+        
         System.out.println(frase);
     }
 }

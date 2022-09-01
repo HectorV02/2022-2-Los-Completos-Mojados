@@ -7,7 +7,7 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication1.PrimaryController">
    <children>
-      <TextField id="cuadroTexto" fx:id="cuadroTexto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#dibuja" prefHeight="25.0" prefWidth="500.0">
+      <TextField id="cuadroTexto" fx:id="cuadroTexto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#dibuja" prefHeight="25.0" prefWidth="500.0">
          <VBox.margin>
             <Insets bottom="10.0" top="15.0" />
          </VBox.margin></TextField>
