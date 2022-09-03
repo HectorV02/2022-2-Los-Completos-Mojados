@@ -47,8 +47,8 @@ public class Caracter{
         }
     }
     public void getCheckpoints(){
-        int i = 0;
-        for (i = 0; i < lineas; i++) {
+        
+        for (int i = 0; i < lineas; i++) {
             Circle n = new Circle();
             n.setCenterX(Ix.get(i));
             n.setCenterY(Iy.get(i));

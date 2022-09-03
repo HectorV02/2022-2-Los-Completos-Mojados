@@ -37,11 +37,9 @@ public class PrimaryController {
     @FXML
     public ArrayList<Caracter> Empezar(int x ,int y){
         Pane p = new Pane();
-        //p.setPrefSize(100, 100);
         p.setMaxSize(100, 140);
         p.setMinSize(100, 140);
         p.setStyle("-fx-background-color: blue;");
-        //p.relocate(x, y);
         p.setTranslateX(x);
         p.setTranslateY(y);
         ArrayList<ArrayList> puntos = new ArrayList();
@@ -413,6 +411,7 @@ public class PrimaryController {
         for (int i = 0; i < frase.length(); i++) {
             ArrayList<Caracter> letras=Empezar(x,y);
             letras.get((int)frase.charAt(i)-97).dibujar();
+            letras.get((int)frase.charAt(i)-97).getCheckpoints();
             
             pane.getChildren().add(letras.get((int)frase.charAt(i)-97).getPanel());
             x = x + 100;
@@ -420,7 +419,7 @@ public class PrimaryController {
                 x = 0;
                 y = y +140;
             }
-            //letras.get(i).getCheckpoints();
+            
         }
         
         canvas.setGraphic(pane);
