@@ -45,6 +45,8 @@ public class PrimaryController {
         p.setTranslateX(x);
         p.setTranslateY(y);
         ArrayList<ArrayList> puntos = new ArrayList();
+        ArrayList<Caracter> letras = new ArrayList();
+        
         for (int i = 0; i < 8; i++) { 
             for (int j = 0; j < 6; j++) {
                 ArrayList<Integer> xy = new ArrayList();
@@ -53,6 +55,7 @@ public class PrimaryController {
                 puntos.add(xy);
             }   
         }
+        
         //vacio
         ArrayList<Integer> ix = new ArrayList();
         ArrayList<Integer> iy = new ArrayList();
@@ -74,7 +77,7 @@ public class PrimaryController {
         ch2x = new ArrayList(Arrays.asList(puntos.get(32).get(0),puntos.get(22).get(0),puntos.get(34).get(0),puntos.get(34).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(32).get(1),puntos.get(22).get(1),puntos.get(34).get(1),puntos.get(34).get(1)));
         Caracter a = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
-        ArrayList<Caracter> letras = new ArrayList();
+        
         letras.add(a);
         
         // letra b minuscula
@@ -397,6 +400,7 @@ public class PrimaryController {
         ch2y = new ArrayList(Arrays.asList(puntos.get(20).get(1), puntos.get(22).get(1), puntos.get(21).get(1), puntos.get(34).get(1)));
         Caracter ñ = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size()); 
         letras.add(ñ);
+        
         return letras;
     }
     @FXML
@@ -409,12 +413,14 @@ public class PrimaryController {
         for (int i = 0; i < frase.length(); i++) {
             ArrayList<Caracter> letras=Empezar(x,y);
             letras.get((int)frase.charAt(i)-97).dibujar();
+            
             pane.getChildren().add(letras.get((int)frase.charAt(i)-97).getPanel());
             x = x + 100;
             if (x > 500 ) {
                 x = 0;
                 y = y +140;
             }
+            //letras.get(i).getCheckpoints();
         }
         
         canvas.setGraphic(pane);
