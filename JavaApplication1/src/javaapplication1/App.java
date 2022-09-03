@@ -35,6 +35,7 @@ public class App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("primary.fxml"));
         scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
     
