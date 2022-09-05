@@ -357,7 +357,7 @@ public class PrimaryController {
         letras.add(Z);
         
         //padding
-        for (int i1 = 0; i1 < 7; i1++) {
+        for (int i1 = 0; i1 < 6; i1++) {
             letras.add(empty);
         }
         
@@ -678,10 +678,25 @@ public class PrimaryController {
         letras.add(z);
         
         //padding
-        for (int i1 = 0; i1 < 118; i1++) {
+        for (int i1 = 0; i1 < 86; i1++) {
             letras.add(empty);
         }
         
+        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(38).get(0),puntos.get(7).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1),puntos.get(38).get(1),puntos.get(7).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(38).get(0),puntos.get(40).get(0),puntos.get(10).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(38).get(1),puntos.get(40).get(1),puntos.get(10).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(3).get(0),puntos.get(2).get(0),puntos.get(2).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(0).get(1),puntos.get(2).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(38).get(0),puntos.get(5).get(0),puntos.get(15).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(38).get(1),puntos.get(0).get(1),puntos.get(15).get(1)));
+        Caracter Ñ = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        letras.add(Ñ);
+        
+        //padding
+        for (int i1 = 0; i1 < 31; i1++) {
+            letras.add(empty);
+        }
         
         //letra ñ minuscula
         ix = new ArrayList(Arrays.asList(puntos.get(30).get(0), puntos.get(32).get(0), puntos.get(13).get(0), puntos.get(28).get(0)));
@@ -695,17 +710,6 @@ public class PrimaryController {
         Caracter ñ = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size()); 
         letras.add(ñ);
         
-        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(44).get(0),puntos.get(7).get(0)));  
-        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1),puntos.get(44).get(1),puntos.get(7).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(44).get(0),puntos.get(46).get(0),puntos.get(10).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(44).get(1),puntos.get(46).get(1),puntos.get(10).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(3).get(0),puntos.get(2).get(0),puntos.get(2).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(0).get(1),puntos.get(2).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(44).get(0),puntos.get(5).get(0),puntos.get(15).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(44).get(1),puntos.get(0).get(1),puntos.get(15).get(1)));
-        Caracter Ñ = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
-        letras.add(Ñ);
-        
         
         return letras;
     }
@@ -718,6 +722,8 @@ public class PrimaryController {
         String frase=(this.cuadroTexto.getText());
         
         for (int i = 0; i < frase.length(); i++) {
+            System.out.println((int)'Ñ'); //209
+            System.out.println((int)'ñ');
             ArrayList<Caracter> letras=Empezar(x,y);
             letras.get((int)frase.charAt(i)-65).dibujar();
             pane.getChildren().add(letras.get((int)frase.charAt(i)-65).getPanel());
