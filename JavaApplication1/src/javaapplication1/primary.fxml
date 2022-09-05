@@ -5,12 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication1.PrimaryController">
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication1.PrimaryController">
    <children>
-      <TextField id="cuadroTexto" fx:id="cuadroTexto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#dibuja" prefHeight="25.0" prefWidth="500.0">
+      <TextField id="cuadroTexto" fx:id="cuadroTexto" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#dibuja" prefHeight="25.0" prefWidth="500.0">
          <VBox.margin>
-            <Insets bottom="10.0" top="15.0" />
+            <Insets bottom="10.0" left="20.0" right="20.0" top="15.0" />
          </VBox.margin></TextField>
-      <Label fx:id="canvas" alignment="CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="550" prefWidth="600" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+      <Label fx:id="canvas" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="550" prefWidth="600" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
    </children>
 </VBox>
