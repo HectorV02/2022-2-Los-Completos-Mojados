@@ -58,14 +58,25 @@ public class PrimaryController {
     public static ArrayList<Caracter> mayusculas(Pane p, ArrayList<ArrayList
             > puntos){
         
-        ArrayList<Integer> ix = new ArrayList(Arrays.asList(puntos.get(13).get(0),puntos.get(22).get(0),puntos.get(22).get(0)));  
-        ArrayList<Integer> iy = new ArrayList(Arrays.asList(puntos.get(13).get(1),puntos.get(22).get(1),puntos.get(22).get(1)));
-        ArrayList<Integer> fx = new ArrayList(Arrays.asList(puntos.get(22).get(0),puntos.get(13).get(0),puntos.get(35).get(0)));
-        ArrayList<Integer> fy = new ArrayList(Arrays.asList(puntos.get(22).get(1),puntos.get(13).get(1),puntos.get(35).get(1)));
-        ArrayList<Integer> ch1x = new ArrayList(Arrays.asList(puntos.get(42).get(0),puntos.get(4).get(0),puntos.get(46).get(0)));
-        ArrayList<Integer> ch1y = new ArrayList(Arrays.asList(puntos.get(42).get(1),puntos.get(4).get(1),puntos.get(46).get(1)));
-        ArrayList<Integer> ch2x = new ArrayList(Arrays.asList(puntos.get(46).get(0),puntos.get(2).get(0),puntos.get(35).get(0)));
-        ArrayList<Integer> ch2y = new ArrayList(Arrays.asList(puntos.get(46).get(1),puntos.get(2).get(1),puntos.get(35).get(1)));
+        //vacio
+        ArrayList<Integer> ix = new ArrayList();
+        ArrayList<Integer> iy = new ArrayList();
+        ArrayList<Integer> fx = new ArrayList();
+        ArrayList<Integer> fy = new ArrayList();
+        ArrayList<Integer> ch1x = new ArrayList();
+        ArrayList<Integer> ch1y = new ArrayList();
+        ArrayList<Integer> ch2x = new ArrayList();
+        ArrayList<Integer> ch2y = new ArrayList();
+        Caracter empty = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,-1);
+        
+        ix = new ArrayList(Arrays.asList(puntos.get(13).get(0),puntos.get(22).get(0),puntos.get(22).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(13).get(1),puntos.get(22).get(1),puntos.get(22).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(22).get(0),puntos.get(13).get(0),puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(22).get(1),puntos.get(13).get(1),puntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(42).get(0),puntos.get(4).get(0),puntos.get(46).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(42).get(1),puntos.get(4).get(1),puntos.get(46).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(46).get(0),puntos.get(2).get(0),puntos.get(35).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(46).get(1),puntos.get(2).get(1),puntos.get(35).get(1)));
         Caracter A = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
         ArrayList<Caracter> letras = new ArrayList();
         letras.add(A);
@@ -345,57 +356,10 @@ public class PrimaryController {
         Caracter Z = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,4);
         letras.add(Z);
         
-        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(44).get(0),puntos.get(7).get(0)));  
-        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1),puntos.get(44).get(1),puntos.get(7).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(44).get(0),puntos.get(46).get(0),puntos.get(10).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(44).get(1),puntos.get(46).get(1),puntos.get(10).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(3).get(0),puntos.get(2).get(0),puntos.get(2).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(0).get(1),puntos.get(2).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(44).get(0),puntos.get(5).get(0),puntos.get(15).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(44).get(1),puntos.get(0).get(1),puntos.get(15).get(1)));
-        Caracter Ni = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
-        letras.add(Ni);
-        return letras;
-    }
-    
-    @FXML
-    public void dibuja() throws IOException {
-        int x = 10;
-        int y = 0;
-        Pane pane = new Pane();
-        String frase=(this.cuadroTexto.getText());
-        
-        for (int i = 0; i < frase.length(); i++) {
-            ArrayList<Caracter> letras=Empezar(x,y);
-            letras.get((int)frase.charAt(i)-65).dibujar();
-            pane.getChildren().add(letras.get((int)frase.charAt(i)-65).getPanel());
-            x+=100;
-            if(x>(canvas.getWidth()-100)){
-                x=0;
-                y+=140;
-            }
+        //padding
+        for (int i1 = 0; i1 < 7; i1++) {
+            letras.add(empty);
         }
-        
-        canvas.setGraphic(pane);
-        
-        
-        
-        
-        
-        System.out.println(frase);
-    }
-}
-
-        //vacio
-        ArrayList<Integer> ix = new ArrayList();
-        ArrayList<Integer> iy = new ArrayList();
-        ArrayList<Integer> fx = new ArrayList();
-        ArrayList<Integer> fy = new ArrayList();
-        ArrayList<Integer> ch1x = new ArrayList();
-        ArrayList<Integer> ch1y = new ArrayList();
-        ArrayList<Integer> ch2x = new ArrayList();
-        ArrayList<Integer> ch2y = new ArrayList();
-        Caracter empty = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,-1);
         
         //letra a minuscula
         ix = new ArrayList(Arrays.asList(puntos.get(30).get(0),puntos.get(26).get(0),puntos.get(26).get(0),puntos.get(28).get(0)));  
@@ -730,3 +694,48 @@ public class PrimaryController {
         ch2y = new ArrayList(Arrays.asList(puntos.get(20).get(1), puntos.get(22).get(1), puntos.get(21).get(1), puntos.get(34).get(1)));
         Caracter ñ = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size()); 
         letras.add(ñ);
+        
+        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(44).get(0),puntos.get(7).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1),puntos.get(44).get(1),puntos.get(7).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(44).get(0),puntos.get(46).get(0),puntos.get(10).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(44).get(1),puntos.get(46).get(1),puntos.get(10).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(3).get(0),puntos.get(2).get(0),puntos.get(2).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(0).get(1),puntos.get(2).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(44).get(0),puntos.get(5).get(0),puntos.get(15).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(44).get(1),puntos.get(0).get(1),puntos.get(15).get(1)));
+        Caracter Ñ = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        letras.add(Ñ);
+        
+        
+        return letras;
+    }
+    
+    @FXML
+    public void dibuja() throws IOException {
+        int x = 10;
+        int y = 0;
+        Pane pane = new Pane();
+        String frase=(this.cuadroTexto.getText());
+        
+        for (int i = 0; i < frase.length(); i++) {
+            ArrayList<Caracter> letras=Empezar(x,y);
+            letras.get((int)frase.charAt(i)-65).dibujar();
+            pane.getChildren().add(letras.get((int)frase.charAt(i)-65).getPanel());
+            x+=100;
+            if(x>(canvas.getWidth()-100)){
+                x=0;
+                y+=140;
+            }
+        }
+        
+        canvas.setGraphic(pane);
+        
+        
+        
+        
+        
+        System.out.println(frase);
+    }
+}
+
+        
