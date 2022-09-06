@@ -21,7 +21,7 @@ import javafx.scene.shape.CubicCurve;
  *  
  * @author PC GAMER
  */
-public class Caracter{
+public class Caracter implements Serializable{
     int lineas;
     ArrayList<Integer> Ix,Iy,Fx,Fy,ch1x,ch1y,ch2x,ch2y = new ArrayList();
     Pane root;
