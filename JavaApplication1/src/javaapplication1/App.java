@@ -5,6 +5,7 @@
 package javaapplication1;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javafx.application.Application;
@@ -25,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author PC GAMER
  */
-public class App extends Application {
+public class App extends Application implements Serializable{
     
     private static Scene scene;
     

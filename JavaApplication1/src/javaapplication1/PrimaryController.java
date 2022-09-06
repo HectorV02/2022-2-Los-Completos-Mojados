@@ -27,12 +27,14 @@ import javafx.stage.Stage;
  *
  * @author janit
  */
-public class PrimaryController {
+public class PrimaryController implements Serializable {
     
     @FXML
     public TextField cuadroTexto;
     @FXML
     public Label canvas;
+    static int bandera;
+    static ArrayList<Caracter> letras;
 
     @FXML
     public ArrayList<Caracter> Empezar(int x ,int y){
@@ -720,16 +722,23 @@ public class PrimaryController {
         int y = 0;
         Pane pane = new Pane();
         String frase=(this.cuadroTexto.getText());
+        if(bandera==0){
+            letras=Empezar(x,y);
+            bandera++;
+        }
         
         for (int i = 0; i < frase.length(); i++) {
-            System.out.println((int)'Ñ'); //209
-            System.out.println((int)'ñ');
-            ArrayList<Caracter> letras=Empezar(x,y);
+            Pane pp=new Pane();
+            pp.setMaxSize(100,140);
+            pp.setMinSize(100, 140);
+            pp.setTranslateX(x);
+            pp.setTranslateY(y);
+            letras.get((int)frase.charAt(i)-65).root=pp;
             letras.get((int)frase.charAt(i)-65).dibujar();
             pane.getChildren().add(letras.get((int)frase.charAt(i)-65).getPanel());
             x+=100;
             if(x>(canvas.getWidth()-100)){
-                x=0;
+                x=10;
                 y+=140;
             }
         }
