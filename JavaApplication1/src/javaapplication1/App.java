@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author PC GAMER
  */
-public class App extends Application implements Serializable{
+public class App extends Application{
     
     private static Scene scene;
     

@@ -38,12 +38,12 @@ public class Caracter implements Serializable{
         this.root = root;
         this.lineas = lineas;
     }
-    public void dibujar(){
+    public void dibujar(Color color){
         for (int i = 0; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i),Iy.get(i),ch1x.get(i),ch1y.get(i),ch2x.get(i),ch2y.get(i),Fx.get(i),Fy.get(i));
-             c.setFill(Color.TRANSPARENT);
-             c.setStroke(Color.BLACK);
-             root.getChildren().add(c);             
+            c.setFill(Color.TRANSPARENT);
+            c.setStroke(color);
+            root.getChildren().add(c);             
         }
     }
     public void getCheckpoints(){
