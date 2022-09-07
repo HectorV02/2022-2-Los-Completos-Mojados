@@ -71,6 +71,166 @@ public class PrimaryController implements Serializable {
         ArrayList<Integer> ch2y = new ArrayList();
         Caracter empty = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,-1);
         
+        
+        Caracter space = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,0);
+        ArrayList<Caracter> letras = new ArrayList();
+        letras.add(space);
+        
+        // signo de exclamacion !
+        ix = new ArrayList(Arrays.asList(puntos.get(39).get(0),puntos.get(33).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(39).get(1),puntos.get(33).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(39).get(0),puntos.get(8).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(39).get(1),puntos.get(8).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(45).get(0),puntos.get(37).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(45).get(1),puntos.get(37).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(38).get(0),puntos.get(4).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(38).get(1),puntos.get(4).get(1)));
+        Caracter exl = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(exl);
+        
+        //comillas dobles
+        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(12).get(0),puntos.get(14).get(0),puntos.get(14).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1),puntos.get(12).get(1),puntos.get(14).get(1),puntos.get(14).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(19).get(0),puntos.get(14).get(0),puntos.get(21).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(12).get(1),puntos.get(19).get(1),puntos.get(14).get(1),puntos.get(21).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(14).get(0),puntos.get(12).get(0),puntos.get(16).get(0),puntos.get(14).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(14).get(1),puntos.get(12).get(1),puntos.get(16).get(1),puntos.get(14).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(0).get(0),puntos.get(18).get(0),puntos.get(2).get(0),puntos.get(20).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(18).get(1),puntos.get(2).get(1),puntos.get(20).get(1)));
+        Caracter comillas = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(comillas);
+        
+        //padding
+        for (int i2 = 0; i2 < 4; i2++) {
+            letras.add(empty);
+        }
+        
+        //comillas simples
+        ix = new ArrayList(Arrays.asList(puntos.get(14).get(0),puntos.get(14).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(14).get(1),puntos.get(14).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(14).get(0),puntos.get(21).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(14).get(1),puntos.get(21).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(16).get(0),puntos.get(14).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(16).get(1),puntos.get(14).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(2).get(0),puntos.get(20).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(2).get(1),puntos.get(20).get(1)));
+        Caracter comillasS = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(comillasS);
+        
+        //parentesis (
+        ix = new ArrayList(Arrays.asList(puntos.get(3).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(3).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(45).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(45).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(12).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(12).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(30).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(30).get(1)));
+        Caracter parentesis1 = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(parentesis1);
+        
+        //parentesis )
+        ix = new ArrayList(Arrays.asList(puntos.get(2).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(2).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(44).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(44).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(17).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(17).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(35).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(35).get(1)));
+        Caracter parentesis2 = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(parentesis2);
+        
+        //padding
+        for (int i2 = 0; i2 < 2; i2++) {
+            letras.add(empty);
+        }
+        
+        //coma
+        ix = new ArrayList(Arrays.asList(puntos.get(39).get(0),puntos.get(39).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(39).get(1),puntos.get(39).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(39).get(0),puntos.get(44).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(39).get(1),puntos.get(44).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(27).get(0),puntos.get(39).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(27).get(1),puntos.get(39).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(37).get(0),puntos.get(45).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(37).get(1),puntos.get(45).get(1)));
+        Caracter coma = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(coma);
+        
+        //guion
+        ix = new ArrayList(Arrays.asList(puntos.get(25).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(25).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(28).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(28).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(25).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(25).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(28).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(28).get(1)));
+        Caracter guion = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(guion);
+        
+        //punto
+        ix = new ArrayList(Arrays.asList(puntos.get(33).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(33).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(33).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(33).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(31).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(31).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(45).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(45).get(1)));
+        Caracter punto = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(punto);
+        
+        //padding
+        for (int i2 = 0; i2 < 11; i2++) {
+            letras.add(empty);
+        }
+        
+        //dos puntos
+        ix = new ArrayList(Arrays.asList(puntos.get(33).get(0),puntos.get(21).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(33).get(1),puntos.get(21).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(33).get(0),puntos.get(21).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(33).get(1),puntos.get(21).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(31).get(0),puntos.get(19).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(31).get(1),puntos.get(19).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(45).get(0),puntos.get(33).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(45).get(1),puntos.get(33).get(1)));
+        Caracter puntoC = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(puntoC);
+        
+        //punto y coma
+        ix = new ArrayList(Arrays.asList(puntos.get(39).get(0),puntos.get(39).get(0),puntos.get(21).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(39).get(1),puntos.get(39).get(1),puntos.get(21).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(39).get(0),puntos.get(44).get(0),puntos.get(21).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(39).get(1),puntos.get(44).get(1),puntos.get(21).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(27).get(0),puntos.get(39).get(0),puntos.get(19).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(27).get(1),puntos.get(39).get(1),puntos.get(19).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(37).get(0),puntos.get(45).get(0),puntos.get(33).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(37).get(1),puntos.get(45).get(1),puntos.get(33).get(1)));
+        Caracter Pcoma = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(Pcoma);
+        
+        //padding
+        for (int i2 = 0; i2 < 3; i2++) {
+            letras.add(empty);
+        }
+        //interrogacion ?
+        
+        ix = new ArrayList(Arrays.asList(puntos.get(38).get(0),puntos.get(32).get(0),puntos.get(22).get(0)));  
+        iy = new ArrayList(Arrays.asList(puntos.get(38).get(1),puntos.get(32).get(1),puntos.get(22).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(38).get(0),puntos.get(22).get(0),puntos.get(13).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(38).get(1),puntos.get(22).get(1),puntos.get(13).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(37).get(0),puntos.get(26).get(0),puntos.get(10).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(37).get(1),puntos.get(26).get(1),puntos.get(10).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(44).get(0),puntos.get(28).get(0),puntos.get(8).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(44).get(1),puntos.get(28).get(1),puntos.get(8).get(1)));
+        Caracter interrogacion1 = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(interrogacion1);
+        //padding     
+        letras.add(empty);
+        
+        
         ix = new ArrayList(Arrays.asList(puntos.get(13).get(0),puntos.get(22).get(0),puntos.get(22).get(0)));  
         iy = new ArrayList(Arrays.asList(puntos.get(13).get(1),puntos.get(22).get(1),puntos.get(22).get(1)));
         fx = new ArrayList(Arrays.asList(puntos.get(22).get(0),puntos.get(13).get(0),puntos.get(35).get(0)));
@@ -79,8 +239,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(42).get(1),puntos.get(4).get(1),puntos.get(46).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(46).get(0),puntos.get(2).get(0),puntos.get(35).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(46).get(1),puntos.get(2).get(1),puntos.get(35).get(1)));
-        Caracter A = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
-        ArrayList<Caracter> letras = new ArrayList();
+        Caracter A = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(A);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(7).get(0),puntos.get(25).get(0),puntos.get(37).get(0)));  
@@ -91,7 +250,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(4).get(1),puntos.get(17).get(1),puntos.get(40).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0),puntos.get(22).get(0),puntos.get(41).get(0),puntos.get(35).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(22).get(1),puntos.get(41).get(1),puntos.get(35).get(1)));
-        Caracter B = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,4);
+        Caracter B = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(B);
         
         ix = new ArrayList(Arrays.asList(puntos.get(4).get(0)));  
@@ -102,7 +261,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(42).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(42).get(1)));
-        Caracter C = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,1);
+        Caracter C = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(C);
         
         ix = new ArrayList(Arrays.asList(puntos.get(0).get(0),puntos.get(36).get(0),puntos.get(33).get(0),puntos.get(33).get(0)));  
@@ -113,7 +272,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(31).get(1),puntos.get(30).get(1),puntos.get(23).get(1),puntos.get(38).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(31).get(0),puntos.get(38).get(0),puntos.get(2).get(0),puntos.get(40).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(31).get(1),puntos.get(38).get(1),puntos.get(2).get(1),puntos.get(40).get(1)));
-        Caracter D = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,4);
+        Caracter D = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(D);
         
         ix = new ArrayList(Arrays.asList(puntos.get(10).get(0),puntos.get(21).get(0)));  
@@ -124,7 +283,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(31).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(24).get(0),puntos.get(44).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(24).get(1),puntos.get(44).get(1)));
-        Caracter E = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
+        Caracter E = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(E);
         
         ix = new ArrayList(Arrays.asList(puntos.get(14).get(0),puntos.get(0).get(0),puntos.get(20).get(0)));  
@@ -135,7 +294,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(44).get(1),puntos.get(0).get(1),puntos.get(20).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(42).get(0),puntos.get(5).get(0),puntos.get(23).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(42).get(1),puntos.get(5).get(1),puntos.get(23).get(1)));
-        Caracter F = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        Caracter F = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(F);
         
         ix = new ArrayList(Arrays.asList(puntos.get(3).get(0),puntos.get(28).get(0),puntos.get(44).get(0)));  
@@ -146,7 +305,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(34).get(1),puntos.get(37).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(36).get(0),puntos.get(45).get(0),puntos.get(34).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(36).get(1),puntos.get(45).get(1),puntos.get(34).get(1)));
-        Caracter G = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        Caracter G = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(G);
         
         ix = new ArrayList(Arrays.asList(puntos.get(1).get(0),puntos.get(37).get(0),puntos.get(4).get(0)));  
@@ -157,7 +316,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(8).get(1),puntos.get(24).get(1),puntos.get(9).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(32).get(0),puntos.get(17).get(0),puntos.get(40).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(32).get(1),puntos.get(17).get(1),puntos.get(40).get(1)));
-        Caracter H = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        Caracter H = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(H);
         
         ix = new ArrayList(Arrays.asList(puntos.get(13).get(0),puntos.get(9).get(0),puntos.get(36).get(0)));  
@@ -168,7 +327,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(6).get(1),puntos.get(15).get(1),puntos.get(37).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(11).get(0),puntos.get(32).get(0),puntos.get(41).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(11).get(1),puntos.get(32).get(1),puntos.get(41).get(1)));
-        Caracter I = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        Caracter I = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(I);
         
         ix = new ArrayList(Arrays.asList(puntos.get(20).get(0),puntos.get(4).get(0),puntos.get(43).get(0)));  
@@ -179,7 +338,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(13).get(1),puntos.get(3).get(1),puntos.get(42).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(5).get(0),puntos.get(45).get(0),puntos.get(14).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(5).get(1),puntos.get(45).get(1),puntos.get(14).get(1)));
-        Caracter J = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        Caracter J = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(J);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(25).get(0),puntos.get(25).get(0),puntos.get(39).get(0)));  
@@ -190,7 +349,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(33).get(1),puntos.get(26).get(1),puntos.get(40).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0),puntos.get(16).get(0),puntos.get(33).get(0),puntos.get(35).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(16).get(1),puntos.get(33).get(1),puntos.get(35).get(1)));
-        Caracter K = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,4);
+        Caracter K = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(K);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(1).get(0),puntos.get(37).get(0)));  
@@ -201,7 +360,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(8).get(1),puntos.get(7).get(1),puntos.get(47).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0),puntos.get(37).get(0),puntos.get(22).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(37).get(1),puntos.get(22).get(1)));
-        Caracter L = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        Caracter L = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(L);
         
         ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(37).get(0),puntos.get(39).get(0)));  
@@ -212,7 +371,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(0).get(1),puntos.get(0).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(37).get(0),puntos.get(4).get(0),puntos.get(5).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(37).get(1),puntos.get(0).get(1),puntos.get(0).get(1)));
-        Caracter M = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        Caracter M = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(M);
         
         ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(38).get(0)));  
@@ -223,7 +382,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(0).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(38).get(0),puntos.get(5).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(38).get(1),puntos.get(0).get(1)));
-        Caracter N = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
+        Caracter N = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(N);
         
         ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(22).get(0)));  
@@ -234,7 +393,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(47).get(1),puntos.get(0).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(46).get(0),puntos.get(1).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(47).get(1),puntos.get(0).get(1)));
-        Caracter O = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
+        Caracter O = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(O);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(12).get(0)));  
@@ -245,7 +404,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(5).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0),puntos.get(35).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(35).get(1)));
-        Caracter P = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
+        Caracter P = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(P);
         
         ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(22).get(0),puntos.get(31).get(0)));  
@@ -256,7 +415,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(47).get(1),puntos.get(0).get(1),puntos.get(26).get(0)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(46).get(0),puntos.get(1).get(0),puntos.get(40).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(47).get(1),puntos.get(0).get(1),puntos.get(40).get(1)));
-        Caracter Q = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        Caracter Q = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(Q);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(13).get(0),puntos.get(25).get(0)));  
@@ -267,7 +426,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(5).get(1),puntos.get(25).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0),puntos.get(35).get(0),puntos.get(35).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(35).get(1),puntos.get(35).get(1)));
-        Caracter R = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,3);
+        Caracter R = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(R);
         
         ix = new ArrayList(Arrays.asList(puntos.get(36).get(0),puntos.get(1).get(0),puntos.get(33).get(0),puntos.get(38).get(0)));  
@@ -278,7 +437,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(2).get(1),puntos.get(25).get(1),puntos.get(39).get(1),puntos.get(31).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0),puntos.get(21).get(0),puntos.get(38).get(0),puntos.get(41).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(21).get(1),puntos.get(38).get(1),puntos.get(41).get(1)));
-        Caracter S = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,4);
+        Caracter S = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(S);
         
         ix = new ArrayList(Arrays.asList(puntos.get(7).get(0),puntos.get(5).get(0)));  
@@ -289,7 +448,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(13).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(15).get(0),puntos.get(45).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(15).get(1),puntos.get(45).get(1)));
-        Caracter T = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
+        Caracter T = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(T);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(9).get(0)));  
@@ -300,7 +459,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(42).get(1),puntos.get(33).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(46).get(0),puntos.get(40).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(46).get(1),puntos.get(40).get(1)));
-        Caracter U = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
+        Caracter U = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(U);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(39).get(0)));  
@@ -311,7 +470,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(8).get(1),puntos.get(40).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(38).get(0),puntos.get(9).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(38).get(1),puntos.get(9).get(1)));
-        Caracter V = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
+        Caracter V = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(V);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(14).get(0)));  
@@ -322,7 +481,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(42).get(1),puntos.get(44).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(45).get(0),puntos.get(47).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(45).get(1),puntos.get(47).get(1)));
-        Caracter W = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
+        Caracter W = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(W);
         
         ix = new ArrayList(Arrays.asList(puntos.get(12).get(0),puntos.get(36).get(0)));  
@@ -333,7 +492,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(36).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(40).get(0),puntos.get(11).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(40).get(1),puntos.get(11).get(1)));
-        Caracter X = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,2);
+        Caracter X = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(X);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(19).get(0),puntos.get(4).get(0),puntos.get(43).get(0)));  
@@ -344,7 +503,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1),puntos.get(20).get(1),puntos.get(4).get(1),puntos.get(42).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(18).get(0),puntos.get(22).get(0),puntos.get(45).get(0),puntos.get(14).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(18).get(1),puntos.get(22).get(1),puntos.get(45).get(1),puntos.get(14).get(1)));
-        Caracter Y = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,4);
+        Caracter Y = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(Y);
         
         ix = new ArrayList(Arrays.asList(puntos.get(6).get(0),puntos.get(5).get(0),puntos.get(36).get(0),puntos.get(19).get(0)));  
@@ -355,7 +514,7 @@ public class PrimaryController implements Serializable {
         ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1),puntos.get(4).get(1),puntos.get(30).get(1),puntos.get(25).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(11).get(0),puntos.get(37).get(0),puntos.get(41).get(0),puntos.get(16).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(11).get(1),puntos.get(37).get(1),puntos.get(41).get(1),puntos.get(16).get(1)));
-        Caracter Z = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,4);
+        Caracter Z = new Caracter(ix,iy,fx,fy,ch1x,ch1y,ch2x,ch2y,p,ix.size());
         letras.add(Z);
         
         //padding
@@ -728,19 +887,22 @@ public class PrimaryController implements Serializable {
         }
         
         for (int i = 0; i < frase.length(); i++) {
-            Pane pp=new Pane();
-            pp.setMaxSize(100,140);
-            pp.setMinSize(100, 140);
-            pp.setTranslateX(x);
-            pp.setTranslateY(y);
-            letras.get((int)frase.charAt(i)-65).root=pp;
-            letras.get((int)frase.charAt(i)-65).dibujar();
-            pane.getChildren().add(letras.get((int)frase.charAt(i)-65).getPanel());
-            x+=100;
-            if(x>(canvas.getWidth()-100)){
+            if (letras.get((int)frase.charAt(i)-32).lineas != -1) {
+                Pane pp=new Pane();
+                pp.setMaxSize(100,140);
+                pp.setMinSize(100, 140);
+                pp.setTranslateX(x);
+                pp.setTranslateY(y);
+                letras.get((int)frase.charAt(i)-32).root=pp;
+                letras.get((int)frase.charAt(i)-32).dibujar();
+                //letras.get((int)frase.charAt(i)-32).getCheckpoints();
+                pane.getChildren().add(letras.get((int)frase.charAt(i)-32).getPanel());
+                x+=100;
+                if(x>(canvas.getWidth()-100)){
                 x=10;
                 y+=140;
-            }
+                }
+            }     
         }
         
         canvas.setGraphic(pane);
@@ -752,5 +914,3 @@ public class PrimaryController implements Serializable {
         System.out.println(frase);
     }
 }
-
-        
