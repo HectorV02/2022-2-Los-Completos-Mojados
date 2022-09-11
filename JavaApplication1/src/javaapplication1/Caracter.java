@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package javaapplication1;
 
 import java.io.Serializable;
@@ -21,7 +17,7 @@ import javafx.scene.shape.CubicCurve;
  *  
  * @author PC GAMER
  */
-public class Caracter{
+public class Caracter implements Serializable{
     int lineas;
     ArrayList<Integer> Ix,Iy,Fx,Fy,ch1x,ch1y,ch2x,ch2y = new ArrayList();
     Pane root;
@@ -38,12 +34,12 @@ public class Caracter{
         this.root = root;
         this.lineas = lineas;
     }
-    public void dibujar(){
+    public void dibujar(Color color){
         for (int i = 0; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i),Iy.get(i),ch1x.get(i),ch1y.get(i),ch2x.get(i),ch2y.get(i),Fx.get(i),Fy.get(i));
-             c.setFill(Color.TRANSPARENT);
-             c.setStroke(Color.BLACK);
-             root.getChildren().add(c);             
+            c.setFill(Color.TRANSPARENT);
+            c.setStroke(color);
+            root.getChildren().add(c);             
         }
     }
     public void getCheckpoints(){
@@ -66,4 +62,3 @@ public class Caracter{
         return root;
     }
 }
-
