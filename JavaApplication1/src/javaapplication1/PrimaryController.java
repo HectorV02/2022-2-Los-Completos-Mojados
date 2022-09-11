@@ -19,25 +19,34 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
  *
  * @author janit
  */
-public class PrimaryController implements Serializable {
-
+public class PrimaryController {
+    
     @FXML
     public TextField cuadroTexto;
     @FXML
     public Label canvas;
+    @FXML
+    public ColorPicker colores;
+    @FXML
+    public CheckBox muestraPuntos;
     static int bandera;
     static ArrayList<Caracter> letras;
 
     @FXML
-    public ArrayList<Caracter> Empezar(int x, int y) {
+    public void Empezar(int x ,int y){
         Pane p = new Pane();
         p.setMaxSize(100, 140);
         p.setMinSize(100, 140);
@@ -50,6 +59,9 @@ public class PrimaryController implements Serializable {
                 xy.add(20 * j);
                 xy.add(20 * i);
                 puntos.add(xy);
+            }   
+        }        
+        return mayusculas(p, puntos);
             }
         }
 
@@ -67,10 +79,10 @@ public class PrimaryController implements Serializable {
                 smallPuntos.add(xy);
             }
         }
-        return mayusculas(p, puntos, smallP, smallPuntos);
+        mayusculas(p, puntos, smallP, smallPuntos);
     }
 
-    public static ArrayList<Caracter> mayusculas(Pane p, ArrayList<ArrayList> puntos, Pane smallP, ArrayList<ArrayList> smallPuntos) {
+    public static void mayusculas(Pane p, ArrayList<ArrayList> puntos, Pane smallP, ArrayList<ArrayList> smallPuntos) {
 
         //vacio
         ArrayList<Integer> ix = new ArrayList();
@@ -997,41 +1009,42 @@ public class PrimaryController implements Serializable {
         ch2y = new ArrayList(Arrays.asList(puntos.get(20).get(1), puntos.get(22).get(1), puntos.get(21).get(1), puntos.get(34).get(1)));
         Caracter ñ = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(ñ);
-
-        return letras;
     }
 
     @FXML
     public void dibuja() throws IOException {
+        if(colores.getValue().equals(Color.WHITE)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Elegido color blanco, con el fondo no se ve");
+            alert.showAndWait();
+        }
         int x = 10;
-        int y = 0;
+        int y = 10;
         Pane pane = new Pane();
-        String frase = (this.cuadroTexto.getText());
-        if (bandera == 0) {
-            letras = Empezar(x, y);
+        String frase=(this.cuadroTexto.getText());
+        if(bandera==0){
+            Empezar(x,y);
             bandera++;
         }
-
-//        System.out.println((int)'¿');
-//        System.out.println((int)'Ñ');
         for (int i = 0; i < frase.length(); i++) {
-
             if (letras.get((int) frase.charAt(i) - 32).lineas != -1 && (0 <= ((int) frase.charAt(i) - 32)) && ((int) frase.charAt(i) - 32) <= 241) {
-                
-                Pane pp = new Pane();
+            Pane pp=new Pane();
                 pp.setMaxSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
                 pp.setMinSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
                 letras.get((int) frase.charAt(i) - 32).root = pp;
-                letras.get((int) frase.charAt(i) - 32).dibujar();
+                letras.get((int)frase.charAt(i)-32).dibujar(colores.getValue());
+            if(muestraPuntos.isSelected()){
+                letras.get((int)frase.charAt(i)-32).getCheckpoints();
+            }
                 pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
                 if (x > (canvas.getWidth() - 100)) {
                     x = 10;
                     y += 140;
-                } else {
-                }
             } else {
                 System.out.println((int) frase.charAt(i));
                 Alert alert = new Alert(Alert.AlertType.WARNING);
