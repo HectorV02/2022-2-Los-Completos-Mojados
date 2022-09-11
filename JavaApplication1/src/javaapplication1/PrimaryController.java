@@ -60,11 +60,7 @@ public class PrimaryController {
                 xy.add(20 * i);
                 puntos.add(xy);
             }   
-        }        
-        return mayusculas(p, puntos);
-            }
-        }
-
+        }                        
         Pane smallP = new Pane();
         smallP.setMaxSize(75, 140);
         smallP.setMinSize(75, 140);
@@ -96,7 +92,7 @@ public class PrimaryController {
         Caracter empty = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, -1);
 
         Caracter space = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, 0);
-        ArrayList<Caracter> letras = new ArrayList();
+        letras = new ArrayList();
         letras.add(space);
 
         // signo de exclamacion !
@@ -1045,7 +1041,8 @@ public class PrimaryController {
                 if (x > (canvas.getWidth() - 100)) {
                     x = 10;
                     y += 140;
-            } else {
+            }
+            }else {
                 System.out.println((int) frase.charAt(i));
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText(null);
@@ -1060,3 +1057,4 @@ public class PrimaryController {
         System.out.println(frase);
     }
 }
+
