@@ -709,14 +709,14 @@ public class PrimaryController {
         letras.add(i);
 
         // letra j minuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(30).get(0), puntos.get(21).get(0), puntos.get(15).get(0), puntos.get(38).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(30).get(1), puntos.get(21).get(1), puntos.get(15).get(1), puntos.get(38).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(21).get(0), puntos.get(38).get(0), puntos.get(15).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(21).get(1), puntos.get(38).get(1), puntos.get(15).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(32).get(0), puntos.get(28).get(0), puntos.get(16).get(0), puntos.get(31).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(32).get(1), puntos.get(28).get(1), puntos.get(16).get(1), puntos.get(31).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(27).get(0), puntos.get(39).get(0), puntos.get(9).get(0), puntos.get(27).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(27).get(1), puntos.get(39).get(1), puntos.get(9).get(1), puntos.get(27).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(30).get(0), puntos.get(21).get(0), puntos.get(15).get(0), puntos.get(44).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(30).get(1), puntos.get(21).get(1), puntos.get(15).get(1), puntos.get(44).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(21).get(0), puntos.get(44).get(0), puntos.get(15).get(0), puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(21).get(1), puntos.get(44).get(1), puntos.get(15).get(1), puntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(32).get(0), puntos.get(28).get(0), puntos.get(16).get(0), puntos.get(37).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(32).get(1), puntos.get(28).get(1), puntos.get(16).get(1), puntos.get(37).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(27).get(0), puntos.get(45).get(0), puntos.get(9).get(0), puntos.get(33).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(27).get(1), puntos.get(45).get(1), puntos.get(9).get(1), puntos.get(33).get(1)));
         Caracter j = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(j);
 
