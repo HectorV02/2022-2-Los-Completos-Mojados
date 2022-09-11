@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField id="cuadroTexto" onInputMethodTextChanged="#dibuja" />
-      <Pane prefHeight="374.0" prefWidth="600.0" />
+      <TextField id="cuadroTexto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onInputMethodTextChanged="#dibuja" />
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="374.0" prefWidth="600.0" />
    </children>
 </VBox>

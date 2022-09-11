@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMain.java to edit this template
- */
 package javaapplication1;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javafx.application.Application;
@@ -25,7 +22,7 @@ import javafx.stage.Stage;
  *
  * @author PC GAMER
  */
-public class App extends Application {
+public class App extends Application implements Serializable{
     
     private static Scene scene;
     
@@ -35,6 +32,7 @@ public class App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("primary.fxml"));
         scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
     

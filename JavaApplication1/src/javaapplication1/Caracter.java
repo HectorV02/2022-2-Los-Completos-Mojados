@@ -1,23 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package javaapplication1;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.Node;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurve;
+
 
 /**
  *  
  * @author PC GAMER
  */
-public class Caracter {
+public class Caracter implements Serializable{
     int lineas;
     ArrayList<Integer> Ix,Iy,Fx,Fy,ch1x,ch1y,ch2x,ch2y = new ArrayList();
     Pane root;
@@ -42,8 +42,23 @@ public class Caracter {
              root.getChildren().add(c);             
         }
     }
+    public void getCheckpoints(){
+        
+        for (int i = 0; i < lineas; i++) {
+            Circle n = new Circle();
+            n.setCenterX(Ix.get(i));
+            n.setCenterY(Iy.get(i));
+            n.setRadius(2);
+            root.getChildren().add(n);
+            n = new Circle();
+            n.setCenterX(Fx.get(i));
+            n.setCenterY(Fy.get(i));
+            n.setRadius(2);
+            root.getChildren().add(n);
+        }
+        
+    }
     public Pane getPanel(){
         return root;
     }
 }
-
