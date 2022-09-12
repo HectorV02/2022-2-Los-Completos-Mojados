@@ -1026,22 +1026,22 @@ public class PrimaryController {
         }
         for (int i = 0; i < frase.length(); i++) {
             if (letras.get((int) frase.charAt(i) - 32).lineas != -1 && (0 <= ((int) frase.charAt(i) - 32)) && ((int) frase.charAt(i) - 32) <= 241) {
-            Pane pp=new Pane();
+                Pane pp=new Pane();
                 pp.setMaxSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
                 pp.setMinSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
                 letras.get((int) frase.charAt(i) - 32).root = pp;
                 letras.get((int)frase.charAt(i)-32).dibujar(colores.getValue());
-            if(muestraPuntos.isSelected()){
-                letras.get((int)frase.charAt(i)-32).getCheckpoints();
-            }
+                if(muestraPuntos.isSelected()){
+                    letras.get((int)frase.charAt(i)-32).getCheckpoints();
+                }
                 pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
                 if (x > (canvas.getWidth() - 100)) {
                     x = 10;
                     y += 140;
-            }
+                }
             }else {
                 System.out.println((int) frase.charAt(i));
                 Alert alert = new Alert(Alert.AlertType.WARNING);
