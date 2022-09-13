@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 
 <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication1.PrimaryController">
    <children>
-      <TextField id="cuadroTexto" fx:id="cuadroTexto" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#dibuja" prefHeight="25.0" prefWidth="500.0">
+      <Label fx:id="canvas" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" onDragOver="#dibuja" prefHeight="550" prefWidth="600" textAlignment="CENTER" VBox.vgrow="ALWAYS">
          <VBox.margin>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="15.0" />
-         </VBox.margin></TextField>
-      <Label fx:id="canvas" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="550" prefWidth="600" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+            <Insets bottom="30.0" />
+         </VBox.margin></Label>
+      <TextField id="cuadroTexto" fx:id="cuadroTexto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#dibuja" prefHeight="25.0" prefWidth="300.0">
+         <VBox.margin>
+            <Insets left="50.0" right="50.0" />
+         </VBox.margin>
+      </TextField>
+      <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <CheckBox fx:id="muestraPuntos" mnemonicParsing="false" onAction="#dibuja" text="Mostrar Checkpoints" />
+            <TextArea editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="90.0" text="Color Fuente:">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </TextArea>
+            <ColorPicker fx:id="colores" editable="true" onAction="#dibuja">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <value>
+                  <Color />
+               </value>
+            </ColorPicker>
+         </children>
+      </HBox>
    </children>
 </VBox>
