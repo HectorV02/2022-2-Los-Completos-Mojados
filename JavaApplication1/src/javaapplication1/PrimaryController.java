@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package javaapplication1;
 
 import java.io.IOException;
@@ -14,7 +11,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 
 /**
  *
@@ -63,10 +59,10 @@ public class PrimaryController {
                 smallPuntos.add(xy);
             }
         }
-        mayusculas(p, puntos, smallP, smallPuntos);
+        creaCaracteres(p, puntos, smallP, smallPuntos);
     }
 
-    public static void mayusculas(Pane p, ArrayList<ArrayList> puntos, Pane smallP, ArrayList<ArrayList> smallPuntos) {
+    public static void creaCaracteres(Pane p, ArrayList<ArrayList> puntos, Pane smallP, ArrayList<ArrayList> smallPuntos) {
 
         //vacio
         ArrayList<Integer> ix = new ArrayList();
@@ -251,38 +247,38 @@ public class PrimaryController {
         letras.add(c);
 
         //letra B mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(7).get(0), puntos.get(25).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(7).get(1), puntos.get(25).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(37).get(0), puntos.get(25).get(0), puntos.get(37).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(37).get(1), puntos.get(25).get(1), puntos.get(37).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(4).get(0), puntos.get(17).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(4).get(1), puntos.get(17).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(22).get(0), puntos.get(41).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(22).get(1), puntos.get(41).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(13).get(0), puntos.get(12).get(0), puntos.get(2).get(0), puntos.get(19).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(13).get(1), puntos.get(12).get(1), puntos.get(2).get(1), puntos.get(19).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(12).get(0), puntos.get(2).get(0), puntos.get(19).get(0), puntos.get(37).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(12).get(1), puntos.get(2).get(1), puntos.get(19).get(1), puntos.get(37).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(43).get(0), puntos.get(6).get(0), puntos.get(4).get(0), puntos.get(23).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(43).get(1), puntos.get(6).get(1), puntos.get(4).get(1), puntos.get(23).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(42).get(0), puntos.get(0).get(0), puntos.get(22).get(0), puntos.get(41).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(42).get(1), puntos.get(0).get(1), puntos.get(22).get(1), puntos.get(41).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
         //letra C mayuscula
         ix = new ArrayList(Arrays.asList(puntos.get(16).get(0), puntos.get(18).get(0)));
         iy = new ArrayList(Arrays.asList(puntos.get(16).get(1), puntos.get(18).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(18).get(0), puntos.get(34).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(18).get(1), puntos.get(34).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(18).get(0), puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(18).get(1), puntos.get(35).get(1)));
         ch1x = new ArrayList(Arrays.asList(puntos.get(4).get(0), puntos.get(42).get(0)));
         ch1y = new ArrayList(Arrays.asList(puntos.get(4).get(1), puntos.get(42).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(40).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(40).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(35).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(35).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
         //letra D mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(36).get(0), puntos.get(33).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(36).get(1), puntos.get(33).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(36).get(0), puntos.get(33).get(0), puntos.get(0).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(36).get(1), puntos.get(33).get(1), puntos.get(0).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(31).get(0), puntos.get(30).get(0), puntos.get(23).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(31).get(1), puntos.get(30).get(1), puntos.get(23).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(31).get(0), puntos.get(38).get(0), puntos.get(2).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(31).get(1), puntos.get(38).get(1), puntos.get(2).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(13).get(0), puntos.get(12).get(0), puntos.get(2).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(13).get(1), puntos.get(12).get(1), puntos.get(2).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(12).get(0), puntos.get(2).get(0), puntos.get(37).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(12).get(1), puntos.get(2).get(1), puntos.get(37).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(43).get(0), puntos.get(6).get(0), puntos.get(5).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(43).get(1), puntos.get(6).get(1), puntos.get(5).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(42).get(0), puntos.get(0).get(0), puntos.get(47).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(42).get(1), puntos.get(0).get(1), puntos.get(47).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
@@ -299,14 +295,14 @@ public class PrimaryController {
         letras.add(c);
 
         //letra F mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(8).get(0), puntos.get(36).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(8).get(1), puntos.get(36).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(5).get(0), puntos.get(36).get(0), puntos.get(21).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(5).get(1), puntos.get(36).get(1), puntos.get(21).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(13).get(0), puntos.get(18).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(13).get(1), puntos.get(18).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(15).get(0), puntos.get(43).get(0), puntos.get(45).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(15).get(1), puntos.get(43).get(1), puntos.get(45).get(0)));
+        ix = new ArrayList(Arrays.asList(puntos.get(14).get(0), puntos.get(6).get(0), puntos.get(20).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(14).get(1), puntos.get(6).get(1), puntos.get(20).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(5).get(0), puntos.get(22).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(5).get(1), puntos.get(22).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(44).get(0), puntos.get(0).get(0), puntos.get(20).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(44).get(1), puntos.get(0).get(1), puntos.get(20).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(42).get(0), puntos.get(0).get(0), puntos.get(23).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(42).get(1), puntos.get(0).get(1), puntos.get(23).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
@@ -329,44 +325,44 @@ public class PrimaryController {
         fy = new ArrayList(Arrays.asList(puntos.get(37).get(1), puntos.get(4).get(1), puntos.get(35).get(1)));
         ch1x = new ArrayList(Arrays.asList(puntos.get(8).get(0), puntos.get(6).get(0), puntos.get(9).get(0)));
         ch1y = new ArrayList(Arrays.asList(puntos.get(8).get(1), puntos.get(6).get(1), puntos.get(9).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(32).get(0), puntos.get(35).get(0), puntos.get(40).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(32).get(1), puntos.get(35).get(1), puntos.get(40).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(32).get(0), puntos.get(35).get(0), puntos.get(34).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(32).get(1), puntos.get(35).get(1), puntos.get(34).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
         //letra I mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(13).get(0), puntos.get(9).get(0), puntos.get(36).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(13).get(1), puntos.get(9).get(1), puntos.get(36).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(11).get(0), puntos.get(38).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(11).get(1), puntos.get(38).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(15).get(0), puntos.get(37).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(15).get(1), puntos.get(37).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(11).get(0), puntos.get(32).get(0), puntos.get(41).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(11).get(1), puntos.get(32).get(1), puntos.get(41).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(1).get(0), smallPuntos.get(4).get(0), smallPuntos.get(34).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(1).get(1), smallPuntos.get(4).get(1), smallPuntos.get(34).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(4).get(0), smallPuntos.get(34).get(0), smallPuntos.get(30).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(4).get(1), smallPuntos.get(34).get(1), smallPuntos.get(30).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(7).get(0), smallPuntos.get(22).get(0), smallPuntos.get(46).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(7).get(1), smallPuntos.get(22).get(1), smallPuntos.get(46).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(10).get(0), smallPuntos.get(28).get(0), smallPuntos.get(42).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(10).get(1), smallPuntos.get(28).get(1), smallPuntos.get(42).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
         letras.add(c);
 
         //letra J mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(20).get(0), puntos.get(4).get(0), puntos.get(43).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(20).get(1), puntos.get(4).get(1), puntos.get(43).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(4).get(0), puntos.get(43).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(4).get(1), puntos.get(43).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(13).get(0), puntos.get(3).get(0), puntos.get(42).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(13).get(1), puntos.get(3).get(1), puntos.get(42).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(5).get(0), puntos.get(45).get(0), puntos.get(14).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(5).get(1), puntos.get(45).get(1), puntos.get(14).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(20).get(0), puntos.get(4).get(0), puntos.get(44).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(20).get(1), puntos.get(4).get(1), puntos.get(44).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(4).get(0), puntos.get(44).get(0), puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(4).get(1), puntos.get(44).get(1), puntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(10).get(0), puntos.get(43).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(10).get(1), puntos.get(43).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(11).get(0), puntos.get(45).get(0), puntos.get(14).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(11).get(1), puntos.get(45).get(1), puntos.get(14).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
         //letra K mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(25).get(0), puntos.get(25).get(0), puntos.get(39).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(25).get(1), puntos.get(25).get(1), puntos.get(39).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(37).get(0), puntos.get(10).get(0), puntos.get(39).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(37).get(1), puntos.get(10).get(1), puntos.get(39).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(33).get(0), puntos.get(26).get(0), puntos.get(40).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(33).get(1), puntos.get(26).get(1), puntos.get(40).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(16).get(0), puntos.get(33).get(0), puntos.get(35).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(16).get(1), puntos.get(33).get(1), puntos.get(35).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(37).get(0), puntos.get(1).get(0), puntos.get(19).get(0), puntos.get(19).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(37).get(1), puntos.get(1).get(1), puntos.get(19).get(1), puntos.get(19).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(36).get(0), puntos.get(37).get(0), puntos.get(4).get(0), puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(36).get(1), puntos.get(37).get(1), puntos.get(4).get(1), puntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(43).get(0), puntos.get(1).get(0), puntos.get(10).get(0), puntos.get(45).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(43).get(1), puntos.get(1).get(1), puntos.get(10).get(1), puntos.get(45).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(7).get(0), puntos.get(42).get(0), puntos.get(37).get(0), puntos.get(4).get(0), puntos.get(46).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(7).get(1), puntos.get(42).get(1), puntos.get(37).get(1), puntos.get(4).get(1), puntos.get(46).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
@@ -383,26 +379,26 @@ public class PrimaryController {
         letras.add(c);
 
         //letra M mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0), puntos.get(37).get(0), puntos.get(39).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1), puntos.get(37).get(1), puntos.get(39).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(37).get(0), puntos.get(39).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(37).get(1), puntos.get(39).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(2).get(0), puntos.get(1).get(0), puntos.get(3).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(0).get(1), puntos.get(0).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(37).get(0), puntos.get(4).get(0), puntos.get(5).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(37).get(1), puntos.get(0).get(1), puntos.get(0).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0), puntos.get(37).get(0), puntos.get(38).get(0), puntos.get(39).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1), puntos.get(37).get(1), puntos.get(38).get(1), puntos.get(39).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(37).get(0), puntos.get(38).get(0), puntos.get(39).get(0), puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(37).get(1), puntos.get(38).get(1), puntos.get(39).get(1), puntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(2).get(0), puntos.get(1).get(0), puntos.get(2).get(0), puntos.get(40).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(2).get(1), puntos.get(1).get(1), puntos.get(2).get(1), puntos.get(40).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(37).get(0), puntos.get(3).get(0), puntos.get(4).get(0), puntos.get(35).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(37).get(1), puntos.get(3).get(1), puntos.get(4).get(1), puntos.get(35).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
         //letra N mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0), puntos.get(38).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1), puntos.get(38).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(38).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(38).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(1).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(0).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(8).get(0), puntos.get(5).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(8).get(1), puntos.get(0).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0), puntos.get(38).get(0), puntos.get(40).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1), puntos.get(38).get(1), puntos.get(40).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(38).get(0), puntos.get(40).get(0), puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(38).get(1), puntos.get(40).get(1), puntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(1).get(0), puntos.get(41).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(1).get(1), puntos.get(41).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(8).get(0), puntos.get(5).get(0), puntos.get(35).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(8).get(1), puntos.get(5).get(1), puntos.get(35).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
@@ -419,14 +415,14 @@ public class PrimaryController {
         letras.add(c);
 
         //letra P mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(12).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(12).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(37).get(0), puntos.get(24).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(37).get(1), puntos.get(24).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(5).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(5).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(35).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(35).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(14).get(0), puntos.get(6).get(0), puntos.get(3).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(14).get(1), puntos.get(6).get(1), puntos.get(3).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(3).get(0), puntos.get(20).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(3).get(1), puntos.get(20).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(44).get(0), puntos.get(0).get(0), puntos.get(5).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(44).get(1), puntos.get(0).get(1), puntos.get(5).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(42).get(0), puntos.get(0).get(0), puntos.get(23).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(42).get(1), puntos.get(0).get(1), puntos.get(23).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
@@ -443,14 +439,14 @@ public class PrimaryController {
         letras.add(c);
 
         //letra R mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(13).get(0), puntos.get(25).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(13).get(1), puntos.get(25).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(37).get(0), puntos.get(25).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(37).get(1), puntos.get(25).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(5).get(0), puntos.get(25).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(5).get(1), puntos.get(25).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(35).get(0), puntos.get(35).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(35).get(1), puntos.get(35).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(14).get(0), puntos.get(6).get(0), puntos.get(3).get(0), puntos.get(20).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(14).get(1), puntos.get(6).get(1), puntos.get(3).get(1), puntos.get(20).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(3).get(0), puntos.get(20).get(0), puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(3).get(1), puntos.get(20).get(1), puntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(44).get(0), puntos.get(0).get(0), puntos.get(5).get(0), puntos.get(20).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(44).get(1), puntos.get(0).get(1), puntos.get(5).get(1), puntos.get(20).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(42).get(0), puntos.get(0).get(0), puntos.get(23).get(0), puntos.get(35).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(42).get(1), puntos.get(0).get(1), puntos.get(23).get(1), puntos.get(35).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
@@ -467,50 +463,50 @@ public class PrimaryController {
         letras.add(c);
 
         //letra T mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(7).get(0), puntos.get(3).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(7).get(1), puntos.get(3).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(5).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(5).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(32).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(32).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(15).get(0), puntos.get(45).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(15).get(1), puntos.get(45).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(7).get(0), puntos.get(5).get(0), puntos.get(20).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(7).get(1), puntos.get(5).get(1), puntos.get(20).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(5).get(0), puntos.get(35).get(0), puntos.get(22).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(5).get(1), puntos.get(35).get(1), puntos.get(22).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(36).get(0), puntos.get(19).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(36).get(1), puntos.get(19).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(15).get(0), puntos.get(43).get(0), puntos.get(23).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(15).get(1), puntos.get(43).get(1), puntos.get(23).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
         //letra U mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(9).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(9).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(9).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(9).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(42).get(0), puntos.get(33).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(42).get(1), puntos.get(33).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(46).get(0), puntos.get(40).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(46).get(1), puntos.get(40).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(7).get(0), puntos.get(4).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(7).get(1), puntos.get(4).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(7).get(0), puntos.get(4).get(0), puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(7).get(1), puntos.get(4).get(1), puntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(43).get(0), puntos.get(39).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(43).get(1), puntos.get(39).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(46).get(0), puntos.get(35).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(46).get(1), puntos.get(35).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
         //letra V mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(39).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(39).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(39).get(0), puntos.get(11).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(39).get(1), puntos.get(11).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(8).get(0), puntos.get(40).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(8).get(1), puntos.get(40).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(38).get(0), puntos.get(9).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(38).get(1), puntos.get(9).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(39).get(0), puntos.get(10).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(39).get(1), puntos.get(10).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(39).get(0), puntos.get(10).get(0), puntos.get(11).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(39).get(1), puntos.get(10).get(1), puntos.get(11).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(3).get(0), puntos.get(41).get(0), puntos.get(10).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(3).get(1), puntos.get(41).get(1), puntos.get(10).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(36).get(0), puntos.get(10).get(0), puntos.get(11).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(36).get(1), puntos.get(10).get(1), puntos.get(11).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
         //letra W mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(14).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(14).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(14).get(0), puntos.get(11).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(14).get(1), puntos.get(11).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(42).get(0), puntos.get(44).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(42).get(1), puntos.get(44).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(45).get(0), puntos.get(47).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(45).get(1), puntos.get(47).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(7).get(0), puntos.get(14).get(0), puntos.get(10).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(7).get(1), puntos.get(14).get(1), puntos.get(10).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(7).get(0), puntos.get(14).get(0), puntos.get(10).get(0), puntos.get(11).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(7).get(1), puntos.get(14).get(1), puntos.get(10).get(1), puntos.get(11).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(42).get(0), puntos.get(44).get(0), puntos.get(10).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(42).get(1), puntos.get(44).get(1), puntos.get(10).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(45).get(0), puntos.get(47).get(0), puntos.get(11).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(45).get(1), puntos.get(47).get(1), puntos.get(11).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
@@ -527,26 +523,26 @@ public class PrimaryController {
         letras.add(c);
 
         //letra Y mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(19).get(0), puntos.get(4).get(0), puntos.get(43).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(19).get(1), puntos.get(4).get(1), puntos.get(43).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(19).get(0), puntos.get(4).get(0), puntos.get(43).get(0), puntos.get(35).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(19).get(1), puntos.get(4).get(1), puntos.get(43).get(1), puntos.get(35).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(20).get(0), puntos.get(4).get(0), puntos.get(42).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(20).get(1), puntos.get(4).get(1), puntos.get(42).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(18).get(0), puntos.get(22).get(0), puntos.get(45).get(0), puntos.get(14).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(18).get(1), puntos.get(22).get(1), puntos.get(45).get(1), puntos.get(14).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(8).get(0), smallPuntos.get(21).get(0), smallPuntos.get(5).get(0), smallPuntos.get(44).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(8).get(1), smallPuntos.get(21).get(1), smallPuntos.get(5).get(1), smallPuntos.get(44).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(21).get(0), smallPuntos.get(5).get(0), smallPuntos.get(44).get(0), smallPuntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(21).get(1), smallPuntos.get(5).get(1), smallPuntos.get(44).get(1), smallPuntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(3).get(0), smallPuntos.get(22).get(0), smallPuntos.get(5).get(0), smallPuntos.get(43).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(3).get(1), smallPuntos.get(22).get(1), smallPuntos.get(5).get(1), smallPuntos.get(43).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(20).get(0), smallPuntos.get(22).get(0), smallPuntos.get(45).get(0), smallPuntos.get(15).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(20).get(1), smallPuntos.get(22).get(1), smallPuntos.get(45).get(1), smallPuntos.get(15).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
         letras.add(c);
 
         //letra Z mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(6).get(0), puntos.get(5).get(0), puntos.get(36).get(0), puntos.get(19).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(6).get(1), puntos.get(5).get(1), puntos.get(36).get(1), puntos.get(19).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(5).get(0), puntos.get(36).get(0), puntos.get(35).get(0), puntos.get(22).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(5).get(1), puntos.get(36).get(1), puntos.get(35).get(1), puntos.get(22).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(0).get(0), puntos.get(4).get(0), puntos.get(30).get(0), puntos.get(25).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(4).get(1), puntos.get(30).get(1), puntos.get(25).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(11).get(0), puntos.get(37).get(0), puntos.get(41).get(0), puntos.get(16).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(11).get(1), puntos.get(37).get(1), puntos.get(41).get(1), puntos.get(16).get(1)));
+        ix = new ArrayList(Arrays.asList(puntos.get(7).get(0), puntos.get(3).get(0), puntos.get(26).get(0), puntos.get(44).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(7).get(1), puntos.get(3).get(1), puntos.get(26).get(1), puntos.get(44).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(3).get(0), puntos.get(26).get(0), puntos.get(44).get(0), puntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(3).get(1), puntos.get(26).get(1), puntos.get(44).get(1), puntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(7).get(0), puntos.get(5).get(0), puntos.get(23).get(0), puntos.get(43).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(7).get(1), puntos.get(5).get(1), puntos.get(23).get(1), puntos.get(43).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(1).get(0), puntos.get(29).get(0), puntos.get(45).get(0), puntos.get(21).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(1).get(1), puntos.get(29).get(1), puntos.get(45).get(1), puntos.get(21).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
@@ -1008,15 +1004,15 @@ public class PrimaryController {
         }
 
         //letra Ñ mayuscula
-        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0), puntos.get(38).get(0), puntos.get(7).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1), puntos.get(38).get(1), puntos.get(7).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(38).get(0), puntos.get(40).get(0), puntos.get(10).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(38).get(1), puntos.get(40).get(1), puntos.get(10).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(3).get(0), puntos.get(2).get(0), puntos.get(2).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(0).get(1), puntos.get(0).get(1), puntos.get(2).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(38).get(0), puntos.get(5).get(0), puntos.get(15).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(38).get(1), puntos.get(0).get(1), puntos.get(15).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, 3);
+        ix = new ArrayList(Arrays.asList(puntos.get(12).get(0), puntos.get(38).get(0), puntos.get(40).get(0), puntos.get(7).get(0)));
+        iy = new ArrayList(Arrays.asList(puntos.get(12).get(1), puntos.get(38).get(1), puntos.get(40).get(1), puntos.get(7).get(1)));
+        fx = new ArrayList(Arrays.asList(puntos.get(38).get(0), puntos.get(40).get(0), puntos.get(35).get(0), puntos.get(4).get(0)));
+        fy = new ArrayList(Arrays.asList(puntos.get(38).get(1), puntos.get(40).get(1), puntos.get(35).get(1), puntos.get(4).get(1)));
+        ch1x = new ArrayList(Arrays.asList(puntos.get(7).get(0), puntos.get(1).get(0), puntos.get(41).get(0), puntos.get(2).get(0)));
+        ch1y = new ArrayList(Arrays.asList(puntos.get(7).get(1), puntos.get(1).get(1), puntos.get(41).get(1), puntos.get(2).get(1)));
+        ch2x = new ArrayList(Arrays.asList(puntos.get(8).get(0), puntos.get(5).get(0), puntos.get(35).get(0), puntos.get(15).get(0)));
+        ch2y = new ArrayList(Arrays.asList(puntos.get(8).get(1), puntos.get(5).get(1), puntos.get(35).get(1), puntos.get(15).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
         letras.add(c);
 
         //padding
@@ -1039,13 +1035,6 @@ public class PrimaryController {
 
     @FXML
     public void dibuja() throws IOException {
-        if (colores.getValue().equals(Color.WHITE)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Elegido color blanco, con el fondo no se ve");
-            alert.showAndWait();
-        }
         int x = 10;
         int y = 10;
         Pane pane = new Pane();
@@ -1068,7 +1057,7 @@ public class PrimaryController {
                 }
                 pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
-                if (x > (canvas.getWidth() - 100)) {
+                if (x > (canvas.getWidth() - (letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth()))) {
                     x = 10;
                     y += 140;
                 }
@@ -1081,11 +1070,6 @@ public class PrimaryController {
                 alert.showAndWait();
             }
         }
-
         canvas.setGraphic(pane);
-
-        System.out.println(frase);
     }
 }
-
-//CEGLTY
