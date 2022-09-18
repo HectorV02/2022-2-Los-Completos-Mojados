@@ -2,13 +2,8 @@ package javaapplication1;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.Node;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurve;
 
@@ -38,6 +33,9 @@ public class Caracter implements Serializable{
         for (int i = 0; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i),Iy.get(i),ch1x.get(i),ch1y.get(i),ch2x.get(i),ch2y.get(i),Fx.get(i),Fy.get(i));
             c.setFill(Color.TRANSPARENT);
+            if (Ix.get(i)== Fx.get(i) && Iy.get(i)== Fy.get(i)) {
+                c.setFill(color);
+            }
             c.setStroke(color);
             root.getChildren().add(c);             
         }
@@ -53,6 +51,16 @@ public class Caracter implements Serializable{
             n = new Circle();
             n.setCenterX(Fx.get(i));
             n.setCenterY(Fy.get(i));
+            n.setRadius(2);
+            root.getChildren().add(n);
+            n = new Circle();
+            n.setCenterX(ch1x.get(i));
+            n.setCenterY(ch1y.get(i));
+            n.setRadius(2);
+            root.getChildren().add(n);
+            n = new Circle();
+            n.setCenterX(ch2x.get(i));
+            n.setCenterY(ch2y.get(i));
             n.setRadius(2);
             root.getChildren().add(n);
         }
