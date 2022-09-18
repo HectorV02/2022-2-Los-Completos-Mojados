@@ -1,4 +1,3 @@
-
 package javaapplication1;
 
 import java.io.IOException;
@@ -12,10 +11,6 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-/**
- *
- * @author janit
- */
 public class PrimaryController {
 
     @FXML
@@ -162,15 +157,15 @@ public class PrimaryController {
         letras.add(c);
 
         //guion
-        ix = new ArrayList(Arrays.asList(puntos.get(25).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(25).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(28).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(28).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(25).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(25).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(28).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(28).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(25).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(25).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(28).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(28).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(25).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(25).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(28).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(28).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
         letras.add(c);
 
         //punto
@@ -577,15 +572,15 @@ public class PrimaryController {
         letras.add(empty);
 
         //guion bajo
-        ix = new ArrayList(Arrays.asList(puntos.get(36).get(0)));
-        iy = new ArrayList(Arrays.asList(puntos.get(36).get(1)));
-        fx = new ArrayList(Arrays.asList(puntos.get(41).get(0)));
-        fy = new ArrayList(Arrays.asList(puntos.get(41).get(1)));
-        ch1x = new ArrayList(Arrays.asList(puntos.get(36).get(0)));
-        ch1y = new ArrayList(Arrays.asList(puntos.get(36).get(1)));
-        ch2x = new ArrayList(Arrays.asList(puntos.get(41).get(0)));
-        ch2y = new ArrayList(Arrays.asList(puntos.get(41).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(36).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(36).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(41).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(41).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(36).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(36).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(41).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(41).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
         letras.add(c);
 
         //padding
@@ -1062,7 +1057,6 @@ public class PrimaryController {
                     y += 140;
                 }
             } else {
-                System.out.println((int) frase.charAt(i));
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText(null);
                 alert.setTitle("Error");

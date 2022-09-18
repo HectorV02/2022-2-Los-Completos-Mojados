@@ -7,17 +7,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurve;
 
+public class Caracter implements Serializable {
 
-/**
- *  
- * @author PC GAMER
- */
-public class Caracter implements Serializable{
     int lineas;
-    ArrayList<Integer> Ix,Iy,Fx,Fy,ch1x,ch1y,ch2x,ch2y = new ArrayList();
+    ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y = new ArrayList();
     Pane root;
-    public Caracter(ArrayList<Integer> Ix,ArrayList<Integer> Iy,ArrayList<Integer> Fx,ArrayList<Integer> Fy,ArrayList<Integer> ch1x,
-            ArrayList<Integer> ch1y,ArrayList<Integer> ch2x,ArrayList<Integer> ch2y,Pane root, int lineas){
+
+    public Caracter(ArrayList<Integer> Ix, ArrayList<Integer> Iy, ArrayList<Integer> Fx, ArrayList<Integer> Fy, ArrayList<Integer> ch1x,
+            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas) {
         this.Ix = Ix;
         this.Iy = Iy;
         this.Fx = Fx;
@@ -29,19 +26,21 @@ public class Caracter implements Serializable{
         this.root = root;
         this.lineas = lineas;
     }
-    public void dibujar(Color color){
+
+    public void dibujar(Color color) {
         for (int i = 0; i < lineas; i++) {
-            CubicCurve c = new CubicCurve(Ix.get(i),Iy.get(i),ch1x.get(i),ch1y.get(i),ch2x.get(i),ch2y.get(i),Fx.get(i),Fy.get(i));
+            CubicCurve c = new CubicCurve(Ix.get(i), Iy.get(i), ch1x.get(i), ch1y.get(i), ch2x.get(i), ch2y.get(i), Fx.get(i), Fy.get(i));
             c.setFill(Color.TRANSPARENT);
-            if (Ix.get(i)== Fx.get(i) && Iy.get(i)== Fy.get(i)) {
+            if (Ix.get(i) == Fx.get(i) && Iy.get(i) == Fy.get(i)) {
                 c.setFill(color);
             }
             c.setStroke(color);
-            root.getChildren().add(c);             
+            root.getChildren().add(c);
         }
     }
-    public void getCheckpoints(){
-        
+
+    public void getCheckpoints() {
+
         for (int i = 0; i < lineas; i++) {
             Circle n = new Circle();
             n.setCenterX(Ix.get(i));
@@ -64,9 +63,10 @@ public class Caracter implements Serializable{
             n.setRadius(2);
             root.getChildren().add(n);
         }
-        
+
     }
-    public Pane getPanel(){
+
+    public Pane getPanel() {
         return root;
     }
 }
