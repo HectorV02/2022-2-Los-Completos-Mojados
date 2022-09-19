@@ -1,13 +1,12 @@
 package javaapplication1;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurve;
 
-public class Caracter implements Serializable {
+public class Caracter {
 
     int lineas;
     ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y = new ArrayList();
