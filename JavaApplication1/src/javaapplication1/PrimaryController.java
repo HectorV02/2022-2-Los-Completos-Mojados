@@ -1074,6 +1074,7 @@ public class PrimaryController {
                 if (frase.charAt(i) == ' ') {
                     n = 0;
                 }
+                
                 Pane pp = new Pane();
                 pp.setMaxSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
                 pp.setMinSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
@@ -1081,6 +1082,11 @@ public class PrimaryController {
                 pp.setTranslateY(y);
                 letras.get((int) frase.charAt(i) - 32).root = pp;
                 letras.get((int) frase.charAt(i) - 32).dibujar(colores.getValue());
+                
+                if (i > 0 && (int) frase.charAt(i) >= 97 && (int) frase.charAt(i) <= 122 &&(frase.charAt(i-1) == 'b'||frase.charAt(i-1) == 'o'||frase.charAt(i-1) == 'v'||frase.charAt(i-1) == 'w')) {
+                    letras.get((int) frase.charAt(i) - 32).subir(colores.getValue());
+                }
+                
                 if (muestraPuntos.isSelected()) {
                     letras.get((int) frase.charAt(i) - 32).getCheckpoints();
                 }
