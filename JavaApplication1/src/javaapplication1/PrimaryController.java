@@ -1041,6 +1041,7 @@ public class PrimaryController {
     public void dibuja() throws IOException {
         int x = 10;
         int y = 10;
+        int n = 0;
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
         if (bandera == 0) {
@@ -1054,7 +1055,7 @@ public class PrimaryController {
                     
                     switch(frase.charAt(i + 1)){
                         case 'N':
-                            System.out.println("Negritas");
+                            n = 1;
                             i+=2;
                             break;
                         case 'K':
@@ -1070,6 +1071,9 @@ public class PrimaryController {
                     }   
                     
                 }
+                if (frase.charAt(i) == ' ') {
+                    n = 0;
+                }
                 Pane pp = new Pane();
                 pp.setMaxSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
                 pp.setMinSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
@@ -1079,6 +1083,9 @@ public class PrimaryController {
                 letras.get((int) frase.charAt(i) - 32).dibujar(colores.getValue());
                 if (muestraPuntos.isSelected()) {
                     letras.get((int) frase.charAt(i) - 32).getCheckpoints();
+                }
+                if (n == 1) {
+                    letras.get((int) frase.charAt(i) - 32).negritas(colores.getValue());
                 }
                 pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
