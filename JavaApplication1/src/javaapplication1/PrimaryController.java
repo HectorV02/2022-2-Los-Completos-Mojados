@@ -1050,12 +1050,12 @@ public class PrimaryController {
                 if (muestraPuntos.isSelected()) {
                     letras.get((int) frase.charAt(i) - 32).getCheckpoints();
                 }
-                pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
-                if (x > (canvas.getWidth() - (letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth()))) {
+                if (x > (canvas.getWidth() - 100)) {
                     x = 10;
                     y += 140;
                 }
+                pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText(null);
