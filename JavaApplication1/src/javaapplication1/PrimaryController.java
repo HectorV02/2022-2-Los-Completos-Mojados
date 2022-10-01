@@ -567,9 +567,18 @@ public class PrimaryController {
         ch2y = new ArrayList(Arrays.asList(smallPuntos.get(4).get(1), smallPuntos.get(40).get(1), smallPuntos.get(38).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
         letras.add(c);
-
-        //padding
-        letras.add(empty);
+        
+        // simbolo de elevado para comandos 
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(19).get(0), smallPuntos.get(9).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(19).get(1), smallPuntos.get(9).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(9).get(0), smallPuntos.get(23).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(9).get(1), smallPuntos.get(23).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(19).get(0), smallPuntos.get(9).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(19).get(1), smallPuntos.get(9).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(9).get(0), smallPuntos.get(23).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(9).get(1), smallPuntos.get(23).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(c);
 
         //guion bajo
         ix = new ArrayList(Arrays.asList(smallPuntos.get(36).get(0)));
@@ -1038,8 +1047,29 @@ public class PrimaryController {
             Empezar(x, y);
             bandera++;
         }
+        
         for (int i = 0; i < frase.length(); i++) {
-            if (letras.get((int) frase.charAt(i) - 32).lineas != -1 && (0 <= ((int) frase.charAt(i) - 32)) && ((int) frase.charAt(i) - 32) <= 241) {
+            if ((0 <= ((int) frase.charAt(i) - 32)) && ((int) frase.charAt(i) - 32) <= 241 && letras.get((int) frase.charAt(i) - 32).lineas != -1) {
+                while (frase.charAt(i) == '^' && frase.length() > i+2) {
+                    
+                    switch(frase.charAt(i + 1)){
+                        case 'N':
+                            System.out.println("Negritas");
+                            i+=2;
+                            break;
+                        case 'K':
+                            System.out.println("Cursiva");
+                            i+=2;
+                            break;
+                        case 'S':
+                            System.out.println("Subrayado");
+                            i+=2;
+                            break;
+                        default:
+                            i++;
+                    }   
+                    
+                }
                 Pane pp = new Pane();
                 pp.setMaxSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
                 pp.setMinSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
