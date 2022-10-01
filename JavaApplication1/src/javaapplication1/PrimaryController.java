@@ -1051,7 +1051,22 @@ public class PrimaryController {
                     letras.get((int) frase.charAt(i) - 32).getCheckpoints();
                 }
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
-                if (x > (canvas.getWidth() - 100)) {
+                if(x > (canvas.getWidth() - 175) && (int) frase.charAt(i) - 32 != 0 && frase.length() > i){
+                    Pane sl = new Pane();
+                    sl.setMaxSize(letras.get(45 - 32).getPanel().getMaxWidth(), 140);
+                    sl.setMinSize(letras.get(45 - 32).getPanel().getMaxWidth(), 140);
+                    sl.setTranslateX(x);
+                    sl.setTranslateY(y);
+                    letras.get(45 - 32).root = sl;
+                    letras.get(45 - 32).dibujar(colores.getValue());
+                    if (muestraPuntos.isSelected()) {
+                        letras.get(45 - 32).getCheckpoints();
+                    }
+                    pane.getChildren().add(letras.get(45 - 32).getPanel());
+                    x = 10;
+                    y += 140;
+                }
+                else if (x > (canvas.getWidth() - 100)) {
                     x = 10;
                     y += 140;
                 }
