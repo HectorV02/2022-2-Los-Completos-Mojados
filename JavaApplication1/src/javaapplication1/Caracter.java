@@ -85,9 +85,32 @@ public class Caracter {
         }
     }
 
-    public void negritas(Color color) {
+    public void negritas(Color color, int aux) {
+        CubicCurve a = new CubicCurve(Ix.get(0) + 1, Iy.get(0)-aux + 1, ch1x.get(0) + 1, ch1y.get(0) -aux + 1, ch2x.get(0) + 1, ch2y.get(0) + 1, Fx.get(0) + 1, Fy.get(0) + 1);
+        a.setFill(Color.TRANSPARENT);
+        if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
+            a.setFill(color);
+        }
+        a.setStroke(color);
+        root.getChildren().add(a);
 
-        for (int i = 0; i < lineas; i++) {
+        CubicCurve b = new CubicCurve(Ix.get(0) + 1, Iy.get(0)-aux, ch1x.get(0) + 1, ch1y.get(0)-aux, ch2x.get(0) + 1, ch2y.get(0), Fx.get(0) + 1, Fy.get(0));
+        b.setFill(Color.TRANSPARENT);
+        if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
+            b.setFill(color);
+        }
+        b.setStroke(color);
+        root.getChildren().add(b);
+
+        CubicCurve f = new CubicCurve(Ix.get(0), Iy.get(0) -aux + 1, ch1x.get(0), ch1y.get(0) -aux + 1, ch2x.get(0), ch2y.get(0) + 1, Fx.get(0), Fy.get(0) + 1);
+        f.setFill(Color.TRANSPARENT);
+        if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
+            f.setFill(color);
+        }
+        f.setStroke(color);
+        root.getChildren().add(f);
+
+        for (int i = 1; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i) + 1, Iy.get(i) + 1, ch1x.get(i) + 1, ch1y.get(i) + 1, ch2x.get(i) + 1, ch2y.get(i) + 1, Fx.get(i) + 1, Fy.get(i) + 1);
             c.setFill(Color.TRANSPARENT);
             if (Ix.get(i) == Fx.get(i) && Iy.get(i) == Fy.get(i)) {

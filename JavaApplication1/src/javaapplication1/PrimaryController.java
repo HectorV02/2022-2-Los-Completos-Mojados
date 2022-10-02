@@ -1042,6 +1042,7 @@ public class PrimaryController {
         int x = 10;
         int y = 10;
         int n = 0;
+        int aux = 0;
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
         if (bandera == 0) {
@@ -1051,6 +1052,7 @@ public class PrimaryController {
         
         for (int i = 0; i < frase.length(); i++) {
             if ((0 <= ((int) frase.charAt(i) - 32)) && ((int) frase.charAt(i) - 32) <= 241 && letras.get((int) frase.charAt(i) - 32).lineas != -1) {
+                aux = 0;
                 while (frase.charAt(i) == '^' && frase.length() > i+2) {
                     
                     switch(frase.charAt(i + 1)){
@@ -1083,15 +1085,16 @@ public class PrimaryController {
                 letras.get((int) frase.charAt(i) - 32).root = pp;
                 letras.get((int) frase.charAt(i) - 32).dibujar(colores.getValue());
                 
-                if (i > 0 && (int) frase.charAt(i) >= 97 && (int) frase.charAt(i) <= 122 &&(frase.charAt(i-1) == 'b'||frase.charAt(i-1) == 'o'||frase.charAt(i-1) == 'v'||frase.charAt(i-1) == 'w')) {
+                if (i > 0 && ((int)frase.charAt(i) >= 97 && (int) frase.charAt(i) <= 122 || (int)frase.charAt(i) == 241) &&(frase.charAt(i-1) == 'b'||frase.charAt(i-1) == 'o'||frase.charAt(i-1) == 'v'||frase.charAt(i-1) == 'w')) {
                     letras.get((int) frase.charAt(i) - 32).subir(colores.getValue());
+                    aux = 20;
                 }
                 
                 if (muestraPuntos.isSelected()) {
                     letras.get((int) frase.charAt(i) - 32).getCheckpoints();
                 }
                 if (n == 1) {
-                    letras.get((int) frase.charAt(i) - 32).negritas(colores.getValue());
+                    letras.get((int) frase.charAt(i) - 32).negritas(colores.getValue(),aux);
                 }
                 pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
