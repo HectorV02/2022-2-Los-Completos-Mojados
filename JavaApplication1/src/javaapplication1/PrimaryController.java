@@ -1096,12 +1096,27 @@ public class PrimaryController {
                 if (n == 1) {
                     letras.get((int) frase.charAt(i) - 32).negritas(colores.getValue(),aux);
                 }
-                pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
-                if (x > (canvas.getWidth() - (letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth()))) {
+                if(x > (canvas.getWidth() - 175) && (int) frase.charAt(i) - 32 != 0 && frase.length() > i){
+                    Pane sl = new Pane();
+                    sl.setMaxSize(letras.get(45 - 32).getPanel().getMaxWidth(), 140);
+                    sl.setMinSize(letras.get(45 - 32).getPanel().getMaxWidth(), 140);
+                    sl.setTranslateX(x);
+                    sl.setTranslateY(y);
+                    letras.get(45 - 32).root = sl;
+                    letras.get(45 - 32).dibujar(colores.getValue());
+                    if (muestraPuntos.isSelected()) {
+                        letras.get(45 - 32).getCheckpoints();
+                    }
+                    pane.getChildren().add(letras.get(45 - 32).getPanel());
                     x = 10;
                     y += 140;
                 }
+                else if (x > (canvas.getWidth() - 100)) {
+                    x = 10;
+                    y += 140;
+                }
+                pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText(null);
