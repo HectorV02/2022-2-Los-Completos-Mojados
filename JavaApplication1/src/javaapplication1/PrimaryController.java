@@ -567,9 +567,18 @@ public class PrimaryController {
         ch2y = new ArrayList(Arrays.asList(smallPuntos.get(4).get(1), smallPuntos.get(40).get(1), smallPuntos.get(38).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
         letras.add(c);
-
-        //padding
-        letras.add(empty);
+        
+        // simbolo de elevado para comandos 
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(19).get(0), smallPuntos.get(9).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(19).get(1), smallPuntos.get(9).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(9).get(0), smallPuntos.get(23).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(9).get(1), smallPuntos.get(23).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(19).get(0), smallPuntos.get(9).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(19).get(1), smallPuntos.get(9).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(9).get(0), smallPuntos.get(23).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(9).get(1), smallPuntos.get(23).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        letras.add(c);
 
         //guion bajo
         ix = new ArrayList(Arrays.asList(smallPuntos.get(36).get(0)));
@@ -1032,14 +1041,42 @@ public class PrimaryController {
     public void dibuja() throws IOException {
         int x = 10;
         int y = 10;
+        int n = 0;
+        int aux = 0;
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
         if (bandera == 0) {
             Empezar(x, y);
             bandera++;
         }
+        
         for (int i = 0; i < frase.length(); i++) {
-            if (letras.get((int) frase.charAt(i) - 32).lineas != -1 && (0 <= ((int) frase.charAt(i) - 32)) && ((int) frase.charAt(i) - 32) <= 241) {
+            if ((0 <= ((int) frase.charAt(i) - 32)) && ((int) frase.charAt(i) - 32) <= 241 && letras.get((int) frase.charAt(i) - 32).lineas != -1) {
+                aux = 0;
+                while (frase.charAt(i) == '^' && frase.length() > i+2) {
+                    
+                    switch(frase.charAt(i + 1)){
+                        case 'N':
+                            n = 1;
+                            i+=2;
+                            break;
+                        case 'K':
+                            System.out.println("Cursiva");
+                            i+=2;
+                            break;
+                        case 'S':
+                            System.out.println("Subrayado");
+                            i+=2;
+                            break;
+                        default:
+                            i++;
+                    }   
+                    
+                }
+                if (frase.charAt(i) == ' ') {
+                    n = 0;
+                }
+                
                 Pane pp = new Pane();
                 pp.setMaxSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
                 pp.setMinSize(letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth(), 140);
@@ -1047,8 +1084,17 @@ public class PrimaryController {
                 pp.setTranslateY(y);
                 letras.get((int) frase.charAt(i) - 32).root = pp;
                 letras.get((int) frase.charAt(i) - 32).dibujar(colores.getValue());
+                
+                if (i > 0 && ((int)frase.charAt(i) >= 97 && (int) frase.charAt(i) <= 122 || (int)frase.charAt(i) == 241) &&(frase.charAt(i-1) == 'b'||frase.charAt(i-1) == 'o'||frase.charAt(i-1) == 'v'||frase.charAt(i-1) == 'w')) {
+                    letras.get((int) frase.charAt(i) - 32).subir(colores.getValue());
+                    aux = 20;
+                }
+                
                 if (muestraPuntos.isSelected()) {
                     letras.get((int) frase.charAt(i) - 32).getCheckpoints();
+                }
+                if (n == 1) {
+                    letras.get((int) frase.charAt(i) - 32).negritas(colores.getValue(),aux);
                 }
                 pane.getChildren().add(letras.get((int) frase.charAt(i) - 32).getPanel());
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
