@@ -1097,7 +1097,7 @@ public class PrimaryController {
                     letras.get((int) frase.charAt(i) - 32).negritas(colores.getValue(),aux);
                 }
                 x += letras.get((int) frase.charAt(i) - 32).getPanel().getMaxWidth();
-                if(x > (canvas.getWidth() - 175) && frase.length() > i+1 && (int) frase.charAt(i) - 32 != 0 && (int) frase.charAt(i+1) - 32 != 0){
+                if(x > (canvas.getWidth() - 200) && frase.length() > i+1 && (int) frase.charAt(i) - 32 != 0 && (int) frase.charAt(i+1) - 32 != 0){
                     Pane sl = new Pane();
                     sl.setMaxSize(letras.get(45 - 32).getPanel().getMaxWidth(), 140);
                     sl.setMinSize(letras.get(45 - 32).getPanel().getMaxWidth(), 140);
@@ -1115,7 +1115,7 @@ public class PrimaryController {
                     x = 10;
                     y += 140;
                 }
-                else if (x > (canvas.getWidth() - 100)) {
+                else if (x > (canvas.getWidth() - 150)) {
                     x = 10;
                     y += 140;
                 }
