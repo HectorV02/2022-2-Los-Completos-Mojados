@@ -23,9 +23,11 @@ public class PrimaryController {
     public CheckBox muestraPuntos;
     static int bandera;
     static ArrayList<Caracter> letras;
-
+    
+    //Metodo donde se crean los paneles en que se trabajaran y llama a crear los caracteres
     @FXML
     public void Empezar(int x, int y) {
+        //Panel estandar
         Pane p = new Pane();
         p.setMaxSize(100, 140);
         p.setMinSize(100, 140);
@@ -34,12 +36,14 @@ public class PrimaryController {
         ArrayList<ArrayList> puntos = new ArrayList();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
+                //se crean puntos del Pane
                 ArrayList<Integer> xy = new ArrayList();
                 xy.add(20 * j);
                 xy.add(20 * i);
                 puntos.add(xy);
             }
         }
+        //Panel más pequeño
         Pane smallP = new Pane();
         smallP.setMaxSize(75, 140);
         smallP.setMinSize(75, 140);
@@ -48,15 +52,19 @@ public class PrimaryController {
         ArrayList<ArrayList> smallPuntos = new ArrayList();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
+                //se crean puntos del smallPane
                 ArrayList<Integer> xy = new ArrayList();
                 xy.add(15 * j);
                 xy.add(20 * i);
                 smallPuntos.add(xy);
             }
         }
+        //se deinen caractereas
         creaCaracteres(p, puntos, smallP, smallPuntos);
     }
-
+    
+    
+    //Metodo que crea caracteres y los guarda en una lista de acuerdo al codigo ASCII, partiendo del 32(espacio)
     public static void creaCaracteres(Pane p, ArrayList<ArrayList> puntos, Pane smallP, ArrayList<ArrayList> smallPuntos) {
 
         //vacio
@@ -1153,6 +1161,7 @@ public class PrimaryController {
         int com = 0;
         int dcom = 0;
         int caracter;
+        
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
         if (bandera == 0) {
@@ -1163,11 +1172,16 @@ public class PrimaryController {
         for (int i = 0; i < frase.length(); i++) {
             //caracter recibe el codigo ascii del caracter que se esta trabajando
             caracter = (int) frase.charAt(i) - 32;
+            
+            //revisamos si es un caracter valido
             if ((0 <= caracter && caracter <= 250 && letras.get(caracter).lineas != -1)) {
                 aux = 0;
+                
+                //Revisamos si hay algun comando
                 while (frase.charAt(i) == '^' && frase.length() > i + 2) {
-
+                    
                     switch (frase.charAt(i + 1)) {
+                        //activamos negritas, cursivas o subrayado
                         case 'N':
                             n = 1;
                             i += 2;
@@ -1188,10 +1202,12 @@ public class PrimaryController {
                     caracter = (int) frase.charAt(i) - 32;
 
                 }
+                //si hay un espacio desactivamos las negritas, espacios o subrayados
                 if (frase.charAt(i) == ' ') {
                     n = 0;
                 }
-
+                
+                //le asignamos un panel a la letra
                 Pane pp = new Pane();
                 pp.setMaxSize(letras.get(caracter).getPanel().getMaxWidth(), 140);
                 pp.setMinSize(letras.get(caracter).getPanel().getMaxWidth(), 140);
@@ -1211,34 +1227,45 @@ public class PrimaryController {
                 }
                 letras.get(caracter).root = pp;
                 letras.get(caracter).dibujar(colores.getValue());
-
+                
+                //revisamos si tenemos que subir el caracter
                 if (i > 0 && ((int) frase.charAt(i) >= 97 && (int) frase.charAt(i) <= 122 || ((int) frase.charAt(i) >= 225 && (int) frase.charAt(i) <= 250)) && (frase.charAt(i - 1) == 'ó' || frase.charAt(i - 1) == 'b' || frase.charAt(i - 1) == 'o' || frase.charAt(i - 1) == 'v' || frase.charAt(i - 1) == 'w')) {
                     letras.get((int) frase.charAt(i) - 32).subir(colores.getValue());
                     aux = 20;
                 }
-
+                
+                //Revisamos si mostramos checkpoints
                 if (muestraPuntos.isSelected()) {
                     letras.get(caracter).getCheckpoints();
                 }
+                
+                //Revisamos si estan activadas las negritas
                 if (n == 1) {
                     letras.get(caracter).negritas(colores.getValue(), aux);
                 }
+                
+                //avanzamos en la posicion
                 x += letras.get(caracter).getPanel().getMaxWidth();
+                
+                //Revisamos si se llego al tope y si la palabra continua
                 if (x > (canvas.getWidth() - 175) && caracter != 0 && frase.length() > i) {
+                    //colocamos un guion y hacemos un salto de linea
                     Pane sl = new Pane();
-                    sl.setMaxSize(letras.get(45 - 32).getPanel().getMaxWidth(), 140);
-                    sl.setMinSize(letras.get(45 - 32).getPanel().getMaxWidth(), 140);
+                    sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), 140);
+                    sl.setMinSize(letras.get(13).getPanel().getMaxWidth(), 140);
                     sl.setTranslateX(x);
                     sl.setTranslateY(y);
-                    letras.get(45 - 32).root = sl;
-                    letras.get(45 - 32).dibujar(colores.getValue());
+                    letras.get(13).root = sl;
+                    letras.get(13).dibujar(colores.getValue());
                     if (muestraPuntos.isSelected()) {
-                        letras.get(45 - 32).getCheckpoints();
+                        letras.get(13).getCheckpoints();
                     }
-                    pane.getChildren().add(letras.get(45 - 32).getPanel());
+                    pane.getChildren().add(letras.get(13).getPanel());
                     x = 10;
                     y += 140;
-                } else if (x > (canvas.getWidth() - 100)) {
+                }
+                //Revisamos si se llego al tope y hacemos salto de linea de ser necesario
+                if (x > (canvas.getWidth() - 100)) {
                     x = 10;
                     y += 140;
                 }
@@ -1251,9 +1278,12 @@ public class PrimaryController {
                 if (caracter == 7) {
                     com = 1;
                 }
+                
+                //colocamos el panel dentro 
                 pane.getChildren().add(letras.get(caracter).getPanel());
 
             } else {
+                //tira un mensaje de error
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText(null);
                 alert.setTitle("Error");
@@ -1261,6 +1291,8 @@ public class PrimaryController {
                 alert.showAndWait();
             }
         }
+        
+        //finalente colocamos el panel con toda las letras
         canvas.setGraphic(pane);
     }
 }

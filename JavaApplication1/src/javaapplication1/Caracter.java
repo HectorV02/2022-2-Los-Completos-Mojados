@@ -27,6 +27,7 @@ public class Caracter {
     }
 
     public void dibujar(Color color) {
+        //dibujamos las lineas una por una 
         for (int i = 0; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i), Iy.get(i), ch1x.get(i), ch1y.get(i), ch2x.get(i), ch2y.get(i), Fx.get(i), Fy.get(i));
             c.setFill(Color.TRANSPARENT);
@@ -39,7 +40,8 @@ public class Caracter {
     }
 
     public void getCheckpoints() {
-
+        
+        //dibujamos los checkpoints
         for (int i = 0; i < lineas; i++) {
             Circle n = new Circle();
             n.setCenterX(Ix.get(i));
@@ -64,9 +66,13 @@ public class Caracter {
         }
 
     }
-
+    
+    //metodo que sube la primera linea de una letra
     public void subir(Color color) {
+        //borramos la letra que empieza desde abajo
         root.getChildren().clear();
+        
+        //dibujamos la primera linea desde mas arriba
         CubicCurve a = new CubicCurve(Ix.get(0), Iy.get(0) - 20, ch1x.get(0), ch1y.get(0) - 20, ch2x.get(0), ch2y.get(0), Fx.get(0), Fy.get(0));
         a.setFill(Color.TRANSPARENT);
         if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
@@ -74,6 +80,8 @@ public class Caracter {
         }
         a.setStroke(color);
         root.getChildren().add(a);
+        
+        //Dibujamos el resto de la letra normalmente
         for (int i = 1; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i), Iy.get(i), ch1x.get(i), ch1y.get(i), ch2x.get(i), ch2y.get(i), Fx.get(i), Fy.get(i));
             c.setFill(Color.TRANSPARENT);
@@ -86,6 +94,9 @@ public class Caracter {
     }
 
     public void negritas(Color color, int aux) {
+        
+        //se necesita la ayuda de un auxiliar para saber si se aplico el metodo subir sobre la letra
+        //dibujamos la primera linea tres veces
         CubicCurve a = new CubicCurve(Ix.get(0) + 1, Iy.get(0)-aux + 1, ch1x.get(0) + 1, ch1y.get(0) -aux + 1, ch2x.get(0) + 1, ch2y.get(0) + 1, Fx.get(0) + 1, Fy.get(0) + 1);
         a.setFill(Color.TRANSPARENT);
         if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
@@ -109,7 +120,8 @@ public class Caracter {
         }
         f.setStroke(color);
         root.getChildren().add(f);
-
+        
+        //dibujamos multiples veces las lineas que faltan
         for (int i = 1; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i) + 1, Iy.get(i) + 1, ch1x.get(i) + 1, ch1y.get(i) + 1, ch2x.get(i) + 1, ch2y.get(i) + 1, Fx.get(i) + 1, Fy.get(i) + 1);
             c.setFill(Color.TRANSPARENT);
