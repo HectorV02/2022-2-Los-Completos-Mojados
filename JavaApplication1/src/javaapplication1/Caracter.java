@@ -9,11 +9,11 @@ import javafx.scene.shape.CubicCurve;
 public class Caracter {
 
     int lineas;
-    ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y = new ArrayList();
+    ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y, subrayado= new ArrayList();
     Pane root;
 
     public Caracter(ArrayList<Integer> Ix, ArrayList<Integer> Iy, ArrayList<Integer> Fx, ArrayList<Integer> Fy, ArrayList<Integer> ch1x,
-            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas) {
+            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas, ArrayList<Integer> subrayado) {
         this.Ix = Ix;
         this.Iy = Iy;
         this.Fx = Fx;
@@ -24,9 +24,11 @@ public class Caracter {
         this.ch2y = ch2y;
         this.root = root;
         this.lineas = lineas;
+        this.subrayado = subrayado;
     }
 
     public void dibujar(Color color) {
+        //dibujamos las lineas una por una 
         for (int i = 0; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i), Iy.get(i), ch1x.get(i), ch1y.get(i), ch2x.get(i), ch2y.get(i), Fx.get(i), Fy.get(i));
             c.setFill(Color.TRANSPARENT);
@@ -38,8 +40,9 @@ public class Caracter {
         }
     }
 
-    public void getCheckpoints() {
-
+    public void getCheckpoints(int s) {
+        
+        //dibujamos los checkpoints
         for (int i = 0; i < lineas; i++) {
             Circle n = new Circle();
             n.setCenterX(Ix.get(i));
@@ -62,11 +65,27 @@ public class Caracter {
             n.setRadius(2);
             root.getChildren().add(n);
         }
+        if(s == 1){
+            Circle n = new Circle();
+            n.setCenterX(subrayado.get(0));
+            n.setCenterY(subrayado.get(1));
+            n.setRadius(2);
+            root.getChildren().add(n);
+            n = new Circle();
+            n.setCenterX(subrayado.get(6));
+            n.setCenterY(subrayado.get(7));
+            n.setRadius(2);
+            root.getChildren().add(n);
+        }
 
     }
-
+    
+    //metodo que sube la primera linea de una letra
     public void subir(Color color) {
+        //borramos la letra que empieza desde abajo
         root.getChildren().clear();
+        
+        //dibujamos la primera linea desde mas arriba
         CubicCurve a = new CubicCurve(Ix.get(0), Iy.get(0) - 20, ch1x.get(0), ch1y.get(0) - 20, ch2x.get(0), ch2y.get(0), Fx.get(0), Fy.get(0));
         a.setFill(Color.TRANSPARENT);
         if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
@@ -74,6 +93,8 @@ public class Caracter {
         }
         a.setStroke(color);
         root.getChildren().add(a);
+        
+        //Dibujamos el resto de la letra normalmente
         for (int i = 1; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i), Iy.get(i), ch1x.get(i), ch1y.get(i), ch2x.get(i), ch2y.get(i), Fx.get(i), Fy.get(i));
             c.setFill(Color.TRANSPARENT);
@@ -84,8 +105,18 @@ public class Caracter {
             root.getChildren().add(c);
         }
     }
+    
+    public void subrayado (Color color){
+        CubicCurve a = new CubicCurve(subrayado.get(0), subrayado.get(1), subrayado.get(2), subrayado.get(3), subrayado.get(4), subrayado.get(5), subrayado.get(6), subrayado.get(7));
+        a.setFill(Color.TRANSPARENT);
+        a.setStroke(color);
+        root.getChildren().add(a);
+    }
 
-    public void negritas(Color color, int aux) {
+    public void negritas(Color color, int aux, int s) {
+        
+        //se necesita la ayuda de un auxiliar para saber si se aplico el metodo subir sobre la letra
+        //dibujamos la primera linea tres veces
         CubicCurve a = new CubicCurve(Ix.get(0) + 1, Iy.get(0)-aux + 1, ch1x.get(0) + 1, ch1y.get(0) -aux + 1, ch2x.get(0) + 1, ch2y.get(0) + 1, Fx.get(0) + 1, Fy.get(0) + 1);
         a.setFill(Color.TRANSPARENT);
         if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
@@ -109,7 +140,8 @@ public class Caracter {
         }
         f.setStroke(color);
         root.getChildren().add(f);
-
+        
+        //dibujamos multiples veces las lineas que faltan
         for (int i = 1; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i) + 1, Iy.get(i) + 1, ch1x.get(i) + 1, ch1y.get(i) + 1, ch2x.get(i) + 1, ch2y.get(i) + 1, Fx.get(i) + 1, Fy.get(i) + 1);
             c.setFill(Color.TRANSPARENT);
@@ -135,7 +167,20 @@ public class Caracter {
             e.setStroke(color);
             root.getChildren().add(e);
         }
-
+        if(s == 1){
+            a = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1) + 1, subrayado.get(2) + 1, subrayado.get(3) + 1, subrayado.get(4) + 1, subrayado.get(5) + 1, subrayado.get(6) + 1, subrayado.get(7) + 1);
+            a.setFill(Color.TRANSPARENT);
+            a.setStroke(color);
+            root.getChildren().add(a);
+            a = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1), subrayado.get(2) + 1, subrayado.get(3), subrayado.get(4) + 1, subrayado.get(5), subrayado.get(6) + 1, subrayado.get(7));
+            a.setFill(Color.TRANSPARENT);
+            a.setStroke(color);
+            root.getChildren().add(a);
+            a = new CubicCurve(subrayado.get(0), subrayado.get(1) + 1, subrayado.get(2), subrayado.get(3) + 1, subrayado.get(4), subrayado.get(5) + 1, subrayado.get(6), subrayado.get(7) + 1);
+            a.setFill(Color.TRANSPARENT);
+            a.setStroke(color);
+            root.getChildren().add(a);
+        }
     }
 
     public Pane getPanel() {
