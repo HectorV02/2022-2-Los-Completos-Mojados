@@ -40,7 +40,7 @@ public class Caracter {
         }
     }
 
-    public void getCheckpoints() {
+    public void getCheckpoints(int s) {
         
         //dibujamos los checkpoints
         for (int i = 0; i < lineas; i++) {

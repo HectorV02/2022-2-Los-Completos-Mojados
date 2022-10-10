@@ -956,7 +956,7 @@ public class PrimaryController {
         ch1y = new ArrayList(Arrays.asList(smallPuntos.get(16).get(1), smallPuntos.get(17).get(1), smallPuntos.get(14).get(1), smallPuntos.get(15).get(1)));
         ch2x = new ArrayList(Arrays.asList(smallPuntos.get(23).get(0), smallPuntos.get(11).get(0), smallPuntos.get(21).get(0), smallPuntos.get(9).get(0)));
         ch2y = new ArrayList(Arrays.asList(smallPuntos.get(23).get(1), smallPuntos.get(11).get(1), smallPuntos.get(21).get(1), smallPuntos.get(9).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP);
         letras.add(c);
 
         //Comillas simples de cierre (sobre el caracter Ç)
@@ -968,11 +968,11 @@ public class PrimaryController {
         ch1y = new ArrayList(Arrays.asList(smallPuntos.get(14).get(1), smallPuntos.get(15).get(1)));
         ch2x = new ArrayList(Arrays.asList(smallPuntos.get(21).get(0), smallPuntos.get(9).get(0)));
         ch2y = new ArrayList(Arrays.asList(smallPuntos.get(21).get(1), smallPuntos.get(9).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP);
         letras.add(c);
 
         //padding
-        for (int i1 = 0; i1 < 34; i1++) {
+        for (int i1 = 0; i1 < 33; i1++) {
             letras.add(empty);
         }
 
@@ -1070,7 +1070,7 @@ public class PrimaryController {
         ch1y = new ArrayList(Arrays.asList(puntos.get(30).get(1), puntos.get(20).get(1), puntos.get(22).get(1), puntos.get(34).get(1), puntos.get(32).get(1), puntos.get(34).get(1), puntos.get(15).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(31).get(0), puntos.get(21).get(0), puntos.get(28).get(0), puntos.get(33).get(0), puntos.get(26).get(0), puntos.get(35).get(0), puntos.get(10).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(31).get(1), puntos.get(21).get(1), puntos.get(28).get(1), puntos.get(33).get(1), puntos.get(26).get(1), puntos.get(35).get(1), puntos.get(10).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size(),subP);
         letras.add(c);
 
         //padding
@@ -1087,7 +1087,7 @@ public class PrimaryController {
         ch1y = new ArrayList(Arrays.asList(smallPuntos.get(32).get(1), smallPuntos.get(26).get(1), smallPuntos.get(15).get(1), smallPuntos.get(15).get(1)));
         ch2x = new ArrayList(Arrays.asList(smallPuntos.get(27).get(0), smallPuntos.get(33).get(0), smallPuntos.get(14).get(0), smallPuntos.get(10).get(0)));
         ch2y = new ArrayList(Arrays.asList(smallPuntos.get(27).get(1), smallPuntos.get(33).get(1), smallPuntos.get(14).get(1), smallPuntos.get(10).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP);
         letras.add(c);
 
         //padding
@@ -1104,7 +1104,7 @@ public class PrimaryController {
         ch1y = new ArrayList(Arrays.asList(smallPuntos.get(32).get(1), smallPuntos.get(33).get(1), smallPuntos.get(15).get(1)));
         ch2x = new ArrayList(Arrays.asList(smallPuntos.get(27).get(0), smallPuntos.get(33).get(0), smallPuntos.get(10).get(0)));
         ch2y = new ArrayList(Arrays.asList(smallPuntos.get(27).get(1), smallPuntos.get(33).get(1), smallPuntos.get(10).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size());
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP);
         letras.add(c);
 
         //padding
@@ -1136,7 +1136,7 @@ public class PrimaryController {
         ch1y = new ArrayList(Arrays.asList(puntos.get(31).get(1), puntos.get(32).get(1), puntos.get(34).get(1), puntos.get(22).get(1), puntos.get(20).get(1), puntos.get(15).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(26).get(0), puntos.get(33).get(0), puntos.get(28).get(0), puntos.get(21).get(0), puntos.get(31).get(0), puntos.get(10).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(26).get(1), puntos.get(33).get(1), puntos.get(28).get(1), puntos.get(21).get(1), puntos.get(31).get(1), puntos.get(10).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size(),subP);
         letras.add(c);
 
         //padding
@@ -1153,7 +1153,7 @@ public class PrimaryController {
         ch1y = new ArrayList(Arrays.asList(puntos.get(31).get(1), puntos.get(37).get(1), puntos.get(34).get(1), puntos.get(15).get(1)));
         ch2x = new ArrayList(Arrays.asList(puntos.get(26).get(0), puntos.get(40).get(0), puntos.get(34).get(0), puntos.get(10).get(0)));
         ch2y = new ArrayList(Arrays.asList(puntos.get(26).get(1), puntos.get(40).get(1), puntos.get(34).get(1), puntos.get(10).get(1)));
-        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size());
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size(),subP);
         letras.add(c);
     }
 
@@ -1205,7 +1205,8 @@ public class PrimaryController {
                     
                     // se actualiza para tomar el caracter nuevo despues de avanzar
                     caracter = (int) frase.charAt(i) - 32;
-
+                    
+                    
                 }
                 //si hay un espacio desactivamos las negritas, espacios o subrayados
                 if (frase.charAt(i) == ' ') {
@@ -1258,7 +1259,7 @@ public class PrimaryController {
                 x += letras.get(caracter).getPanel().getMaxWidth();
                 
                 //Revisamos si se llego al tope y si la palabra continua
-                if (x > (canvas.getWidth() - 175) && frase.length() > i+1 && caracter != 0 && frase.charAt(i+1) - 32 != 0) {
+                if (x > (canvas.getWidth() - 200) && frase.length() > i+1 && caracter != 0 && frase.charAt(i+1) - 32 != 0) {
                     //colocamos un guion y hacemos un salto de linea
                     Pane sl = new Pane();
                     sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), 140);
@@ -1268,7 +1269,7 @@ public class PrimaryController {
                     letras.get(13).root = sl;
                     letras.get(13).dibujar(colores.getValue());
                     if (muestraPuntos.isSelected()) {
-                        letras.get(13).getCheckpoints();
+                        letras.get(13).getCheckpoints(s);
                     }
                     if (n == 1) {
                         letras.get(13).negritas(colores.getValue(),aux, s);
@@ -1294,6 +1295,7 @@ public class PrimaryController {
                 
                 //colocamos el panel dentro 
                 pane.getChildren().add(letras.get(caracter).getPanel());
+                
 
             } else {
                 //tira un mensaje de error
@@ -1303,6 +1305,7 @@ public class PrimaryController {
                 alert.setContentText("Caracter invalido");
                 alert.showAndWait();
             }
+            
         }
         
         //finalente colocamos el panel con toda las letras
