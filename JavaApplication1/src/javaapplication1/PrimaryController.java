@@ -1095,7 +1095,7 @@ public class PrimaryController {
             letras.add(empty);
         }
 
-        //letra i minuscula
+        //letra í minuscula
         ix = new ArrayList(Arrays.asList(smallPuntos.get(30).get(0), smallPuntos.get(21).get(0), smallPuntos.get(15).get(0)));
         iy = new ArrayList(Arrays.asList(smallPuntos.get(30).get(1), smallPuntos.get(21).get(1), smallPuntos.get(15).get(1)));
         fx = new ArrayList(Arrays.asList(smallPuntos.get(21).get(0), smallPuntos.get(35).get(0), smallPuntos.get(10).get(0)));
@@ -1208,7 +1208,7 @@ public class PrimaryController {
                     
                     
                 }
-                //si hay un espacio desactivamos las negritas, espacios o subrayados
+                //si hay un espacio desactivamos las negritas y subrayados
                 if (frase.charAt(i) == ' ') {
                     n = 0;
                     s = 0;
@@ -1272,7 +1272,7 @@ public class PrimaryController {
                         letras.get(13).getCheckpoints(s);
                     }
                     if (n == 1) {
-                        letras.get(13).negritas(colores.getValue(),aux, s);
+                        letras.get(13).negritas(colores.getValue(),0, 0);
                     }
                     pane.getChildren().add(letras.get(13).getPanel());
                     x = 10;
