@@ -9,11 +9,11 @@ import javafx.scene.shape.CubicCurve;
 public class Caracter {
 
     int lineas;
-    ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y = new ArrayList();
+    ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y, subrayado= new ArrayList();
     Pane root;
 
     public Caracter(ArrayList<Integer> Ix, ArrayList<Integer> Iy, ArrayList<Integer> Fx, ArrayList<Integer> Fy, ArrayList<Integer> ch1x,
-            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas) {
+            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas, ArrayList<Integer> subrayado) {
         this.Ix = Ix;
         this.Iy = Iy;
         this.Fx = Fx;
@@ -24,6 +24,7 @@ public class Caracter {
         this.ch2y = ch2y;
         this.root = root;
         this.lineas = lineas;
+        this.subrayado = subrayado;
     }
 
     public void dibujar(Color color) {
@@ -39,7 +40,7 @@ public class Caracter {
         }
     }
 
-    public void getCheckpoints() {
+    public void getCheckpoints(int s) {
         
         //dibujamos los checkpoints
         for (int i = 0; i < lineas; i++) {
@@ -61,6 +62,18 @@ public class Caracter {
             n = new Circle();
             n.setCenterX(ch2x.get(i));
             n.setCenterY(ch2y.get(i));
+            n.setRadius(2);
+            root.getChildren().add(n);
+        }
+        if(s == 1){
+            Circle n = new Circle();
+            n.setCenterX(subrayado.get(0));
+            n.setCenterY(subrayado.get(1));
+            n.setRadius(2);
+            root.getChildren().add(n);
+            n = new Circle();
+            n.setCenterX(subrayado.get(6));
+            n.setCenterY(subrayado.get(7));
             n.setRadius(2);
             root.getChildren().add(n);
         }
@@ -92,8 +105,231 @@ public class Caracter {
             root.getChildren().add(c);
         }
     }
+    
+    public void subrayado (Color color){
+        CubicCurve a = new CubicCurve(subrayado.get(0), subrayado.get(1), subrayado.get(2), subrayado.get(3), subrayado.get(4), subrayado.get(5), subrayado.get(6), subrayado.get(7));
+        a.setFill(Color.TRANSPARENT);
+        a.setStroke(color);
+        root.getChildren().add(a);
+    }
+    
+    public void muevePuntos (){
+        for (int i = 0; i < Ix.size(); i++) {
+            //movimiento puntos de inicio
+            if(Iy.get(i) == 0){
+                Ix.set(i, Ix.get(i)+35);
+            }
+            else if(Iy.get(i) == 20){
+                Ix.set(i, Ix.get(i)+30);
+            }
+            else if(Iy.get(i) == 40){
+                Ix.set(i, Ix.get(i)+25);
+            }
+            else if(Iy.get(i) == 60){
+                Ix.set(i, Ix.get(i)+20);
+            }
+            else if(Iy.get(i) == 80){
+                Ix.set(i, Ix.get(i)+15);
+            }
+            else if(Iy.get(i) == 100){
+                Ix.set(i, Ix.get(i)+10);
+            }
+            else if(Iy.get(i) == 120){
+                Ix.set(i, Ix.get(i)+5);
+            }
+            else if(Iy.get(i) == 140){
+                Ix.set(i, Ix.get(i)+0);
+            }
+            
+            //movimiento puntos de fin
+            if(Fy.get(i) == 0){
+                Fx.set(i, Fx.get(i)+35);
+            }
+            else if(Fy.get(i) == 20){
+                Fx.set(i, Fx.get(i)+30);
+            }
+            else if(Fy.get(i) == 40){
+                Fx.set(i, Fx.get(i)+25);
+            }
+            else if(Fy.get(i) == 60){
+                Fx.set(i, Fx.get(i)+20);
+            }
+            else if(Fy.get(i) == 80){
+                Fx.set(i, Fx.get(i)+15);
+            }
+            else if(Fy.get(i) == 100){
+                Fx.set(i, Fx.get(i)+10);
+            }
+            else if(Fy.get(i) == 120){
+                Fx.set(i, Fx.get(i)+5);
+            }
+            else if(Fy.get(i) == 140){
+                Fx.set(i, Fx.get(i)+0);
+            }
+            
+            //movimiento puntos de control 1
+            if(ch1y.get(i) == 0){
+                ch1x.set(i, ch1x.get(i)+35);
+            }
+            else if(ch1y.get(i) == 20){
+                ch1x.set(i, ch1x.get(i)+30);
+            }
+            else if(ch1y.get(i) == 40){
+                ch1x.set(i, ch1x.get(i)+25);
+            }
+            else if(ch1y.get(i) == 60){
+                ch1x.set(i, ch1x.get(i)+20);
+            }
+            else if(ch1y.get(i) == 80){
+                ch1x.set(i, ch1x.get(i)+15);
+            }
+            else if(ch1y.get(i) == 100){
+                ch1x.set(i, ch1x.get(i)+10);
+            }
+            else if(ch1y.get(i) == 120){
+                ch1x.set(i, ch1x.get(i)+5);
+            }
+            else if(ch1y.get(i) == 140){
+                ch1x.set(i, ch1x.get(i)+0);
+            }
+            
+            //movimiento puntos de control 2
+            if(ch2y.get(i) == 0){
+                ch2x.set(i, ch2x.get(i)+35);
+            }
+            else if(ch2y.get(i) == 20){
+                ch2x.set(i, ch2x.get(i)+30);
+            }
+            else if(ch2y.get(i) == 40){
+                ch2x.set(i, ch2x.get(i)+25);
+            }
+            else if(ch2y.get(i) == 60){
+                ch2x.set(i, ch2x.get(i)+20);
+            }
+            else if(ch2y.get(i) == 80){
+                ch2x.set(i, ch2x.get(i)+15);
+            }
+            else if(ch2y.get(i) == 100){
+                ch2x.set(i, ch2x.get(i)+10);
+            }
+            else if(ch2y.get(i) == 120){
+                ch2x.set(i, ch2x.get(i)+5);
+            }
+            else if(ch2y.get(i) == 140){
+                ch2x.set(i, ch2x.get(i)+0);
+            }
+        }
+    }
+    
+    public void regresaPuntos (){
+        for (int i = 0; i < Ix.size(); i++) {
+            //movimiento puntos de inicio
+            if(Iy.get(i) == 0){
+                Ix.set(i, Ix.get(i)-35);
+            }
+            else if(Iy.get(i) == 20){
+                Ix.set(i, Ix.get(i)-30);
+            }
+            else if(Iy.get(i) == 40){
+                Ix.set(i, Ix.get(i)-25);
+            }
+            else if(Iy.get(i) == 60){
+                Ix.set(i, Ix.get(i)-20);
+            }
+            else if(Iy.get(i) == 80){
+                Ix.set(i, Ix.get(i)-15);
+            }
+            else if(Iy.get(i) == 100){
+                Ix.set(i, Ix.get(i)-10);
+            }
+            else if(Iy.get(i) == 120){
+                Ix.set(i, Ix.get(i)-5);
+            }
+            else if(Iy.get(i) == 140){
+                Ix.set(i, Ix.get(i)-0);
+            }
+            
+            //movimiento puntos de fin
+            if(Fy.get(i) == 0){
+                Fx.set(i, Fx.get(i)-35);
+            }
+            else if(Fy.get(i) == 20){
+                Fx.set(i, Fx.get(i)-30);
+            }
+            else if(Fy.get(i) == 40){
+                Fx.set(i, Fx.get(i)-25);
+            }
+            else if(Fy.get(i) == 60){
+                Fx.set(i, Fx.get(i)-20);
+            }
+            else if(Fy.get(i) == 80){
+                Fx.set(i, Fx.get(i)-15);
+            }
+            else if(Fy.get(i) == 100){
+                Fx.set(i, Fx.get(i)-10);
+            }
+            else if(Fy.get(i) == 120){
+                Fx.set(i, Fx.get(i)-5);
+            }
+            else if(Fy.get(i) == 140){
+                Fx.set(i, Fx.get(i)-0);
+            }
+            
+            //movimiento puntos de control 1
+            if(ch1y.get(i) == 0){
+                ch1x.set(i, ch1x.get(i)-35);
+            }
+            else if(ch1y.get(i) == 20){
+                ch1x.set(i, ch1x.get(i)-30);
+            }
+            else if(ch1y.get(i) == 40){
+                ch1x.set(i, ch1x.get(i)-25);
+            }
+            else if(ch1y.get(i) == 60){
+                ch1x.set(i, ch1x.get(i)-20);
+            }
+            else if(ch1y.get(i) == 80){
+                ch1x.set(i, ch1x.get(i)-15);
+            }
+            else if(ch1y.get(i) == 100){
+                ch1x.set(i, ch1x.get(i)-10);
+            }
+            else if(ch1y.get(i) == 120){
+                ch1x.set(i, ch1x.get(i)-5);
+            }
+            else if(ch1y.get(i) == 140){
+                ch1x.set(i, ch1x.get(i)-0);
+            }
+            
+            //movimiento puntos de control 2
+            if(ch2y.get(i) == 0){
+                ch2x.set(i, ch2x.get(i)-35);
+            }
+            else if(ch2y.get(i) == 20){
+                ch2x.set(i, ch2x.get(i)-30);
+            }
+            else if(ch2y.get(i) == 40){
+                ch2x.set(i, ch2x.get(i)-25);
+            }
+            else if(ch2y.get(i) == 60){
+                ch2x.set(i, ch2x.get(i)-20);
+            }
+            else if(ch2y.get(i) == 80){
+                ch2x.set(i, ch2x.get(i)-15);
+            }
+            else if(ch2y.get(i) == 100){
+                ch2x.set(i, ch2x.get(i)-10);
+            }
+            else if(ch2y.get(i) == 120){
+                ch2x.set(i, ch2x.get(i)-5);
+            }
+            else if(ch2y.get(i) == 140){
+                ch2x.set(i, ch2x.get(i)-0);
+            }
+        }
+    }
 
-    public void negritas(Color color, int aux) {
+    public void negritas(Color color, int aux, int s) {
         
         //se necesita la ayuda de un auxiliar para saber si se aplico el metodo subir sobre la letra
         //dibujamos la primera linea tres veces
@@ -147,7 +383,20 @@ public class Caracter {
             e.setStroke(color);
             root.getChildren().add(e);
         }
-
+        if(s == 1){
+            a = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1) + 1, subrayado.get(2) + 1, subrayado.get(3) + 1, subrayado.get(4) + 1, subrayado.get(5) + 1, subrayado.get(6) + 1, subrayado.get(7) + 1);
+            a.setFill(Color.TRANSPARENT);
+            a.setStroke(color);
+            root.getChildren().add(a);
+            a = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1), subrayado.get(2) + 1, subrayado.get(3), subrayado.get(4) + 1, subrayado.get(5), subrayado.get(6) + 1, subrayado.get(7));
+            a.setFill(Color.TRANSPARENT);
+            a.setStroke(color);
+            root.getChildren().add(a);
+            a = new CubicCurve(subrayado.get(0), subrayado.get(1) + 1, subrayado.get(2), subrayado.get(3) + 1, subrayado.get(4), subrayado.get(5) + 1, subrayado.get(6), subrayado.get(7) + 1);
+            a.setFill(Color.TRANSPARENT);
+            a.setStroke(color);
+            root.getChildren().add(a);
+        }
     }
 
     public Pane getPanel() {
