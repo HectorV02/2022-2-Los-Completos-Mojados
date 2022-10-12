@@ -1161,7 +1161,7 @@ public class PrimaryController {
     public void dibuja() throws IOException {
         int x = 10;
         int y = 10;
-        int n = 0, s=0;
+        int n = 0, s=0, k=0;
         int aux = 0;
         int com = 0;
         int dcom = 0;
@@ -1192,7 +1192,7 @@ public class PrimaryController {
                             i += 2;
                             break;
                         case 'K':
-                            System.out.println("Cursiva");
+                            k = 1;
                             i += 2;
                             break;
                         case 'S':
@@ -1208,10 +1208,11 @@ public class PrimaryController {
                     
                     
                 }
-                //si hay un espacio desactivamos las negritas y subrayados
+                //si hay un espacio desactivamos los estilos
                 if (frase.charAt(i) == ' ') {
                     n = 0;
                     s = 0;
+                    k = 0;
                 }
                 
                 //le asignamos un panel a la letra
@@ -1232,6 +1233,11 @@ public class PrimaryController {
                     caracter = 95;
                     com = 0;
                 }
+                
+                //Revisamos si estan activadas las cursivas
+                if(k == 1){
+                    letras.get(caracter).muevePuntos();
+                }
                 letras.get(caracter).root = pp;
                 letras.get(caracter).dibujar(colores.getValue());
                 
@@ -1241,6 +1247,7 @@ public class PrimaryController {
                     aux = 20;
                 }
                 
+                //Revisamos si está activado el subrayado
                 if (s == 1) {
                     letras.get((int) frase.charAt(i) - 32).subrayado(colores.getValue());
                 }
@@ -1252,7 +1259,7 @@ public class PrimaryController {
                 
                 //Revisamos si estan activadas las negritas
                 if (n == 1) {
-                    letras.get(caracter).negritas(colores.getValue(), aux,s);
+                    letras.get(caracter).negritas(colores.getValue(), aux, s);
                 }
                 
                 //avanzamos en la posicion
@@ -1296,6 +1303,10 @@ public class PrimaryController {
                 //colocamos el panel dentro 
                 pane.getChildren().add(letras.get(caracter).getPanel());
                 
+                //regresamos letras a tipografía original
+                if(k == 1){
+                    letras.get(caracter).regresaPuntos();
+                }
 
             } else {
                 //tira un mensaje de error
