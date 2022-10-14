@@ -13,12 +13,14 @@ import java.util.ArrayList;
 public class Palabra {
     ArrayList<Caracter> palabra;
     String stl;
-    public Palabra(String stl){
+    public Palabra(){
         palabra = new ArrayList();
-        this.stl = stl;
     }
     public void addChar(Caracter a){
         palabra.add(a);        
+    }
+    public void addStyle(String s){
+        stl = s;
     }
     
     public ArrayList<Caracter> getPalabra(){
