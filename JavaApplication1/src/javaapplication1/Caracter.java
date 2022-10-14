@@ -9,11 +9,12 @@ import javafx.scene.shape.CubicCurve;
 public class Caracter {
 
     int lineas;
+    char chr;
     ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y, subrayado= new ArrayList();
     Pane root;
 
     public Caracter(ArrayList<Integer> Ix, ArrayList<Integer> Iy, ArrayList<Integer> Fx, ArrayList<Integer> Fy, ArrayList<Integer> ch1x,
-            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas, ArrayList<Integer> subrayado) {
+            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas, ArrayList<Integer> subrayado,char chr) {
         this.Ix = Ix;
         this.Iy = Iy;
         this.Fx = Fx;
@@ -25,6 +26,7 @@ public class Caracter {
         this.root = root;
         this.lineas = lineas;
         this.subrayado = subrayado;
+        this.chr = chr;
     }
 
     public void dibujar(Color color) {
@@ -142,6 +144,7 @@ public class Caracter {
             }
             
             //movimiento puntos de fin
+            
             if(Fy.get(i) == 0){
                 Fx.set(i, Fx.get(i)+35);
             }
@@ -168,6 +171,7 @@ public class Caracter {
             }
             
             //movimiento puntos de control 1
+            
             if(ch1y.get(i) == 0){
                 ch1x.set(i, ch1x.get(i)+35);
             }
@@ -194,6 +198,7 @@ public class Caracter {
             }
             
             //movimiento puntos de control 2
+            
             if(ch2y.get(i) == 0){
                 ch2x.set(i, ch2x.get(i)+35);
             }
@@ -224,6 +229,7 @@ public class Caracter {
     public void regresaPuntos (){
         for (int i = 0; i < Ix.size(); i++) {
             //movimiento puntos de inicio
+            
             if(Iy.get(i) == 0){
                 Ix.set(i, Ix.get(i)-35);
             }
@@ -246,10 +252,13 @@ public class Caracter {
                 Ix.set(i, Ix.get(i)-5);
             }
             else if(Iy.get(i) == 140){
-                Ix.set(i, Ix.get(i)-0);
+                Ix.set(i, Ix.get(i));
             }
             
+            
             //movimiento puntos de fin
+            
+            
             if(Fy.get(i) == 0){
                 Fx.set(i, Fx.get(i)-35);
             }
@@ -272,10 +281,12 @@ public class Caracter {
                 Fx.set(i, Fx.get(i)-5);
             }
             else if(Fy.get(i) == 140){
-                Fx.set(i, Fx.get(i)-0);
+                Fx.set(i, Fx.get(i));
             }
             
             //movimiento puntos de control 1
+            
+            
             if(ch1y.get(i) == 0){
                 ch1x.set(i, ch1x.get(i)-35);
             }
@@ -298,10 +309,11 @@ public class Caracter {
                 ch1x.set(i, ch1x.get(i)-5);
             }
             else if(ch1y.get(i) == 140){
-                ch1x.set(i, ch1x.get(i)-0);
+                ch1x.set(i, ch1x.get(i));
             }
             
             //movimiento puntos de control 2
+            
             if(ch2y.get(i) == 0){
                 ch2x.set(i, ch2x.get(i)-35);
             }
@@ -324,7 +336,7 @@ public class Caracter {
                 ch2x.set(i, ch2x.get(i)-5);
             }
             else if(ch2y.get(i) == 140){
-                ch2x.set(i, ch2x.get(i)-0);
+                ch2x.set(i, ch2x.get(i));
             }
         }
     }
