@@ -9,11 +9,12 @@ import javafx.scene.shape.CubicCurve;
 public class Caracter {
 
     int lineas;
+    char chr;
     ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y, subrayado= new ArrayList();
     Pane root;
 
     public Caracter(ArrayList<Integer> Ix, ArrayList<Integer> Iy, ArrayList<Integer> Fx, ArrayList<Integer> Fy, ArrayList<Integer> ch1x,
-            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas, ArrayList<Integer> subrayado) {
+            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas, ArrayList<Integer> subrayado,char chr) {
         this.Ix = Ix;
         this.Iy = Iy;
         this.Fx = Fx;
@@ -25,6 +26,7 @@ public class Caracter {
         this.root = root;
         this.lineas = lineas;
         this.subrayado = subrayado;
+        this.chr = chr;
     }
 
     public void dibujar(Color color) {
