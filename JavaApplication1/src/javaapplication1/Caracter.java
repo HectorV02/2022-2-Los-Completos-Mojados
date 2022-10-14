@@ -142,6 +142,7 @@ public class Caracter {
             }
             
             //movimiento puntos de fin
+            
             if(Fy.get(i) == 0){
                 Fx.set(i, Fx.get(i)+35);
             }
@@ -168,6 +169,7 @@ public class Caracter {
             }
             
             //movimiento puntos de control 1
+            
             if(ch1y.get(i) == 0){
                 ch1x.set(i, ch1x.get(i)+35);
             }
@@ -194,6 +196,7 @@ public class Caracter {
             }
             
             //movimiento puntos de control 2
+            
             if(ch2y.get(i) == 0){
                 ch2x.set(i, ch2x.get(i)+35);
             }
@@ -224,6 +227,7 @@ public class Caracter {
     public void regresaPuntos (){
         for (int i = 0; i < Ix.size(); i++) {
             //movimiento puntos de inicio
+            
             if(Iy.get(i) == 0){
                 Ix.set(i, Ix.get(i)-35);
             }
@@ -246,10 +250,13 @@ public class Caracter {
                 Ix.set(i, Ix.get(i)-5);
             }
             else if(Iy.get(i) == 140){
-                Ix.set(i, Ix.get(i)-0);
+                Ix.set(i, Ix.get(i));
             }
             
+            
             //movimiento puntos de fin
+            
+            
             if(Fy.get(i) == 0){
                 Fx.set(i, Fx.get(i)-35);
             }
@@ -272,10 +279,12 @@ public class Caracter {
                 Fx.set(i, Fx.get(i)-5);
             }
             else if(Fy.get(i) == 140){
-                Fx.set(i, Fx.get(i)-0);
+                Fx.set(i, Fx.get(i));
             }
             
             //movimiento puntos de control 1
+            
+            
             if(ch1y.get(i) == 0){
                 ch1x.set(i, ch1x.get(i)-35);
             }
@@ -298,10 +307,11 @@ public class Caracter {
                 ch1x.set(i, ch1x.get(i)-5);
             }
             else if(ch1y.get(i) == 140){
-                ch1x.set(i, ch1x.get(i)-0);
+                ch1x.set(i, ch1x.get(i));
             }
             
             //movimiento puntos de control 2
+            
             if(ch2y.get(i) == 0){
                 ch2x.set(i, ch2x.get(i)-35);
             }
@@ -324,7 +334,7 @@ public class Caracter {
                 ch2x.set(i, ch2x.get(i)-5);
             }
             else if(ch2y.get(i) == 140){
-                ch2x.set(i, ch2x.get(i)-0);
+                ch2x.set(i, ch2x.get(i));
             }
         }
     }

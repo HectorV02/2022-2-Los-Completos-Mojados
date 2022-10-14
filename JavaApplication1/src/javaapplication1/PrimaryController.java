@@ -1205,8 +1205,7 @@ public class PrimaryController {
                     
                     // se actualiza para tomar el caracter nuevo despues de avanzar
                     caracter = (int) frase.charAt(i) - 32;
-                    
-                    
+                         
                 }
                 //si hay un espacio desactivamos los estilos
                 if (frase.charAt(i) == ' ') {
@@ -1214,6 +1213,8 @@ public class PrimaryController {
                     s = 0;
                     k = 0;
                 }
+                
+                
                 
                 //le asignamos un panel a la letra
                 Pane pp = new Pane();
@@ -1236,7 +1237,9 @@ public class PrimaryController {
                 
                 //Revisamos si estan activadas las cursivas
                 if(k == 1){
+                    
                     letras.get(caracter).muevePuntos();
+                    
                 }
                 letras.get(caracter).root = pp;
                 letras.get(caracter).dibujar(colores.getValue());
@@ -1305,6 +1308,7 @@ public class PrimaryController {
                 
                 //regresamos letras a tipografía original
                 if(k == 1){
+                    
                     letras.get(caracter).regresaPuntos();
                 }
 
