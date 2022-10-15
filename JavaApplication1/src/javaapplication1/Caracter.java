@@ -28,6 +28,7 @@ public class Caracter {
         this.subrayado = subrayado;
         this.chr = chr;
     }
+    
 
     public void dibujar(Color color) {
         //dibujamos las lineas una por una 
@@ -83,29 +84,16 @@ public class Caracter {
     }
     
     //metodo que sube la primera linea de una letra
-    public void subir(Color color) {
-        //borramos la letra que empieza desde abajo
-        root.getChildren().clear();
-        
-        //dibujamos la primera linea desde mas arriba
-        CubicCurve a = new CubicCurve(Ix.get(0), Iy.get(0) - 20, ch1x.get(0), ch1y.get(0) - 20, ch2x.get(0), ch2y.get(0), Fx.get(0), Fy.get(0));
-        a.setFill(Color.TRANSPARENT);
-        if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
-            a.setFill(color);
-        }
-        a.setStroke(color);
-        root.getChildren().add(a);
-        
-        //Dibujamos el resto de la letra normalmente
-        for (int i = 1; i < lineas; i++) {
-            CubicCurve c = new CubicCurve(Ix.get(i), Iy.get(i), ch1x.get(i), ch1y.get(i), ch2x.get(i), ch2y.get(i), Fx.get(i), Fy.get(i));
-            c.setFill(Color.TRANSPARENT);
-            if (Ix.get(i) == Fx.get(i) && Iy.get(i) == Fy.get(i)) {
-                c.setFill(color);
-            }
-            c.setStroke(color);
-            root.getChildren().add(c);
-        }
+    public void subir() {  
+        Iy.set(0, Iy.get(0)-20);
+        ch1y.set(0, ch1y.get(0)-20);
+
+    }
+    
+    //metodo para bajar la primera linea de una letra
+    public void bajar(){
+        Iy.set(0, Iy.get(0)+20);
+        ch1y.set(0, ch1y.get(0)+20);
     }
     
     public void subrayado (Color color){
@@ -126,7 +114,7 @@ public class Caracter {
                 case 80 -> Ix.set(i, Ix.get(i)+15);
                 case 100 -> Ix.set(i, Ix.get(i)+10);
                 case 120 -> Ix.set(i, Ix.get(i)+5);
-                case 140 -> Ix.set(i, Ix.get(i)+0);
+                case 140 -> Ix.set(i, Ix.get(i));
                 default -> {
                 }
             }
@@ -139,7 +127,7 @@ public class Caracter {
                 case 80 -> Fx.set(i, Fx.get(i)+15);
                 case 100 -> Fx.set(i, Fx.get(i)+10);
                 case 120 -> Fx.set(i, Fx.get(i)+5);
-                case 140 -> Fx.set(i, Fx.get(i)+0);
+                case 140 -> Fx.set(i, Fx.get(i));
                 default -> {
                 }
             }
@@ -152,7 +140,7 @@ public class Caracter {
                 case 80 -> ch1x.set(i, ch1x.get(i)+15);
                 case 100 -> ch1x.set(i, ch1x.get(i)+10);
                 case 120 -> ch1x.set(i, ch1x.get(i)+5);
-                case 140 -> ch1x.set(i, ch1x.get(i)+0);
+                case 140 -> ch1x.set(i, ch1x.get(i));
                 default -> {
                 }
             }
@@ -165,7 +153,7 @@ public class Caracter {
                 case 80 -> ch2x.set(i, ch2x.get(i)+15);
                 case 100 -> ch2x.set(i, ch2x.get(i)+10);
                 case 120 -> ch2x.set(i, ch2x.get(i)+5);
-                case 140 -> ch2x.set(i, ch2x.get(i)+0);
+                case 140 -> ch2x.set(i, ch2x.get(i));
                 default -> {
                 }
             }
@@ -229,35 +217,9 @@ public class Caracter {
         }
     }
 
-    public void negritas(Color color, int aux, int s) {
-        //se necesita la ayuda de un auxiliar para saber si se aplico el metodo subir sobre la letra
-        //dibujamos la primera linea tres veces
-        CubicCurve a = new CubicCurve(Ix.get(0) + 1, Iy.get(0)-aux + 1, ch1x.get(0) + 1, ch1y.get(0) -aux + 1, ch2x.get(0) + 1, ch2y.get(0) + 1, Fx.get(0) + 1, Fy.get(0) + 1);
-        a.setFill(Color.TRANSPARENT);
-        if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
-            a.setFill(color);
-        }
-        a.setStroke(color);
-        root.getChildren().add(a);
-
-        CubicCurve b = new CubicCurve(Ix.get(0) + 1, Iy.get(0)-aux, ch1x.get(0) + 1, ch1y.get(0)-aux, ch2x.get(0) + 1, ch2y.get(0), Fx.get(0) + 1, Fy.get(0));
-        b.setFill(Color.TRANSPARENT);
-        if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
-            b.setFill(color);
-        }
-        b.setStroke(color);
-        root.getChildren().add(b);
-
-        CubicCurve f = new CubicCurve(Ix.get(0), Iy.get(0) -aux + 1, ch1x.get(0), ch1y.get(0) -aux + 1, ch2x.get(0), ch2y.get(0) + 1, Fx.get(0), Fy.get(0) + 1);
-        f.setFill(Color.TRANSPARENT);
-        if (Ix.get(0) == Fx.get(0) && Iy.get(0) == Fy.get(0)) {
-            f.setFill(color);
-        }
-        f.setStroke(color);
-        root.getChildren().add(f);
-        
+    public void negritas(Color color, int s) {
         //dibujamos multiples veces las lineas que faltan
-        for (int i = 1; i < lineas; i++) {
+        for (int i = 0; i < lineas; i++) {
             CubicCurve c = new CubicCurve(Ix.get(i) + 1, Iy.get(i) + 1, ch1x.get(i) + 1, ch1y.get(i) + 1, ch2x.get(i) + 1, ch2y.get(i) + 1, Fx.get(i) + 1, Fy.get(i) + 1);
             c.setFill(Color.TRANSPARENT);
             if (Ix.get(i) == Fx.get(i) && Iy.get(i) == Fy.get(i)) {
@@ -283,7 +245,7 @@ public class Caracter {
             root.getChildren().add(e);
         }
         if(s == 1){
-            a = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1) + 1, subrayado.get(2) + 1, subrayado.get(3) + 1, subrayado.get(4) + 1, subrayado.get(5) + 1, subrayado.get(6) + 1, subrayado.get(7) + 1);
+            CubicCurve a = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1) + 1, subrayado.get(2) + 1, subrayado.get(3) + 1, subrayado.get(4) + 1, subrayado.get(5) + 1, subrayado.get(6) + 1, subrayado.get(7) + 1);
             a.setFill(Color.TRANSPARENT);
             a.setStroke(color);
             root.getChildren().add(a);
