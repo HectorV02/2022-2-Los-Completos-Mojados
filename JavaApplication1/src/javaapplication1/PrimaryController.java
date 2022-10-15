@@ -1166,7 +1166,6 @@ public class PrimaryController {
         int dcom = 0;
         int caracter;
         int b;
-        int espacios=0;
         ArrayList<Palabra> palabras = new ArrayList();
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
@@ -1198,7 +1197,6 @@ public class PrimaryController {
                 }
                 
                 if (frase.charAt(i) == ' ') {
-                    espacios++;
                     stt = 1;
                 } else {
                     stt = 0;
@@ -1288,7 +1286,7 @@ public class PrimaryController {
                     //avanzamos en la posicion
                     x += palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth();
                     //revisamos si se llego al tope y si la palabra continua
-                    if (x > (canvas.getWidth() - 200) && frase.length() > j+1) {
+                    if (x > (canvas.getWidth() - 200) && j+1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr!=' ') {
                         //colocamos un guion y hacemos un salto de linea
                         Pane sl = new Pane();
                         sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), 140);
