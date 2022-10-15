@@ -1273,32 +1273,41 @@ public class PrimaryController {
                 }
                 //si no es estilo dibuja
                 if(b==0){
+                    
+                    //revisamos si tenemos que subir el caracter
+                    if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j-1).chr == 'ó' || palabras.get(i).getPalabra().get(j-1).chr == 'b' || palabras.get(i).getPalabra().get(j-1).chr == 'o' || palabras.get(i).getPalabra().get(j-1).chr == 'v' || palabras.get(i).getPalabra().get(j-1).chr == 'w')) {
+                        palabras.get(i).getPalabra().get(j).subir();
+                    }
+                    
                     //revisamos si estan activadas las cursivas
                     if(palabras.get(i).getK()==1){
                         palabras.get(i).getPalabra().get(j).muevePuntos();
                     }
+                    
                     //dibujamos la letras
                     palabras.get(i).getPalabra().get(j).root = pp;
                     palabras.get(i).getPalabra().get(j).dibujar(colores.getValue());
-                    //revisamos si tenemos que subir el caracter
-                    if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j-1).chr == 'ó' || palabras.get(i).getPalabra().get(j-1).chr == 'b' || palabras.get(i).getPalabra().get(j-1).chr == 'o' || palabras.get(i).getPalabra().get(j-1).chr == 'v' || palabras.get(i).getPalabra().get(j-1).chr == 'w')) {
-                        palabras.get(i).getPalabra().get(j).subir(colores.getValue());
-                        aux = 20;
-                    }
+                    
+                    
+                    
                     //revisamos si esta activado el subrayado
                     if(palabras.get(i).getS()==1){
                         palabras.get(i).getPalabra().get(j).subrayado(colores.getValue());
                     }
+                    
                     //revisamos si mostramos checkpoints
                     if (muestraPuntos.isSelected()) {
                         palabras.get(i).getPalabra().get(j).getCheckpoints(palabras.get(i).getS());
                     }
+                    
                     //revisamos si estan activadas las negritas
                     if(palabras.get(i).getN()==1){
-                        palabras.get(i).getPalabra().get(j).negritas(colores.getValue(), aux, palabras.get(i).getS());
+                        palabras.get(i).getPalabra().get(j).negritas(colores.getValue(), palabras.get(i).getS());
                     }
+                    
                     //avanzamos en la posicion
                     x += palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth();
+                    
                     //revisamos si se llego al tope y si la palabra continua
                     if (x > (canvas.getWidth() - 200) && j+1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr!=' ') {
                         //colocamos un guion y hacemos un salto de linea
@@ -1313,7 +1322,7 @@ public class PrimaryController {
                             letras.get(13).getCheckpoints(palabras.get(i).getS());
                         }
                         if (palabras.get(i).getN() == 1) {
-                            letras.get(13).negritas(colores.getValue(),0, 0);
+                            letras.get(13).negritas(colores.getValue(), 0);
                         }
                         pane.getChildren().add(letras.get(13).getPanel());
                         x = 10;
@@ -1326,9 +1335,16 @@ public class PrimaryController {
                     }
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
+                    
+                    
+                    
                     //regresamos letras a tipografia original
                     if(palabras.get(i).getK()==1){
                         palabras.get(i).getPalabra().get(j).regresaPuntos();
+                    }
+                    //bajamos la letra si se subio anteriormente
+                    if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j-1).chr == 'ó' || palabras.get(i).getPalabra().get(j-1).chr == 'b' || palabras.get(i).getPalabra().get(j-1).chr == 'o' || palabras.get(i).getPalabra().get(j-1).chr == 'v' || palabras.get(i).getPalabra().get(j-1).chr == 'w')) {
+                        palabras.get(i).getPalabra().get(j).bajar();
                     }
                 }
             }
