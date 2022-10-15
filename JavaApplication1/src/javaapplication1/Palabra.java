@@ -14,6 +14,7 @@ public class Palabra {
     ArrayList<Caracter> palabra;
     int n, s, k;
     
+    
     public Palabra(){
         palabra = new ArrayList();
     }

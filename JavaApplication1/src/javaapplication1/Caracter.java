@@ -114,7 +114,7 @@ public class Caracter {
                 case 80 -> Ix.set(i, Ix.get(i)+15);
                 case 100 -> Ix.set(i, Ix.get(i)+10);
                 case 120 -> Ix.set(i, Ix.get(i)+5);
-                case 140 -> Ix.set(i, Ix.get(i)+0);
+                case 140 -> Ix.set(i, Ix.get(i));
                 default -> {
                 }
             }
@@ -127,7 +127,7 @@ public class Caracter {
                 case 80 -> Fx.set(i, Fx.get(i)+15);
                 case 100 -> Fx.set(i, Fx.get(i)+10);
                 case 120 -> Fx.set(i, Fx.get(i)+5);
-                case 140 -> Fx.set(i, Fx.get(i)+0);
+                case 140 -> Fx.set(i, Fx.get(i));
                 default -> {
                 }
             }
@@ -140,7 +140,7 @@ public class Caracter {
                 case 80 -> ch1x.set(i, ch1x.get(i)+15);
                 case 100 -> ch1x.set(i, ch1x.get(i)+10);
                 case 120 -> ch1x.set(i, ch1x.get(i)+5);
-                case 140 -> ch1x.set(i, ch1x.get(i)+0);
+                case 140 -> ch1x.set(i, ch1x.get(i));
                 default -> {
                 }
             }
@@ -153,7 +153,7 @@ public class Caracter {
                 case 80 -> ch2x.set(i, ch2x.get(i)+15);
                 case 100 -> ch2x.set(i, ch2x.get(i)+10);
                 case 120 -> ch2x.set(i, ch2x.get(i)+5);
-                case 140 -> ch2x.set(i, ch2x.get(i)+0);
+                case 140 -> ch2x.set(i, ch2x.get(i));
                 default -> {
                 }
             }
