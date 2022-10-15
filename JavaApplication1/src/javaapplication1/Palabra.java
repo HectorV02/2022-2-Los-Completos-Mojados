@@ -12,18 +12,45 @@ import java.util.ArrayList;
  */
 public class Palabra {
     ArrayList<Caracter> palabra;
-    String stl;
+    int n, s, k;
+    
     public Palabra(){
         palabra = new ArrayList();
     }
+    
     public void addChar(Caracter a){
         palabra.add(a);        
     }
-    public void addStyle(String s){
-        stl = s;
-    }
-    
-    public ArrayList<Caracter> getPalabra(){
+
+    public ArrayList<Caracter> getPalabra() {
         return palabra;
+    }
+
+    public void setPalabra(ArrayList<Caracter> palabra) {
+        this.palabra = palabra;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
+
+    public int getS() {
+        return s;
+    }
+
+    public void setS(int s) {
+        this.s = s;
+    }
+
+    public int getK() {
+        return k;
+    }
+
+    public void setK(int k) {
+        this.k = k;
     }
 }
