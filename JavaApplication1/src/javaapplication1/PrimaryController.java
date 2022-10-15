@@ -153,9 +153,20 @@ public class PrimaryController {
         letras.add(c);
 
         //padding
-        for (int i2 = 0; i2 < 2; i2++) {
-            letras.add(empty);
-        }
+        letras.add(empty);
+        
+        
+        //suma
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(25).get(0), smallPuntos.get(15).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(25).get(1), smallPuntos.get(15).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(29).get(0), smallPuntos.get(39).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(29).get(1), smallPuntos.get(39).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(25).get(0), smallPuntos.get(15).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(25).get(1), smallPuntos.get(15).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(29).get(0), smallPuntos.get(39).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(29).get(1), smallPuntos.get(39).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'+');
+        letras.add(c);
 
         //coma
         ix = new ArrayList(Arrays.asList(smallPuntos.get(33).get(0), smallPuntos.get(33).get(0)));
@@ -1238,8 +1249,11 @@ public class PrimaryController {
                 pp.setTranslateY(y);
                 //revisa si caracter es acento circunflejo
                 if(palabras.get(i).getPalabra().get(j).chr == '^') b=1;
+                //revisa si es +
+                else if(palabras.get(i).getPalabra().get(j).chr == '+') b=1;
                 //revisa estilos
-                else if(j!=0 && palabras.get(i).getPalabra().get(j-1).chr == '^'){
+                else if(j!=0 && (palabras.get(i).getPalabra().get(j-1).chr == '^' || palabras.get(i).getPalabra().get(j-1).chr == '+')){
+                    
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
                             palabras.get(i).setK(1);
