@@ -59,7 +59,7 @@ public class PrimaryController {
                 smallPuntos.add(xy);
             }
         }
-        //se deinen caractereas
+        //se crean caractereas
         creaCaracteres(p, puntos, smallP, smallPuntos);
     }
 
@@ -1161,19 +1161,19 @@ public class PrimaryController {
     public void dibuja() throws IOException {
         int x = 10;
         int y = 10;
-        int n = 0, s = 0, k = 0;
         int aux = 0;
         int com = 0;
         int dcom = 0;
         int caracter;
+        int b;
         ArrayList<Palabra> palabras = new ArrayList();
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
+        //solo si es primera vez en ejecucion crea caracteres
         if (bandera == 0) {
             Empezar(x, y);
             bandera++;
         }
-
         //creamos una palabra inicial
         Palabra palabra = new Palabra();
         palabras.add(palabra);
@@ -1202,15 +1202,13 @@ public class PrimaryController {
                     stt = 0;
                 }
                 
-                if (frase.length() > i + 1 && stt != sttx) {
+                if (stt != sttx) {
                     palabra = new Palabra();
                     palabras.add(palabra);
                     sttx = stt;
-                    
                 }
                 
                 palabras.get(palabras.size()-1).addChar(letras.get(caracter));
-                
                 //revisa las comillas
                 //prepara las variables para escribir las comillas nuevas 
                 if (caracter == 2) {
@@ -1219,8 +1217,6 @@ public class PrimaryController {
                 if (caracter == 7) {
                     com = 1;
                 }
-                
-                
             } else {
                 //tira un mensaje de error
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -1230,215 +1226,99 @@ public class PrimaryController {
                 alert.showAndWait();
             }
         }
-        
         //Ingresamos los caracteres en cada letra
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
+                b=0;
+                aux=0;
                 Pane pp = new Pane();
                 pp.setMaxSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), 140);
                 pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), 140);
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
-                
-                palabras.get(i).getPalabra().get(j).root = pp;
-                palabras.get(i).getPalabra().get(j).dibujar(colores.getValue());
-                    
-                //revisamos si tenemos que subir el caracter
-                
-                if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j-1).chr == 'ó' || palabras.get(i).getPalabra().get(j-1).chr == 'b' || palabras.get(i).getPalabra().get(j-1).chr == 'o' || palabras.get(i).getPalabra().get(j-1).chr == 'v' || palabras.get(i).getPalabra().get(j-1).chr == 'w')) {
-                    palabras.get(i).getPalabra().get(j).subir(colores.getValue());
-                    aux = 20;
+                //revisa si caracter es acento circunflejo
+                if(palabras.get(i).getPalabra().get(j).chr == '^') b=1;
+                //revisa estilos
+                else if(j!=0 && palabras.get(i).getPalabra().get(j-1).chr == '^'){
+                    switch (palabras.get(i).getPalabra().get(j).chr) {
+                        case 'K' -> {
+                            palabras.get(i).setK(1);
+                            b=1;
+                        }
+                        case 'S' -> {
+                            palabras.get(i).setS(1);
+                            b=1;
+                        }
+                        case 'N' -> {
+                            palabras.get(i).setN(1);
+                            b=1;
+                        }
+                        default -> {
+                        }
+                    }
                 }
-                
-                
-                //palabras.get(i).getPalabra().get(j).subir(colores.getValue());
-                
-                if (muestraPuntos.isSelected()) {
-                    palabras.get(i).getPalabra().get(j).getCheckpoints(s);
-                }
-                x += palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth();
-                if (x > (canvas.getWidth() - 200) && frase.length() > i+1) {
-                    //colocamos un guion y hacemos un salto de linea
-                    Pane sl = new Pane();
-                    sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), 140);
-                    sl.setMinSize(letras.get(13).getPanel().getMaxWidth(), 140);
-                    sl.setTranslateX(x);
-                    sl.setTranslateY(y);
-                    letras.get(13).root = sl;
-                    letras.get(13).dibujar(colores.getValue());
+                //si no es estilo dibuja
+                if(b==0){
+                    //revisamos si estan activadas las cursivas
+                    if(palabras.get(i).getK()==1){
+                        palabras.get(i).getPalabra().get(j).muevePuntos();
+                    }
+                    //dibujamos la letras
+                    palabras.get(i).getPalabra().get(j).root = pp;
+                    palabras.get(i).getPalabra().get(j).dibujar(colores.getValue());
+                    //revisamos si tenemos que subir el caracter
+                    if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j-1).chr == 'ó' || palabras.get(i).getPalabra().get(j-1).chr == 'b' || palabras.get(i).getPalabra().get(j-1).chr == 'o' || palabras.get(i).getPalabra().get(j-1).chr == 'v' || palabras.get(i).getPalabra().get(j-1).chr == 'w')) {
+                        palabras.get(i).getPalabra().get(j).subir(colores.getValue());
+                        aux = 20;
+                    }
+                    //revisamos si esta activado el subrayado
+                    if(palabras.get(i).getS()==1){
+                        palabras.get(i).getPalabra().get(j).subrayado(colores.getValue());
+                    }
+                    //revisamos si mostramos checkpoints
                     if (muestraPuntos.isSelected()) {
-                        letras.get(13).getCheckpoints(s);
+                        palabras.get(i).getPalabra().get(j).getCheckpoints(palabras.get(i).getS());
                     }
-                    if (n == 1) {
-                        letras.get(13).negritas(colores.getValue(),0, 0);
+                    //revisamos si estan activadas las negritas
+                    if(palabras.get(i).getN()==1){
+                        palabras.get(i).getPalabra().get(j).negritas(colores.getValue(), aux, palabras.get(i).getS());
                     }
-                    pane.getChildren().add(letras.get(13).getPanel());
-                    x = 10;
-                    y += 140;
+                    //avanzamos en la posicion
+                    x += palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth();
+                    //revisamos si se llego al tope y si la palabra continua
+                    if (x > (canvas.getWidth() - 200) && j+1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr!=' ') {
+                        //colocamos un guion y hacemos un salto de linea
+                        Pane sl = new Pane();
+                        sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), 140);
+                        sl.setMinSize(letras.get(13).getPanel().getMaxWidth(), 140);
+                        sl.setTranslateX(x);
+                        sl.setTranslateY(y);
+                        letras.get(13).root = sl;
+                        letras.get(13).dibujar(colores.getValue());
+                        if (muestraPuntos.isSelected()) {
+                            letras.get(13).getCheckpoints(palabras.get(i).getS());
+                        }
+                        if (palabras.get(i).getN() == 1) {
+                            letras.get(13).negritas(colores.getValue(),0, 0);
+                        }
+                        pane.getChildren().add(letras.get(13).getPanel());
+                        x = 10;
+                        y += 140;
+                    }
+                    //revisamos si se llego al tope y hacemos salto de linea de ser necesario
+                    if (x > (canvas.getWidth() - 150)) {
+                        x = 10;
+                        y += 140;
+                    }
+                    //colocamos el panel dentro 
+                    pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
+                    //regresamos letras a tipografia original
+                    if(palabras.get(i).getK()==1){
+                        palabras.get(i).getPalabra().get(j).regresaPuntos();
+                    }
                 }
-                //Revisamos si se llego al tope y hacemos salto de linea de ser necesario
-                if (x > (canvas.getWidth() - 150)) {
-                    x = 10;
-                    y += 140;
-                }
-                
-                
-                //colocamos el panel dentro 
-                pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
-                
-                
             }
         }
-
-//        for (int i = 0; i < frase.length(); i++) {
-//            //caracter recibe el codigo ascii del caracter que se esta trabajando
-//            caracter = (int) frase.charAt(i) - 32;
-//            
-//            //revisamos si es un caracter valido
-//            if ((0 <= caracter && caracter <= 250 && letras.get(caracter).lineas != -1)) {
-//                aux = 0;
-//                
-//                //Revisamos si hay algun comando
-//                while (frase.charAt(i) == '^' && frase.length() > i + 2) {
-//                    
-//                    switch (frase.charAt(i + 1)) {
-//                        //activamos negritas, cursivas o subrayado
-//                        case 'N':
-//                            n = 1;
-//                            i += 2;
-//                            break;
-//                        case 'K':
-//                            k = 1;
-//                            i += 2;
-//                            break;
-//                        case 'S':
-//                            s = 1;
-//                            i+=2;
-//                            break;
-//                        default:
-//                            i++;
-//                    }
-//                    
-//                    // se actualiza para tomar el caracter nuevo despues de avanzar
-//                    caracter = (int) frase.charAt(i) - 32;
-//                         
-//                }
-//                //si hay un espacio desactivamos los estilos
-//                if (frase.charAt(i) == ' ') {
-//                    n = 0;
-//                    s = 0;
-//                    k = 0;
-//                }
-//                
-//                
-//                
-//                //le asignamos un panel a la letra
-//                Pane pp = new Pane();
-//                pp.setMaxSize(letras.get(caracter).getPanel().getMaxWidth(), 140);
-//                pp.setMinSize(letras.get(caracter).getPanel().getMaxWidth(), 140);
-//                pp.setTranslateX(x);
-//                pp.setTranslateY(y);
-//                
-//                // si el caracter son comillas dobles o simples cambiamos caracter por el codigo ascci de comillas dobles de cierre o de comillas simples de cierre
-//                // no es necesario hacerlo antes ya que al tener las comillas de cierre el mismo tamaño que las de apertura podemos simplemente cambiar caracter ahora
-//                if ((int) frase.charAt(i) == 34 && dcom == 1) {
-//                    caracter = 94;
-//                    dcom = 0;
-//                }
-//                
-//                if ((int) frase.charAt(i) == 39 && com == 1) {
-//                    caracter = 95;
-//                    com = 0;
-//                }
-//                
-//                //Revisamos si estan activadas las cursivas
-//                if(k == 1){
-//                    
-//                    letras.get(caracter).muevePuntos();
-//                    
-//                }
-//                letras.get(caracter).root = pp;
-//                letras.get(caracter).dibujar(colores.getValue());
-//                
-//                //revisamos si tenemos que subir el caracter
-//                if (i > 0 && ((int) frase.charAt(i) >= 97 && (int) frase.charAt(i) <= 122 || ((int) frase.charAt(i) >= 225 && (int) frase.charAt(i) <= 250)) && (frase.charAt(i - 1) == 'ó' || frase.charAt(i - 1) == 'b' || frase.charAt(i - 1) == 'o' || frase.charAt(i - 1) == 'v' || frase.charAt(i - 1) == 'w')) {
-//                    letras.get((int) frase.charAt(i) - 32).subir(colores.getValue());
-//                    aux = 20;
-//                }
-//                
-//                //Revisamos si está activado el subrayado
-//                if (s == 1) {
-//                    letras.get((int) frase.charAt(i) - 32).subrayado(colores.getValue());
-//                }
-//                
-//                //Revisamos si mostramos checkpoints
-//                if (muestraPuntos.isSelected()) {
-//                    letras.get(caracter).getCheckpoints(s);
-//                }
-//                
-//                //Revisamos si estan activadas las negritas
-//                if (n == 1) {
-//                    letras.get(caracter).negritas(colores.getValue(), aux, s);
-//                }
-//                
-//                //avanzamos en la posicion
-//                x += letras.get(caracter).getPanel().getMaxWidth();
-//                
-//                //Revisamos si se llego al tope y si la palabra continua
-//                if (x > (canvas.getWidth() - 200) && frase.length() > i+1 && caracter != 0 && frase.charAt(i+1) - 32 != 0) {
-//                    //colocamos un guion y hacemos un salto de linea
-//                    Pane sl = new Pane();
-//                    sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), 140);
-//                    sl.setMinSize(letras.get(13).getPanel().getMaxWidth(), 140);
-//                    sl.setTranslateX(x);
-//                    sl.setTranslateY(y);
-//                    letras.get(13).root = sl;
-//                    letras.get(13).dibujar(colores.getValue());
-//                    if (muestraPuntos.isSelected()) {
-//                        letras.get(13).getCheckpoints(s);
-//                    }
-//                    if (n == 1) {
-//                        letras.get(13).negritas(colores.getValue(),0, 0);
-//                    }
-//                    pane.getChildren().add(letras.get(13).getPanel());
-//                    x = 10;
-//                    y += 140;
-//                }
-//                //Revisamos si se llego al tope y hacemos salto de linea de ser necesario
-//                if (x > (canvas.getWidth() - 150)) {
-//                    x = 10;
-//                    y += 140;
-//                }
-//
-//                //revisa las comillas
-//                //prepara las variables para escribir las comillas nuevas 
-//                if (caracter == 2) {
-//                    dcom = 1;
-//                }
-//                if (caracter == 7) {
-//                    com = 1;
-//                }
-//                
-//                //colocamos el panel dentro 
-//                pane.getChildren().add(letras.get(caracter).getPanel());
-//                
-//                //regresamos letras a tipografía original
-//                if(k == 1){
-//                    
-//                    letras.get(caracter).regresaPuntos();
-//                }
-//
-//            } else {
-//                //tira un mensaje de error
-//                Alert alert = new Alert(Alert.AlertType.WARNING);
-//                alert.setHeaderText(null);
-//                alert.setTitle("Error");
-//                alert.setContentText("Caracter invalido");
-//                alert.showAndWait();
-//            }
-//            
-//        }
-
         //finalente colocamos el panel con toda las letras
         canvas.setGraphic(pane);
     }

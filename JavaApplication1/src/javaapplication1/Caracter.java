@@ -118,110 +118,56 @@ public class Caracter {
     public void muevePuntos (){
         for (int i = 0; i < Ix.size(); i++) {
             //movimiento puntos de inicio
-            if(Iy.get(i) == 0){
-                Ix.set(i, Ix.get(i)+35);
+            switch (Iy.get(i)) {
+                case 0 -> Ix.set(i, Ix.get(i)+35);
+                case 20 -> Ix.set(i, Ix.get(i)+30);
+                case 40 -> Ix.set(i, Ix.get(i)+25);
+                case 60 -> Ix.set(i, Ix.get(i)+20);
+                case 80 -> Ix.set(i, Ix.get(i)+15);
+                case 100 -> Ix.set(i, Ix.get(i)+10);
+                case 120 -> Ix.set(i, Ix.get(i)+5);
+                case 140 -> Ix.set(i, Ix.get(i)+0);
+                default -> {
+                }
             }
-            else if(Iy.get(i) == 20){
-                Ix.set(i, Ix.get(i)+30);
-            }
-            else if(Iy.get(i) == 40){
-                Ix.set(i, Ix.get(i)+25);
-            }
-            else if(Iy.get(i) == 60){
-                Ix.set(i, Ix.get(i)+20);
-            }
-            else if(Iy.get(i) == 80){
-                Ix.set(i, Ix.get(i)+15);
-            }
-            else if(Iy.get(i) == 100){
-                Ix.set(i, Ix.get(i)+10);
-            }
-            else if(Iy.get(i) == 120){
-                Ix.set(i, Ix.get(i)+5);
-            }
-            else if(Iy.get(i) == 140){
-                Ix.set(i, Ix.get(i)+0);
-            }
-            
             //movimiento puntos de fin
-            
-            if(Fy.get(i) == 0){
-                Fx.set(i, Fx.get(i)+35);
+            switch (Fy.get(i)) {
+                case 0 -> Fx.set(i, Fx.get(i)+35);
+                case 20 -> Fx.set(i, Fx.get(i)+30);
+                case 40 -> Fx.set(i, Fx.get(i)+25);
+                case 60 -> Fx.set(i, Fx.get(i)+20);
+                case 80 -> Fx.set(i, Fx.get(i)+15);
+                case 100 -> Fx.set(i, Fx.get(i)+10);
+                case 120 -> Fx.set(i, Fx.get(i)+5);
+                case 140 -> Fx.set(i, Fx.get(i)+0);
+                default -> {
+                }
             }
-            else if(Fy.get(i) == 20){
-                Fx.set(i, Fx.get(i)+30);
-            }
-            else if(Fy.get(i) == 40){
-                Fx.set(i, Fx.get(i)+25);
-            }
-            else if(Fy.get(i) == 60){
-                Fx.set(i, Fx.get(i)+20);
-            }
-            else if(Fy.get(i) == 80){
-                Fx.set(i, Fx.get(i)+15);
-            }
-            else if(Fy.get(i) == 100){
-                Fx.set(i, Fx.get(i)+10);
-            }
-            else if(Fy.get(i) == 120){
-                Fx.set(i, Fx.get(i)+5);
-            }
-            else if(Fy.get(i) == 140){
-                Fx.set(i, Fx.get(i)+0);
-            }
-            
             //movimiento puntos de control 1
-            
-            if(ch1y.get(i) == 0){
-                ch1x.set(i, ch1x.get(i)+35);
+            switch (ch1y.get(i)) {
+                case 0 -> ch1x.set(i, ch1x.get(i)+35);
+                case 20 -> ch1x.set(i, ch1x.get(i)+30);
+                case 40 -> ch1x.set(i, ch1x.get(i)+25);
+                case 60 -> ch1x.set(i, ch1x.get(i)+20);
+                case 80 -> ch1x.set(i, ch1x.get(i)+15);
+                case 100 -> ch1x.set(i, ch1x.get(i)+10);
+                case 120 -> ch1x.set(i, ch1x.get(i)+5);
+                case 140 -> ch1x.set(i, ch1x.get(i)+0);
+                default -> {
+                }
             }
-            else if(ch1y.get(i) == 20){
-                ch1x.set(i, ch1x.get(i)+30);
-            }
-            else if(ch1y.get(i) == 40){
-                ch1x.set(i, ch1x.get(i)+25);
-            }
-            else if(ch1y.get(i) == 60){
-                ch1x.set(i, ch1x.get(i)+20);
-            }
-            else if(ch1y.get(i) == 80){
-                ch1x.set(i, ch1x.get(i)+15);
-            }
-            else if(ch1y.get(i) == 100){
-                ch1x.set(i, ch1x.get(i)+10);
-            }
-            else if(ch1y.get(i) == 120){
-                ch1x.set(i, ch1x.get(i)+5);
-            }
-            else if(ch1y.get(i) == 140){
-                ch1x.set(i, ch1x.get(i)+0);
-            }
-            
             //movimiento puntos de control 2
-            
-            if(ch2y.get(i) == 0){
-                ch2x.set(i, ch2x.get(i)+35);
-            }
-            else if(ch2y.get(i) == 20){
-                ch2x.set(i, ch2x.get(i)+30);
-            }
-            else if(ch2y.get(i) == 40){
-                ch2x.set(i, ch2x.get(i)+25);
-            }
-            else if(ch2y.get(i) == 60){
-                ch2x.set(i, ch2x.get(i)+20);
-            }
-            else if(ch2y.get(i) == 80){
-                ch2x.set(i, ch2x.get(i)+15);
-            }
-            else if(ch2y.get(i) == 100){
-                ch2x.set(i, ch2x.get(i)+10);
-            }
-            else if(ch2y.get(i) == 120){
-                ch2x.set(i, ch2x.get(i)+5);
-            }
-            else if(ch2y.get(i) == 140){
-                ch2x.set(i, ch2x.get(i)+0);
+            switch (ch2y.get(i)) {
+                case 0 -> ch2x.set(i, ch2x.get(i)+35);
+                case 20 -> ch2x.set(i, ch2x.get(i)+30);
+                case 40 -> ch2x.set(i, ch2x.get(i)+25);
+                case 60 -> ch2x.set(i, ch2x.get(i)+20);
+                case 80 -> ch2x.set(i, ch2x.get(i)+15);
+                case 100 -> ch2x.set(i, ch2x.get(i)+10);
+                case 120 -> ch2x.set(i, ch2x.get(i)+5);
+                case 140 -> ch2x.set(i, ch2x.get(i)+0);
+                default -> {
+                }
             }
         }
     }
@@ -229,120 +175,61 @@ public class Caracter {
     public void regresaPuntos (){
         for (int i = 0; i < Ix.size(); i++) {
             //movimiento puntos de inicio
-            
-            if(Iy.get(i) == 0){
-                Ix.set(i, Ix.get(i)-35);
+            switch (Iy.get(i)) {
+                case 0 -> Ix.set(i, Ix.get(i)-35);
+                case 20 -> Ix.set(i, Ix.get(i)-30);
+                case 40 -> Ix.set(i, Ix.get(i)-25);
+                case 60 -> Ix.set(i, Ix.get(i)-20);
+                case 80 -> Ix.set(i, Ix.get(i)-15);
+                case 100 -> Ix.set(i, Ix.get(i)-10);
+                case 120 -> Ix.set(i, Ix.get(i)-5);
+                case 140 -> Ix.set(i, Ix.get(i));
+                default -> {
+                }
             }
-            else if(Iy.get(i) == 20){
-                Ix.set(i, Ix.get(i)-30);
-            }
-            else if(Iy.get(i) == 40){
-                Ix.set(i, Ix.get(i)-25);
-            }
-            else if(Iy.get(i) == 60){
-                Ix.set(i, Ix.get(i)-20);
-            }
-            else if(Iy.get(i) == 80){
-                Ix.set(i, Ix.get(i)-15);
-            }
-            else if(Iy.get(i) == 100){
-                Ix.set(i, Ix.get(i)-10);
-            }
-            else if(Iy.get(i) == 120){
-                Ix.set(i, Ix.get(i)-5);
-            }
-            else if(Iy.get(i) == 140){
-                Ix.set(i, Ix.get(i));
-            }
-            
-            
             //movimiento puntos de fin
-            
-            
-            if(Fy.get(i) == 0){
-                Fx.set(i, Fx.get(i)-35);
+            switch (Fy.get(i)) {
+                case 0 -> Fx.set(i, Fx.get(i)-35);
+                case 20 -> Fx.set(i, Fx.get(i)-30);
+                case 40 -> Fx.set(i, Fx.get(i)-25);
+                case 60 -> Fx.set(i, Fx.get(i)-20);
+                case 80 -> Fx.set(i, Fx.get(i)-15);
+                case 100 -> Fx.set(i, Fx.get(i)-10);
+                case 120 -> Fx.set(i, Fx.get(i)-5);
+                case 140 -> Fx.set(i, Fx.get(i));
+                default -> {
+                }
             }
-            else if(Fy.get(i) == 20){
-                Fx.set(i, Fx.get(i)-30);
-            }
-            else if(Fy.get(i) == 40){
-                Fx.set(i, Fx.get(i)-25);
-            }
-            else if(Fy.get(i) == 60){
-                Fx.set(i, Fx.get(i)-20);
-            }
-            else if(Fy.get(i) == 80){
-                Fx.set(i, Fx.get(i)-15);
-            }
-            else if(Fy.get(i) == 100){
-                Fx.set(i, Fx.get(i)-10);
-            }
-            else if(Fy.get(i) == 120){
-                Fx.set(i, Fx.get(i)-5);
-            }
-            else if(Fy.get(i) == 140){
-                Fx.set(i, Fx.get(i));
-            }
-            
             //movimiento puntos de control 1
-            
-            
-            if(ch1y.get(i) == 0){
-                ch1x.set(i, ch1x.get(i)-35);
+            switch (ch1y.get(i)) {
+                case 0 -> ch1x.set(i, ch1x.get(i)-35);
+                case 20 -> ch1x.set(i, ch1x.get(i)-30);
+                case 40 -> ch1x.set(i, ch1x.get(i)-25);
+                case 60 -> ch1x.set(i, ch1x.get(i)-20);
+                case 80 -> ch1x.set(i, ch1x.get(i)-15);
+                case 100 -> ch1x.set(i, ch1x.get(i)-10);
+                case 120 -> ch1x.set(i, ch1x.get(i)-5);
+                case 140 -> ch1x.set(i, ch1x.get(i));
+                default -> {
+                }
             }
-            else if(ch1y.get(i) == 20){
-                ch1x.set(i, ch1x.get(i)-30);
-            }
-            else if(ch1y.get(i) == 40){
-                ch1x.set(i, ch1x.get(i)-25);
-            }
-            else if(ch1y.get(i) == 60){
-                ch1x.set(i, ch1x.get(i)-20);
-            }
-            else if(ch1y.get(i) == 80){
-                ch1x.set(i, ch1x.get(i)-15);
-            }
-            else if(ch1y.get(i) == 100){
-                ch1x.set(i, ch1x.get(i)-10);
-            }
-            else if(ch1y.get(i) == 120){
-                ch1x.set(i, ch1x.get(i)-5);
-            }
-            else if(ch1y.get(i) == 140){
-                ch1x.set(i, ch1x.get(i));
-            }
-            
             //movimiento puntos de control 2
-            
-            if(ch2y.get(i) == 0){
-                ch2x.set(i, ch2x.get(i)-35);
-            }
-            else if(ch2y.get(i) == 20){
-                ch2x.set(i, ch2x.get(i)-30);
-            }
-            else if(ch2y.get(i) == 40){
-                ch2x.set(i, ch2x.get(i)-25);
-            }
-            else if(ch2y.get(i) == 60){
-                ch2x.set(i, ch2x.get(i)-20);
-            }
-            else if(ch2y.get(i) == 80){
-                ch2x.set(i, ch2x.get(i)-15);
-            }
-            else if(ch2y.get(i) == 100){
-                ch2x.set(i, ch2x.get(i)-10);
-            }
-            else if(ch2y.get(i) == 120){
-                ch2x.set(i, ch2x.get(i)-5);
-            }
-            else if(ch2y.get(i) == 140){
-                ch2x.set(i, ch2x.get(i));
+            switch (ch2y.get(i)) {
+                case 0 -> ch2x.set(i, ch2x.get(i)-35);
+                case 20 -> ch2x.set(i, ch2x.get(i)-30);
+                case 40 -> ch2x.set(i, ch2x.get(i)-25);
+                case 60 -> ch2x.set(i, ch2x.get(i)-20);
+                case 80 -> ch2x.set(i, ch2x.get(i)-15);
+                case 100 -> ch2x.set(i, ch2x.get(i)-10);
+                case 120 -> ch2x.set(i, ch2x.get(i)-5);
+                case 140 -> ch2x.set(i, ch2x.get(i));
+                default -> {
+                }
             }
         }
     }
 
     public void negritas(Color color, int aux, int s) {
-        
         //se necesita la ayuda de un auxiliar para saber si se aplico el metodo subir sobre la letra
         //dibujamos la primera linea tres veces
         CubicCurve a = new CubicCurve(Ix.get(0) + 1, Iy.get(0)-aux + 1, ch1x.get(0) + 1, ch1y.get(0) -aux + 1, ch2x.get(0) + 1, ch2y.get(0) + 1, Fx.get(0) + 1, Fy.get(0) + 1);
