@@ -1237,9 +1237,11 @@ public class PrimaryController {
                 alert.showAndWait();
             }
         }
+        int c = 0;
         //Ingresamos los caracteres en cada letra
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
+                
                 b=0;
                 aux=0;
                 Pane pp = new Pane();
@@ -1249,10 +1251,17 @@ public class PrimaryController {
                 pp.setTranslateY(y);
                 //revisa si caracter es acento circunflejo
                 if(palabras.get(i).getPalabra().get(j).chr == '^') b=1;
-                //revisa si es +
-                else if(palabras.get(i).getPalabra().get(j).chr == '+') b=1;
+                //revisa si es + y revisa si el mas esta despues de un ^
+                else if(palabras.get(i).getPalabra().get(j).chr == '+'){
+                    for (int k = j; k >= 0 && k >= j-4; k--) {                       
+                        if (palabras.get(i).getPalabra().get(k).chr == '^') {
+                            c = 1;
+                        }
+                    }
+                    b=1;
+                }
                 //revisa estilos
-                else if(j!=0 && (palabras.get(i).getPalabra().get(j-1).chr == '^' || palabras.get(i).getPalabra().get(j-1).chr == '+')){
+                else if(j!=0 && (palabras.get(i).getPalabra().get(j-1).chr == '^' || (palabras.get(i).getPalabra().get(j-1).chr == '+' && c == 1))){
                     
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
@@ -1273,7 +1282,7 @@ public class PrimaryController {
                 }
                 //si no es estilo dibuja
                 if(b==0){
-                    
+                    c = 0;
                     //revisamos si tenemos que subir el caracter
                     if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j-1).chr == 'ó' || palabras.get(i).getPalabra().get(j-1).chr == 'b' || palabras.get(i).getPalabra().get(j-1).chr == 'o' || palabras.get(i).getPalabra().get(j-1).chr == 'v' || palabras.get(i).getPalabra().get(j-1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).subir();
@@ -1342,7 +1351,7 @@ public class PrimaryController {
                     if(palabras.get(i).getK()==1){
                         palabras.get(i).getPalabra().get(j).regresaPuntos();
                     }
-                    //bajamos la letra si se subio anteriormente
+                    //bajamos la letra si se subio 
                     if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j-1).chr == 'ó' || palabras.get(i).getPalabra().get(j-1).chr == 'b' || palabras.get(i).getPalabra().get(j-1).chr == 'o' || palabras.get(i).getPalabra().get(j-1).chr == 'v' || palabras.get(i).getPalabra().get(j-1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).bajar();
                     }
