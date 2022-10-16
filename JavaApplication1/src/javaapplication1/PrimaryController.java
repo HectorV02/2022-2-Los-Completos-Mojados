@@ -1189,7 +1189,7 @@ public class PrimaryController {
         Palabra palabra = new Palabra();
         palabras.add(palabra);
 
-        int stt = 0;
+        int stt;
         int sttx = 0;
 
         //recorremos toda la frase identificando las palabras 
@@ -1237,14 +1237,108 @@ public class PrimaryController {
                 alert.showAndWait();
             }
         }
-
-        //Ingresamos los caracteres en cada letra
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
                 
-                if (comas == i) {
-                    comas = 0;
+                //revisa si es + y revisa si el mas esta despues de un ^
+                if (palabras.get(i).getPalabra().get(j).chr == '+' && i<palabras.size()-1) {
+                    for (int k = j; k >= 0 && k >= j - 4; k--) {
+                        if (palabras.get(i).getPalabra().get(k).chr == '^') {
+                            c = 1;
+                        }
+                    }
                 }
+                //contamos las comas
+                else if (palabras.get(i).getPalabra().get(j).chr == ',') {
+                    comas += 2;
+                } 
+                else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
+
+                    switch (palabras.get(i).getPalabra().get(j).chr) {
+                        case 'K' -> {
+                            palabras.get(i + comas).setK(1);
+                        }
+                        case 'S' -> {
+                            palabras.get(i + comas).setS(1);
+                        }
+                        case 'N' -> {
+                            palabras.get(i + comas).setN(1);
+                        }
+                        default -> {
+                        }
+                    }
+
+                } else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i<palabras.size()-1 && i + comas < palabras.size()) {
+                    
+                    switch (palabras.get(i).getPalabra().get(j).chr) {
+                        case 'K' -> {
+                            palabras.get(i + comas).setK(1);
+                        }
+                        case 'S' -> {
+                            palabras.get(i + comas).setS(1);
+                        }
+                        case 'N' -> {
+                            palabras.get(i + comas).setN(1);
+                        }
+                        default -> {
+                        }
+                    }
+                }
+                //que empieze de 0 hasta comas
+                else if (i == palabras.size()-1 && j!= 0) {
+                    if(palabras.get(i).getPalabra().get(j - 1).chr == '^'){
+                        switch (palabras.get(i).getPalabra().get(j).chr) {
+                            case 'K' -> {
+                                palabras.get(0).setK(1);
+                            }
+                            case 'S' -> {
+                                palabras.get(0).setS(1);
+                            }
+                            case 'N' -> {
+                                palabras.get(0).setN(1);
+                            }
+                            default -> {
+                            }
+                        }
+                    }else if(palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+'){
+                        switch (palabras.get(i).getPalabra().get(j).chr) {
+                            case 'K' -> {
+                                palabras.get(0+comas).setK(1);
+                            }
+                            case 'S' -> {
+                                palabras.get(0+comas).setS(1);
+                            }
+                            case 'N' -> {
+                                palabras.get(0+comas).setN(1);
+                            }
+                            default -> {
+                            }
+                        }
+                    }
+                }
+                //revisa estilos
+                else if (j != 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || (palabras.get(i).getPalabra().get(j - 1).chr == '+' && c == 1))) {
+
+                    switch (palabras.get(i).getPalabra().get(j).chr) {
+                        case 'K' -> {
+                            palabras.get(i).setK(1);
+                        }
+                        case 'S' -> {
+                            palabras.get(i).setS(1);
+                        }
+                        case 'N' -> {
+                            palabras.get(i).setN(1);
+                        }
+                        default -> {
+                        }
+                    }
+                }        
+            }
+            comas=0;
+        }
+        //Ingresamos los caracteres en cada letra
+        for (int i = 0; i < palabras.size(); i++) {
+            for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
                 
                 b = 0;
                 Pane pp = new Pane();
@@ -1269,64 +1363,23 @@ public class PrimaryController {
                     comas += 2;
                     b = 1;
                 } 
-                else if (j - 1 >= 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
+                else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
 
-                    switch (palabras.get(i).getPalabra().get(j).chr) {
-                        case 'K' -> {
-                            palabras.get(i + comas).setK(1);
-                            b = 1;
-                        }
-                        case 'S' -> {
-                            palabras.get(i + comas).setS(1);
-                            b = 1;
-                        }
-                        case 'N' -> {
-                            palabras.get(i + comas).setN(1);
-                            b = 1;
-                        }
-                        default -> {
-                        }
-                    }
+                    b=1;
 
-                } else if (j - 1 >= 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i + comas < palabras.size()) {
+                } else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i + comas < palabras.size()) {
                     
-                    switch (palabras.get(i).getPalabra().get(j).chr) {
-                        case 'K' -> {
-                            palabras.get(i + comas).setK(1);
-                            b = 1;
-                        }
-                        case 'S' -> {
-                            palabras.get(i + comas).setS(1);
-                            b = 1;
-                        }
-                        case 'N' -> {
-                            palabras.get(i + comas).setN(1);
-                            b = 1;
-                        }
-                        default -> {
-                        }
-                    }
+                    b=1;
 
+                }
+                //que empieze de 0 hasta comas
+                else if (i == palabras.size()-1 && j!= 0) {
+                    if(palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+') b=1;
                 }
                 //revisa estilos
                 else if (j != 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || (palabras.get(i).getPalabra().get(j - 1).chr == '+' && c == 1))) {
 
-                    switch (palabras.get(i).getPalabra().get(j).chr) {
-                        case 'K' -> {
-                            palabras.get(i).setK(1);
-                            b = 1;
-                        }
-                        case 'S' -> {
-                            palabras.get(i).setS(1);
-                            b = 1;
-                        }
-                        case 'N' -> {
-                            palabras.get(i).setN(1);
-                            b = 1;
-                        }
-                        default -> {
-                        }
-                    }
+                    b=1;
                 }
                 //si no es estilo dibuja
                 if (b == 0) {
