@@ -1242,11 +1242,8 @@ public class PrimaryController {
                 if (comas == i) {
                     comas = 0;
                 }
-                
-                if (palabras.get(i).getPalabra().get(j).chr == '^') {
-                    b = 1;
-                } //revisa si es + y revisa si el mas esta despues de un ^
-                else if (palabras.get(i).getPalabra().get(j).chr == '+') {
+                //revisa si es + y revisa si el mas esta despues de un ^
+                if (palabras.get(i).getPalabra().get(j).chr == '+') {
                     for (int k = j; k >= 0 && k >= j - 4; k--) {
                         if (palabras.get(i).getPalabra().get(k).chr == '^') {
                             c = 1;
@@ -1355,31 +1352,12 @@ public class PrimaryController {
                     b = 1;
                 }
                 //contamos las comas
-                else if (palabras.get(i).getPalabra().get(j).chr == ',') {
+                else if (j!=0 && j!=1 && palabras.get(i).getPalabra().get(j).chr == ',' && (palabras.get(i).getPalabra().get(j-2).chr == '+' || palabras.get(i).getPalabra().get(j-2).chr == '^' || palabras.get(i).getPalabra().get(j-2).chr == ',')) {
                     comas += 2;
                     b = 1;
                 } 
-                else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
+                else if (j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+') && i + comas < palabras.size()) {
 
-                    switch (palabras.get(i).getPalabra().get(j).chr) {
-                        case 'K' -> {
-                            palabras.get(i + comas).setK(1);
-                            b = 1;
-                        }
-                        case 'S' -> {
-                            palabras.get(i + comas).setS(1);
-                            b = 1;
-                        }
-                        case 'N' -> {
-                            palabras.get(i + comas).setN(1);
-                            b = 1;
-                        }
-                        default -> {
-                        }
-                    }
-
-                } else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i + comas < palabras.size()) {
-                    
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
                             palabras.get(i + comas).setK(1);
