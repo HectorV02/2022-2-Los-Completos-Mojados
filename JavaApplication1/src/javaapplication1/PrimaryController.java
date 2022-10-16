@@ -1252,46 +1252,38 @@ public class PrimaryController {
                             c = 1;
                         }
                     }
-                    b = 1;
                 }
                 //contamos las comas
                 else if (palabras.get(i).getPalabra().get(j).chr == ',') {
                     comas += 2;
-                    b = 1;
                 } 
-                else if (j - 1 >= 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
+                else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
 
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
                             palabras.get(i + comas).setK(1);
-                            b = 1;
                         }
                         case 'S' -> {
                             palabras.get(i + comas).setS(1);
-                            b = 1;
                         }
                         case 'N' -> {
                             palabras.get(i + comas).setN(1);
-                            b = 1;
                         }
                         default -> {
                         }
                     }
 
-                } else if (j - 1 >= 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i + comas < palabras.size()) {
+                } else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i + comas < palabras.size()) {
                     
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
                             palabras.get(i + comas).setK(1);
-                            b = 1;
                         }
                         case 'S' -> {
                             palabras.get(i + comas).setS(1);
-                            b = 1;
                         }
                         case 'N' -> {
                             palabras.get(i + comas).setN(1);
-                            b = 1;
                         }
                         default -> {
                         }
@@ -1304,15 +1296,12 @@ public class PrimaryController {
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
                             palabras.get(i).setK(1);
-                            b = 1;
                         }
                         case 'S' -> {
                             palabras.get(i).setS(1);
-                            b = 1;
                         }
                         case 'N' -> {
                             palabras.get(i).setN(1);
-                            b = 1;
                         }
                         default -> {
                         }
@@ -1324,15 +1313,12 @@ public class PrimaryController {
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
                             palabras.get(i).setK(1);
-                            b = 1;
                         }
                         case 'S' -> {
                             palabras.get(i).setS(1);
-                            b = 1;
                         }
                         case 'N' -> {
                             palabras.get(i).setN(1);
-                            b = 1;
                         }
                         default -> {
                         }
@@ -1340,6 +1326,8 @@ public class PrimaryController {
                 }        
             }
         }
+        comas=0;
+        c=0;
         //Ingresamos los caracteres en cada letra
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
@@ -1371,7 +1359,7 @@ public class PrimaryController {
                     comas += 2;
                     b = 1;
                 } 
-                else if (j - 1 >= 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
+                else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
 
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
@@ -1390,7 +1378,7 @@ public class PrimaryController {
                         }
                     }
 
-                } else if (j - 1 >= 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i + comas < palabras.size()) {
+                } else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i + comas < palabras.size()) {
                     
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
