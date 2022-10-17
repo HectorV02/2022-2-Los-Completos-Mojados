@@ -26,39 +26,41 @@ public class PrimaryController {
 
     //Metodo donde se crean los paneles en que se trabajaran y llama a crear los caracteres
     @FXML
-    public void Empezar(int x, int y) {
-        //Panel estandar
-        Pane p = new Pane();
-        p.setMaxSize(100, 140);
-        p.setMinSize(100, 140);
-        p.setTranslateX(x);
-        p.setTranslateY(y);
+    public void Empezar(int x, int y, int tam) {
+        
         ArrayList<ArrayList> puntos = new ArrayList();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
                 //se crean puntos del Pane
                 ArrayList<Integer> xy = new ArrayList();
-                xy.add(20 * j);
-                xy.add(20 * i);
+                xy.add(tam * j);
+                xy.add(tam * i);
                 puntos.add(xy);
             }
         }
-        //Panel más pequeño
-        Pane smallP = new Pane();
-        smallP.setMaxSize(75, 140);
-        smallP.setMinSize(75, 140);
-        smallP.setTranslateX(x);
-        smallP.setTranslateY(y);
+        //Panel estandar
+        Pane p = new Pane();
+        p.setMaxSize(tam * 5, tam *7);
+        p.setMinSize(tam * 5, tam *7);
+        p.setTranslateX(x);
+        p.setTranslateY(y);
+        
         ArrayList<ArrayList> smallPuntos = new ArrayList();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
                 //se crean puntos del smallPane
                 ArrayList<Integer> xy = new ArrayList();
-                xy.add(15 * j);
-                xy.add(20 * i);
+                xy.add((int)(3*tam/4) * j);
+                xy.add(tam * i);
                 smallPuntos.add(xy);
             }
         }
+        //Panel más pequeño
+        Pane smallP = new Pane();
+        smallP.setMaxSize((int)(3*tam/4) * 5, tam *7);
+        smallP.setMinSize((int)(3*tam/4) * 5, tam *7);
+        smallP.setTranslateX(x);
+        smallP.setTranslateY(y);
         //se crean caractereas
         creaCaracteres(p, puntos, smallP, smallPuntos);
     }
@@ -1177,12 +1179,13 @@ public class PrimaryController {
         int b;
         int c = 0;
         int comas = 0;
+        int tam = 20;
         ArrayList<Palabra> palabras = new ArrayList();
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
         //solo si es primera vez en ejecucion crea caracteres
         if (bandera == 0) {
-            Empezar(x, y);
+            Empezar(x, y, tam);
             bandera++;
         }
         //creamos una palabra inicial
@@ -1285,7 +1288,7 @@ public class PrimaryController {
                     }
                 }
                 //que empieze de 0 hasta comas
-                else if (i == palabras.size()-1 && j!= 0) {
+                else if (i == palabras.size()-1 && j!= 0 && comas < palabras.size()) {
                     if(palabras.get(i).getPalabra().get(j - 1).chr == '^'){
                         switch (palabras.get(i).getPalabra().get(j).chr) {
                             case 'K' -> {
@@ -1434,12 +1437,12 @@ public class PrimaryController {
                         }
                         pane.getChildren().add(letras.get(13).getPanel());
                         x = 10;
-                        y += 140;
+                        y += tam*7;
                     }
                     //revisamos si se llego al tope y hacemos salto de linea de ser necesario
                     if (x > (canvas.getWidth() - 150)) {
                         x = 10;
-                        y += 140;
+                        y += tam*7;
                     }
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
