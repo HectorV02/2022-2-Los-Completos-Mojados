@@ -1244,14 +1244,14 @@ public class PrimaryController {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
                 
                 //revisa si es + y revisa si el mas esta despues de un ^
-                if (palabras.get(i).getPalabra().get(j).chr == '+' && i<palabras.size()-1) {
+                if (palabras.get(i).getPalabra().get(j).chr == '+') {
                     for (int k = j; k >= 0 && k >= j - 4; k--) {
                         if (palabras.get(i).getPalabra().get(k).chr == '^') {
                             c = 1;
                         }
                     }
                 }
-                //contamos las comas
+                /*//contamos las comas
                 else if (palabras.get(i).getPalabra().get(j).chr == ',') {
                     comas += 2;
                 } 
@@ -1303,7 +1303,8 @@ public class PrimaryController {
                             default -> {
                             }
                         }
-                    }else if(palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+'){
+                    }
+                    else if(palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+'){
                         switch (palabras.get(i).getPalabra().get(j).chr) {
                             case 'K' -> {
                                 palabras.get(0+comas).setK(1);
@@ -1318,7 +1319,7 @@ public class PrimaryController {
                             }
                         }
                     }
-                }
+                }*/
                 //revisa estilos
                 else if (j != 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || (palabras.get(i).getPalabra().get(j - 1).chr == '+' && c == 1))) {
 
