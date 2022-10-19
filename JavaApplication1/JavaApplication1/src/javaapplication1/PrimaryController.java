@@ -1180,7 +1180,6 @@ public class PrimaryController {
         int c = 0;
         int comas = 0;
         int tam = 20;
-        
         ArrayList<Palabra> palabras = new ArrayList();
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
@@ -1192,7 +1191,7 @@ public class PrimaryController {
         //creamos una palabra inicial
         Palabra palabra = new Palabra();
         palabras.add(palabra);
-        //estate y estate aux
+
         int stt;
         int sttx = 0;
 
@@ -1224,7 +1223,6 @@ public class PrimaryController {
                 }
 
                 palabras.get(palabras.size() - 1).addChar(letras.get(caracter));
-                palabras.get(palabras.size() - 1).setT(tam);
                 //revisa las comillas
                 //prepara las variables para escribir las comillas nuevas 
                 if (caracter == 2) {
@@ -1388,16 +1386,15 @@ public class PrimaryController {
                 }
                 //si no es estilo dibuja
                 if (b == 0) {
-                    
                     c = 0;
                     //revisamos si tenemos que subir el caracter
                     if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j - 1).chr == 'ó' || palabras.get(i).getPalabra().get(j - 1).chr == 'b' || palabras.get(i).getPalabra().get(j - 1).chr == 'o' || palabras.get(i).getPalabra().get(j - 1).chr == 'v' || palabras.get(i).getPalabra().get(j - 1).chr == 'w')) {
-                        palabras.get(i).getPalabra().get(j).subir(palabras.get(i).getT());
+                        palabras.get(i).getPalabra().get(j).subir();
                     }
 
                     //revisamos si estan activadas las cursivas
                     if (palabras.get(i).getK() == 1) {
-                        palabras.get(i).getPalabra().get(j).muevePuntos(palabras.get(i).getT());
+                        palabras.get(i).getPalabra().get(j).muevePuntos();
                     }
 
                     //dibujamos la letras
@@ -1452,11 +1449,11 @@ public class PrimaryController {
 
                     //regresamos letras a tipografia original
                     if (palabras.get(i).getK() == 1) {
-                        palabras.get(i).getPalabra().get(j).regresaPuntos(palabras.get(i).getT());
+                        palabras.get(i).getPalabra().get(j).regresaPuntos();
                     }
                     //bajamos la letra si se subio 
                     if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j - 1).chr == 'ó' || palabras.get(i).getPalabra().get(j - 1).chr == 'b' || palabras.get(i).getPalabra().get(j - 1).chr == 'o' || palabras.get(i).getPalabra().get(j - 1).chr == 'v' || palabras.get(i).getPalabra().get(j - 1).chr == 'w')) {
-                        palabras.get(i).getPalabra().get(j).bajar(palabras.get(i).getT());
+                        palabras.get(i).getPalabra().get(j).bajar();
                     }
                 }
             }
