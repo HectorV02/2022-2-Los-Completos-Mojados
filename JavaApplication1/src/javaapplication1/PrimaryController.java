@@ -27,7 +27,7 @@ public class PrimaryController {
     //Metodo donde se crean los paneles en que se trabajaran y llama a crear los caracteres
     @FXML
     public void Empezar(int x, int y, int tam) {
-        
+
         ArrayList<ArrayList> puntos = new ArrayList();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
@@ -40,25 +40,25 @@ public class PrimaryController {
         }
         //Panel estandar
         Pane p = new Pane();
-        p.setMaxSize(tam * 5, tam *7);
-        p.setMinSize(tam * 5, tam *7);
+        p.setMaxSize(tam * 5, tam * 7);
+        p.setMinSize(tam * 5, tam * 7);
         p.setTranslateX(x);
         p.setTranslateY(y);
-        
+
         ArrayList<ArrayList> smallPuntos = new ArrayList();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
                 //se crean puntos del smallPane
                 ArrayList<Integer> xy = new ArrayList();
-                xy.add((int)(3*tam/4) * j);
+                xy.add((int) (3 * tam / 4) * j);
                 xy.add(tam * i);
                 smallPuntos.add(xy);
             }
         }
         //Panel más pequeño
         Pane smallP = new Pane();
-        smallP.setMaxSize((int)(3*tam/4) * 5, tam *7);
-        smallP.setMinSize((int)(3*tam/4) * 5, tam *7);
+        smallP.setMaxSize((int) (3 * tam / 4) * 5, tam * 7);
+        smallP.setMinSize((int) (3 * tam / 4) * 5, tam * 7);
         smallP.setTranslateX(x);
         smallP.setTranslateY(y);
         //se crean caractereas
@@ -1177,10 +1177,9 @@ public class PrimaryController {
         int dcom = 0;
         int caracter;
         int b;
-        int c = 0;
         int comas = 0;
         int tam = 20;
-        int pos=-1;
+        int pos = -1;
         ArrayList<Palabra> palabras = new ArrayList();
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
@@ -1192,37 +1191,30 @@ public class PrimaryController {
         //creamos una palabra inicial
         Palabra palabra = new Palabra();
         palabras.add(palabra);
-
         int stt;
         int sttx = 0;
-
         //recorremos toda la frase identificando las palabras 
         for (int i = 0; i < frase.length(); i++) {
             caracter = (int) frase.charAt(i) - 32;
-
             if ((0 <= caracter && caracter <= 250 && letras.get(caracter).lineas != -1)) {
                 if ((int) frase.charAt(i) == 34 && dcom == 1) {
                     caracter = 94;
                     dcom = 0;
                 }
-
                 if ((int) frase.charAt(i) == 39 && com == 1) {
                     caracter = 95;
                     com = 0;
                 }
-
                 if (frase.charAt(i) == ' ') {
                     stt = 1;
                 } else {
                     stt = 0;
                 }
-
                 if (stt != sttx) {
                     palabra = new Palabra();
                     palabras.add(palabra);
                     sttx = stt;
                 }
-
                 palabras.get(palabras.size() - 1).addChar(letras.get(caracter));
                 //revisa las comillas
                 //prepara las variables para escribir las comillas nuevas 
@@ -1243,15 +1235,14 @@ public class PrimaryController {
         }
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
+                //revisa si caracter es acento circunflejo
                 if (palabras.get(i).getPalabra().get(j).chr == '^') {
-                    pos=j;
-                }
-                //contamos las comas
-                else if (palabras.get(i).getPalabra().get(j).chr == ',' && i==palabras.size()-1 && pos>0) {
+                    pos = j;
+                } //contamos las comas
+                else if (palabras.get(i).getPalabra().get(j).chr == ',' && i == palabras.size() - 1 && pos > 0) {
                     comas += 2;
-                }
+                } //revisa estilos combinados hacia atras
                 else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
-
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
                             palabras.get(comas).setK(1);
@@ -1266,9 +1257,8 @@ public class PrimaryController {
                         }
                     }
 
-                }
-                //revisa estilos
-                else if (pos==0 && j>0 && (palabras.get(i).getPalabra().get(j-1).chr=='^' || palabras.get(i).getPalabra().get(j-1).chr=='+')) {
+                } //revisa estilos hacia adelante
+                else if (pos == 0 && j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == '+')) {
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
                             palabras.get(i).setK(1);
@@ -1284,13 +1274,12 @@ public class PrimaryController {
                     }
                 }
             }
-            pos=-1;
+            pos = -1;
         }
-        pos=-1;
+        pos = -1;
         //Ingresamos los caracteres en cada letra
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
-                
                 b = 0;
                 Pane pp = new Pane();
                 pp.setMaxSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), 140);
@@ -1299,41 +1288,37 @@ public class PrimaryController {
                 pp.setTranslateY(y);
                 //revisa si caracter es acento circunflejo
                 if (palabras.get(i).getPalabra().get(j).chr == '^') {
-                    pos=j;
-                    b=1;
-                }
-                //contamos las comas
-                else if (palabras.get(i).getPalabra().get(j).chr == ',' && i==palabras.size()-1 && pos>0) {
-                    b=1;
-                }
+                    pos = j;
+                    b = 1;
+                } //contamos las comas
+                else if (palabras.get(i).getPalabra().get(j).chr == ',' && i == palabras.size() - 1 && pos > 0) {
+                    b = 1;
+                } //revisa estilos combinados hacia atras
                 else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
-
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
-                            b=1;
+                            b = 1;
                         }
                         case 'S' -> {
-                            b=1;
+                            b = 1;
                         }
                         case 'N' -> {
-                            b=1;
+                            b = 1;
                         }
                         default -> {
                         }
                     }
-
-                }
-                //revisa estilos
-                else if (pos==0 && j>0 && (palabras.get(i).getPalabra().get(j-1).chr=='^' || palabras.get(i).getPalabra().get(j-1).chr=='+')) {
+                } //revisa estilos hacia adelante
+                else if (pos == 0 && j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == '+')) {
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
-                            b=1;
+                            b = 1;
                         }
                         case 'S' -> {
-                            b=1;
+                            b = 1;
                         }
                         case 'N' -> {
-                            b=1;
+                            b = 1;
                         }
                         default -> {
                         }
@@ -1341,7 +1326,6 @@ public class PrimaryController {
                 }
                 //si no es estilo dibuja
                 if (b == 0) {
-                    c = 0;
                     //revisamos si tenemos que subir el caracter
                     if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j - 1).chr == 'ó' || palabras.get(i).getPalabra().get(j - 1).chr == 'b' || palabras.get(i).getPalabra().get(j - 1).chr == 'o' || palabras.get(i).getPalabra().get(j - 1).chr == 'v' || palabras.get(i).getPalabra().get(j - 1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).subir();
@@ -1392,12 +1376,12 @@ public class PrimaryController {
                         }
                         pane.getChildren().add(letras.get(13).getPanel());
                         x = 10;
-                        y += tam*7;
+                        y += tam * 7;
                     }
                     //revisamos si se llego al tope y hacemos salto de linea de ser necesario
                     if (x > (canvas.getWidth() - 150)) {
                         x = 10;
-                        y += tam*7;
+                        y += tam * 7;
                     }
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
@@ -1412,7 +1396,7 @@ public class PrimaryController {
                     }
                 }
             }
-            pos=-1;
+            pos = -1;
         }
         //finalente colocamos el panel con toda las letras
         canvas.setGraphic(pane);
