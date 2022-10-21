@@ -1180,6 +1180,7 @@ public class PrimaryController {
         int c = 0;
         int comas = 0;
         int tam = 20;
+        int pos=-1;
         ArrayList<Palabra> palabras = new ArrayList();
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
@@ -1242,87 +1243,32 @@ public class PrimaryController {
         }
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
-                
-                //revisa si es + y revisa si el mas esta despues de un ^
-                if (palabras.get(i).getPalabra().get(j).chr == '+') {
-                    for (int k = j; k >= 0 && k >= j - 4; k--) {
-                        if (palabras.get(i).getPalabra().get(k).chr == '^') {
-                            c = 1;
-                        }
-                    }
+                if (palabras.get(i).getPalabra().get(j).chr == '^') {
+                    pos=j;
                 }
-                /*//contamos las comas
-                else if (palabras.get(i).getPalabra().get(j).chr == ',') {
+                //contamos las comas
+                else if (palabras.get(i).getPalabra().get(j).chr == ',' && i==palabras.size()-1 && pos>0) {
                     comas += 2;
-                } 
-                else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
-
-                    switch (palabras.get(i).getPalabra().get(j).chr) {
-                        case 'K' -> {
-                            palabras.get(i + comas).setK(1);
-                        }
-                        case 'S' -> {
-                            palabras.get(i + comas).setS(1);
-                        }
-                        case 'N' -> {
-                            palabras.get(i + comas).setN(1);
-                        }
-                        default -> {
-                        }
-                    }
-
-                } else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i<palabras.size()-1 && i + comas < palabras.size()) {
-                    
-                    switch (palabras.get(i).getPalabra().get(j).chr) {
-                        case 'K' -> {
-                            palabras.get(i + comas).setK(1);
-                        }
-                        case 'S' -> {
-                            palabras.get(i + comas).setS(1);
-                        }
-                        case 'N' -> {
-                            palabras.get(i + comas).setN(1);
-                        }
-                        default -> {
-                        }
-                    }
                 }
-                //que empieze de 0 hasta comas
-                else if (i == palabras.size()-1 && j!= 0 && comas < palabras.size()) {
-                    if(palabras.get(i).getPalabra().get(j - 1).chr == '^'){
-                        switch (palabras.get(i).getPalabra().get(j).chr) {
-                            case 'K' -> {
-                                palabras.get(0).setK(1);
-                            }
-                            case 'S' -> {
-                                palabras.get(0).setS(1);
-                            }
-                            case 'N' -> {
-                                palabras.get(0).setN(1);
-                            }
-                            default -> {
-                            }
-                        }
-                    }
-                    else if(palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+'){
-                        switch (palabras.get(i).getPalabra().get(j).chr) {
-                            case 'K' -> {
-                                palabras.get(0+comas).setK(1);
-                            }
-                            case 'S' -> {
-                                palabras.get(0+comas).setS(1);
-                            }
-                            case 'N' -> {
-                                palabras.get(0+comas).setN(1);
-                            }
-                            default -> {
-                            }
-                        }
-                    }
-                }*/
-                //revisa estilos
-                else if (j != 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || (palabras.get(i).getPalabra().get(j - 1).chr == '+' && c == 1))) {
+                else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
 
+                    switch (palabras.get(i).getPalabra().get(j).chr) {
+                        case 'K' -> {
+                            palabras.get(comas).setK(1);
+                        }
+                        case 'S' -> {
+                            palabras.get(comas).setS(1);
+                        }
+                        case 'N' -> {
+                            palabras.get(comas).setN(1);
+                        }
+                        default -> {
+                        }
+                    }
+
+                }
+                //revisa estilos
+                else if (pos==0 && j>0 && (palabras.get(i).getPalabra().get(j-1).chr=='^' || palabras.get(i).getPalabra().get(j-1).chr=='+')) {
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
                             palabras.get(i).setK(1);
@@ -1336,10 +1282,11 @@ public class PrimaryController {
                         default -> {
                         }
                     }
-                }        
+                }
             }
-            comas=0;
+            pos=-1;
         }
+        pos=-1;
         //Ingresamos los caracteres en cada letra
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
@@ -1352,38 +1299,45 @@ public class PrimaryController {
                 pp.setTranslateY(y);
                 //revisa si caracter es acento circunflejo
                 if (palabras.get(i).getPalabra().get(j).chr == '^') {
-                    b = 1;
-                } //revisa si es + y revisa si el mas esta despues de un ^
-                else if (palabras.get(i).getPalabra().get(j).chr == '+') {
-                    for (int k = j; k >= 0 && k >= j - 4; k--) {
-                        if (palabras.get(i).getPalabra().get(k).chr == '^') {
-                            c = 1;
-                        }
-                    }
-                    b = 1;
+                    pos=j;
+                    b=1;
                 }
                 //contamos las comas
-                else if (palabras.get(i).getPalabra().get(j).chr == ',') {
-                    comas += 2;
-                    b = 1;
-                } 
-                else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == ',' && i + comas < palabras.size()) {
-
+                else if (palabras.get(i).getPalabra().get(j).chr == ',' && i==palabras.size()-1 && pos>0) {
                     b=1;
-
-                } else if (j > 0 && palabras.get(i).getPalabra().get(j - 1).chr == '+' && i + comas < palabras.size()) {
-                    
-                    b=1;
-
                 }
-                //que empieze de 0 hasta comas
-                else if (i == palabras.size()-1 && j!= 0) {
-                    if(palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+') b=1;
+                else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
+
+                    switch (palabras.get(i).getPalabra().get(j).chr) {
+                        case 'K' -> {
+                            b=1;
+                        }
+                        case 'S' -> {
+                            b=1;
+                        }
+                        case 'N' -> {
+                            b=1;
+                        }
+                        default -> {
+                        }
+                    }
+
                 }
                 //revisa estilos
-                else if (j != 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || (palabras.get(i).getPalabra().get(j - 1).chr == '+' && c == 1))) {
-
-                    b=1;
+                else if (pos==0 && j>0 && (palabras.get(i).getPalabra().get(j-1).chr=='^' || palabras.get(i).getPalabra().get(j-1).chr=='+')) {
+                    switch (palabras.get(i).getPalabra().get(j).chr) {
+                        case 'K' -> {
+                            b=1;
+                        }
+                        case 'S' -> {
+                            b=1;
+                        }
+                        case 'N' -> {
+                            b=1;
+                        }
+                        default -> {
+                        }
+                    }
                 }
                 //si no es estilo dibuja
                 if (b == 0) {
@@ -1458,6 +1412,7 @@ public class PrimaryController {
                     }
                 }
             }
+            pos=-1;
         }
         //finalente colocamos el panel con toda las letras
         canvas.setGraphic(pane);
