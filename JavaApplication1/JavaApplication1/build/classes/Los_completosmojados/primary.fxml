@@ -9,21 +9,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication1.PrimaryController">
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#dibuja" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication1.PrimaryController">
    <children>
-      <Label fx:id="canvas" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="550" prefWidth="600" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+      <Label fx:id="canvas" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" onDragOver="#dibuja" prefHeight="550" prefWidth="600" textAlignment="CENTER" VBox.vgrow="ALWAYS">
          <VBox.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="30.0" />
          </VBox.margin></Label>
-      <TextField id="cuadroTexto" fx:id="cuadroTexto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#dibuja" prefHeight="40.0" prefWidth="300.0">
+      <TextField id="cuadroTexto" fx:id="cuadroTexto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#dibuja" prefHeight="25.0" prefWidth="300.0">
          <VBox.margin>
             <Insets left="50.0" right="50.0" />
          </VBox.margin>
-         <font>
-            <Font size="24.0" />
-         </font>
       </TextField>
       <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0">
          <children>
