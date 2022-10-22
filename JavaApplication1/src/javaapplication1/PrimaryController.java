@@ -204,11 +204,131 @@ public class PrimaryController {
         ch2y = new ArrayList(Arrays.asList(smallPuntos.get(27).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(), subSP, '.');
         letras.add(c);
-
+        
         //padding
-        for (int i2 = 0; i2 < 11; i2++) {
-            letras.add(empty);
-        }
+        letras.add(empty);
+        
+        //cero
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(3).get(0), smallPuntos.get(23).get(0),smallPuntos.get(3).get(0), smallPuntos.get(19).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(3).get(1), smallPuntos.get(23).get(1),smallPuntos.get(3).get(1), smallPuntos.get(19).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(23).get(0), smallPuntos.get(33).get(0),smallPuntos.get(19).get(0), smallPuntos.get(33).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(23).get(1), smallPuntos.get(33).get(1),smallPuntos.get(19).get(1), smallPuntos.get(33).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(4).get(0), smallPuntos.get(29).get(0),smallPuntos.get(2).get(0), smallPuntos.get(25).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(4).get(1), smallPuntos.get(29).get(1),smallPuntos.get(2).get(1), smallPuntos.get(25).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(11).get(0), smallPuntos.get(34).get(0),smallPuntos.get(7).get(0), smallPuntos.get(32).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(11).get(1), smallPuntos.get(34).get(1),smallPuntos.get(7).get(1), smallPuntos.get(32).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'0');
+        letras.add(c);
+        
+        //uno
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(13).get(0), smallPuntos.get(3).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(13).get(1), smallPuntos.get(3).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(3).get(0), smallPuntos.get(33).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(3).get(1), smallPuntos.get(33).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(13).get(0), smallPuntos.get(3).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(13).get(1), smallPuntos.get(3).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(3).get(0), smallPuntos.get(33).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(3).get(1), smallPuntos.get(33).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'1');
+        letras.add(c);
+        
+        //dos
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(13).get(0), smallPuntos.get(3).get(0),smallPuntos.get(17).get(0), smallPuntos.get(31).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(13).get(1), smallPuntos.get(3).get(1),smallPuntos.get(17).get(1), smallPuntos.get(31).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(3).get(0), smallPuntos.get(17).get(0),smallPuntos.get(31).get(0), smallPuntos.get(35).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(3).get(1), smallPuntos.get(17).get(1),smallPuntos.get(31).get(1), smallPuntos.get(35).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(7).get(0), smallPuntos.get(4).get(0),smallPuntos.get(23).get(0), smallPuntos.get(31).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(7).get(1), smallPuntos.get(4).get(1),smallPuntos.get(23).get(1), smallPuntos.get(31).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(2).get(0), smallPuntos.get(11).get(0),smallPuntos.get(25).get(0), smallPuntos.get(35).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(2).get(1), smallPuntos.get(11).get(1),smallPuntos.get(25).get(1), smallPuntos.get(35).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'2');
+        letras.add(c);
+        
+        //tres
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(8).get(0), smallPuntos.get(11).get(0),smallPuntos.get(15).get(0), smallPuntos.get(23).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(8).get(1), smallPuntos.get(11).get(1),smallPuntos.get(15).get(1), smallPuntos.get(23).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(11).get(0), smallPuntos.get(15).get(0),smallPuntos.get(23).get(0), smallPuntos.get(26).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(11).get(1), smallPuntos.get(15).get(1),smallPuntos.get(23).get(1), smallPuntos.get(26).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(2).get(0), smallPuntos.get(17).get(0),smallPuntos.get(16).get(0), smallPuntos.get(35).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(2).get(1), smallPuntos.get(17).get(1),smallPuntos.get(16).get(1), smallPuntos.get(35).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(5).get(0), smallPuntos.get(16).get(0),smallPuntos.get(17).get(0), smallPuntos.get(32).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(5).get(1), smallPuntos.get(16).get(1),smallPuntos.get(17).get(1), smallPuntos.get(32).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'3');
+        letras.add(c);
+        
+        //cuatro
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(1).get(0), smallPuntos.get(13).get(0),smallPuntos.get(4).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(1).get(1), smallPuntos.get(13).get(1),smallPuntos.get(4).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(13).get(0), smallPuntos.get(16).get(0),smallPuntos.get(34).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(13).get(1), smallPuntos.get(16).get(1),smallPuntos.get(34).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(1).get(0), smallPuntos.get(13).get(0),smallPuntos.get(4).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(1).get(1), smallPuntos.get(13).get(1),smallPuntos.get(4).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(13).get(0), smallPuntos.get(16).get(0),smallPuntos.get(34).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(13).get(1), smallPuntos.get(16).get(1),smallPuntos.get(34).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'4');
+        letras.add(c);
+        
+        //cinco
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(5).get(0), smallPuntos.get(2).get(0),smallPuntos.get(14).get(0), smallPuntos.get(23).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(5).get(1), smallPuntos.get(2).get(1),smallPuntos.get(14).get(1), smallPuntos.get(23).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(2).get(0), smallPuntos.get(14).get(0),smallPuntos.get(23).get(0), smallPuntos.get(32).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(2).get(1), smallPuntos.get(14).get(1),smallPuntos.get(23).get(1), smallPuntos.get(32).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(5).get(0), smallPuntos.get(2).get(0),smallPuntos.get(16).get(0), smallPuntos.get(29).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(5).get(1), smallPuntos.get(2).get(1),smallPuntos.get(16).get(1), smallPuntos.get(29).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(2).get(0), smallPuntos.get(14).get(0),smallPuntos.get(17).get(0), smallPuntos.get(34).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(2).get(1), smallPuntos.get(14).get(1),smallPuntos.get(17).get(1), smallPuntos.get(34).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'5');
+        letras.add(c);
+        
+        //seis
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(11).get(0), smallPuntos.get(19).get(0),smallPuntos.get(33).get(0), smallPuntos.get(23).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(11).get(1), smallPuntos.get(19).get(1),smallPuntos.get(33).get(1), smallPuntos.get(23).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(19).get(0), smallPuntos.get(33).get(0),smallPuntos.get(23).get(0), smallPuntos.get(19).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(19).get(1), smallPuntos.get(33).get(1),smallPuntos.get(23).get(1), smallPuntos.get(19).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(4).get(0), smallPuntos.get(25).get(0),smallPuntos.get(34).get(0), smallPuntos.get(17).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(4).get(1), smallPuntos.get(25).get(1),smallPuntos.get(34).get(1), smallPuntos.get(17).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(1).get(0), smallPuntos.get(32).get(0),smallPuntos.get(29).get(0), smallPuntos.get(13).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(1).get(1), smallPuntos.get(32).get(1),smallPuntos.get(29).get(1), smallPuntos.get(13).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'6');
+        letras.add(c);
+        
+        //siete
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(2).get(0), smallPuntos.get(5).get(0),smallPuntos.get(14).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(2).get(1), smallPuntos.get(5).get(1),smallPuntos.get(14).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(5).get(0), smallPuntos.get(32).get(0),smallPuntos.get(17).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(5).get(1), smallPuntos.get(32).get(1),smallPuntos.get(17).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(2).get(0), smallPuntos.get(5).get(0),smallPuntos.get(14).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(2).get(1), smallPuntos.get(5).get(1),smallPuntos.get(14).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(5).get(0), smallPuntos.get(32).get(0),smallPuntos.get(17).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(5).get(1), smallPuntos.get(32).get(1),smallPuntos.get(17).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'7');
+        letras.add(c);
+        
+        //ocho
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(13).get(0), smallPuntos.get(13).get(0),smallPuntos.get(16).get(0), smallPuntos.get(22).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(13).get(1), smallPuntos.get(13).get(1),smallPuntos.get(16).get(1), smallPuntos.get(22).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(16).get(0), smallPuntos.get(22).get(0),smallPuntos.get(19).get(0), smallPuntos.get(19).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(16).get(1), smallPuntos.get(22).get(1),smallPuntos.get(19).get(1), smallPuntos.get(19).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(1).get(0), smallPuntos.get(19).get(0),smallPuntos.get(22).get(0), smallPuntos.get(34).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(1).get(1), smallPuntos.get(19).get(1),smallPuntos.get(22).get(1), smallPuntos.get(34).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(4).get(0), smallPuntos.get(16).get(0),smallPuntos.get(13).get(0), smallPuntos.get(31).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(4).get(1), smallPuntos.get(16).get(1),smallPuntos.get(13).get(1), smallPuntos.get(31).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'8');
+        letras.add(c);
+        
+        //nueve
+        ix = new ArrayList(Arrays.asList(smallPuntos.get(14).get(0), smallPuntos.get(14).get(0),smallPuntos.get(17).get(0)));
+        iy = new ArrayList(Arrays.asList(smallPuntos.get(14).get(1), smallPuntos.get(14).get(1),smallPuntos.get(17).get(1)));
+        fx = new ArrayList(Arrays.asList(smallPuntos.get(17).get(0), smallPuntos.get(17).get(0),smallPuntos.get(32).get(0)));
+        fy = new ArrayList(Arrays.asList(smallPuntos.get(17).get(1), smallPuntos.get(17).get(1),smallPuntos.get(32).get(1)));
+        ch1x = new ArrayList(Arrays.asList(smallPuntos.get(2).get(0), smallPuntos.get(20).get(0),smallPuntos.get(23).get(0)));
+        ch1y = new ArrayList(Arrays.asList(smallPuntos.get(2).get(1), smallPuntos.get(20).get(1),smallPuntos.get(23).get(1)));
+        ch2x = new ArrayList(Arrays.asList(smallPuntos.get(5).get(0), smallPuntos.get(23).get(0),smallPuntos.get(34).get(0)));
+        ch2y = new ArrayList(Arrays.asList(smallPuntos.get(5).get(1), smallPuntos.get(23).get(1),smallPuntos.get(34).get(1)));
+        c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, smallP, ix.size(),subSP,'9');
+        letras.add(c);
+
+        
 
         //dos puntos
         ix = new ArrayList(Arrays.asList(smallPuntos.get(33).get(0), smallPuntos.get(21).get(0)));
@@ -1188,6 +1308,8 @@ public class PrimaryController {
             Empezar(x, y, tam);
             bandera++;
         }
+        
+        
         //creamos una palabra inicial
         Palabra palabra = new Palabra();
         palabras.add(palabra);
