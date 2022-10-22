@@ -1295,7 +1295,9 @@ public class PrimaryController {
                 } //contamos las comas
                 else if (palabras.get(i).getPalabra().get(j).chr == ',' && i == palabras.size() - 1 && pos > 0) {
                     b = 1;
-                } //revisa estilos combinados hacia atras
+                }else if (palabras.get(i).getPalabra().get(j).chr == '+') {
+                    b = 1;
+                }  //revisa estilos combinados hacia atras
                 else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
                     switch (palabras.get(i).getPalabra().get(j).chr) {
                         case 'K' -> {
