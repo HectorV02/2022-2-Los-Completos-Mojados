@@ -209,8 +209,35 @@ public class Caracter {
         lineas = a.lineas;
         
     }
+    public void mover(int max, int size, int s){
+        for (int i = 0; i < lineas; i++) {
+            Iy.set(i, Iy.get(i) + (max - size)*5);
+            Fy.set(i, Fy.get(i) + (max - size)*5);
+            ch1y.set(i, ch1y.get(i) + (max - size)*5);
+            ch2y.set(i, ch2y.get(i) + (max - size)*5);
+        }
+        if (s == 1) {
+            subrayado.set(1, subrayado.get(1)+ (max - size)*6);
+            subrayado.set(3, subrayado.get(3)+ (max - size)*6);
+            subrayado.set(5, subrayado.get(5)+ (max - size)*6);
+            subrayado.set(7, subrayado.get(7)+ (max - size)*6);
+        }
+    }
     
-    
+    public void regresar(int max, int size, int s){
+        for (int i = 0; i < lineas; i++) {
+            Iy.set(i, Iy.get(i) - (max - size)*5);
+            Fy.set(i, Fy.get(i) - (max - size)*5);
+            ch1y.set(i, ch1y.get(i) - (max - size)*5);
+            ch2y.set(i, ch2y.get(i) - (max - size)*5);
+        }
+        if (s == 1) {
+            subrayado.set(1, subrayado.get(1)- (max - size)*6);
+            subrayado.set(3, subrayado.get(3)- (max - size)*6);
+            subrayado.set(5, subrayado.get(5)- (max - size)*6);
+            subrayado.set(7, subrayado.get(7)- (max - size)*6);
+        }
+    }
     
     public Pane getPanel() {
         return root;

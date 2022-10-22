@@ -21,7 +21,6 @@ public class PrimaryController {
     public ColorPicker colores;
     @FXML
     public CheckBox muestraPuntos;
-    static int bandera;
 
     //Metodo donde se crean los paneles en que se trabajaran y llama a crear los caracteres
     @FXML
@@ -1302,6 +1301,7 @@ public class PrimaryController {
         int tamanio2;
         int pos = -1;
         int max = 0;
+        int salto = 0;
         ArrayList<Palabra> palabras = new ArrayList();
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
@@ -1359,7 +1359,7 @@ public class PrimaryController {
                 alert.showAndWait();
             }
         }
-        if (palabras.size() > 0 && palabras.get(0).getPalabra().size() >0 && palabras.get(0).getPalabra().get(0).chr == ' ') {
+        if (palabras.size() > 0 && palabras.get(0).getPalabra().size() > 0 && palabras.get(0).getPalabra().get(0).chr == ' ') {
             comas = 1;
         }
         for (int i = 0; i < palabras.size(); i++) {
@@ -1435,7 +1435,7 @@ public class PrimaryController {
         }
         pos = -1;
         //Ingresamos los caracteres en cada letra
-        letras = Empezar(x, y, palabras.get(0).getT()); 
+        letras = Empezar(x, y, palabras.get(0).getT());
         for (int i = 0; i < palabras.size(); i++) {
             if (i > 0 && palabras.get(i).getT() != palabras.get(i - 1).getT()) {
                 letras = Empezar(x, y, palabras.get(i).getT());
@@ -1455,6 +1455,12 @@ public class PrimaryController {
                 pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
+
+
+                if (max > palabras.get(i).getT()) {
+                    palabras.get(i).getPalabra().get(j).mover(max, palabras.get(i).getT(), palabras.get(i).getS());
+                }
+
                 //revisa si caracter es acento circunflejo
                 if (palabras.get(i).getPalabra().get(j).chr == '^') {
                     pos = j;
@@ -1546,16 +1552,33 @@ public class PrimaryController {
                         sl.setTranslateX(x);
                         sl.setTranslateY(y);
                         letras.get(13).root = sl;
+
+                        if (max > palabras.get(i).getT()) {
+                            letras.get(13).mover(max, palabras.get(i).getT(), palabras.get(i).getS());
+                        }
+
                         letras.get(13).dibujar(colores.getValue());
+
                         if (muestraPuntos.isSelected()) {
                             letras.get(13).getCheckpoints(palabras.get(i).getS());
                         }
                         if (palabras.get(i).getN() == 1) {
                             letras.get(13).negritas(colores.getValue(), 0);
                         }
+
                         pane.getChildren().add(letras.get(13).getPanel());
+
+                        if (max > palabras.get(i).getT()) {
+                            letras.get(13).regresar(max, palabras.get(i).getT(), palabras.get(i).getS());
+                        }
+
                         x = 10;
                         y += max * 7;
+
+                        if (max > palabras.get(i).getT()) {
+                            palabras.get(i).getPalabra().get(j).regresar(max, palabras.get(i).getT(), palabras.get(i).getS());
+                        }
+
                         max = 0;
                     }
                     //revisamos si se llego al tope y hacemos salto de linea de ser necesario
@@ -1567,6 +1590,10 @@ public class PrimaryController {
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
 
+                    if (max > palabras.get(i).getT()) {
+                        palabras.get(i).getPalabra().get(j).regresar(max, palabras.get(i).getT(), palabras.get(i).getS());
+                    }
+                    
                     //regresamos letras a tipografia original
                     if (palabras.get(i).getK() == 1) {
                         palabras.get(i).getPalabra().get(j).regresaPuntos(palabras.get(i).getT());
