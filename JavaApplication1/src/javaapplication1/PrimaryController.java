@@ -1429,6 +1429,7 @@ public class PrimaryController {
         }
         pos = -1;
         //Ingresamos los caracteres en cada letra
+        letras = Empezar(x, y, palabras.get(0).getT());
         for (int i = 0; i < palabras.size(); i++) {
             if (i > 0 && palabras.get(i).getT() != palabras.get(i - 1).getT()) {
                 letras = Empezar(x, y, palabras.get(i).getT());
