@@ -1316,6 +1316,9 @@ public class PrimaryController {
         int stt;
         int sttx = 0;
         //recorremos toda la frase identificando las palabras 
+        if (frase.charAt(0) == ' ') {
+            sttx = 1;
+        }
         for (int i = 0; i < frase.length(); i++) {
             caracter = (int) frase.charAt(i) - 32;
             if ((0 <= caracter && caracter <= 250 && letras.get(caracter).lineas != -1)) {
@@ -1355,6 +1358,9 @@ public class PrimaryController {
                 alert.setContentText("Caracter invalido");
                 alert.showAndWait();
             }
+        }
+        if (palabras.size() > 0 && palabras.get(0).getPalabra().get(0).chr == ' ') {
+            comas = 1;
         }
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
@@ -1429,15 +1435,16 @@ public class PrimaryController {
         }
         pos = -1;
         //Ingresamos los caracteres en cada letra
-        letras = Empezar(x, y, palabras.get(0).getT());
         for (int i = 0; i < palabras.size(); i++) {
             if (i > 0 && palabras.get(i).getT() != palabras.get(i - 1).getT()) {
                 letras = Empezar(x, y, palabras.get(i).getT());
             }
-            if (palabras.get(i).getT() > max) {
-                max = palabras.get(i).getT();
-            }
+
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
+
+                if (palabras.get(i).getT() > max) {
+                    max = palabras.get(i).getT();
+                }
                 b = 0;
                 Pane pp = new Pane();
 
