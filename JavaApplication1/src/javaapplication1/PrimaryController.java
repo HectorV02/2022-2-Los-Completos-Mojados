@@ -1332,7 +1332,7 @@ public class PrimaryController {
                 } else {
                     stt = 0;
                 }
-                if (stt != sttx) {
+                if (stt != sttx && i>0) {
                     palabra = new Palabra();
                     palabras.add(palabra);
                     sttx = stt;
@@ -1446,6 +1446,11 @@ public class PrimaryController {
                 pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
+                if(palabras.get(i).getS() == 1 && i>1 && palabras.get(i-2).getS() == 1 && j==0){
+                    for (int k = 0; k < palabras.get(i-1).getPalabra().size(); k++) {
+                        palabras.get(i-1).getPalabra().get(k).subrayado(colores.getValue());
+                    }
+                }
                 //revisa si caracter es acento circunflejo
                 if (palabras.get(i).getPalabra().get(j).chr == '^') {
                     pos = j;
@@ -1529,7 +1534,7 @@ public class PrimaryController {
                     x += palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth();
 
                     //revisamos si se llego al tope y si la palabra continua
-                    if (x > (canvas.getWidth() - 200) && j + 1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr != ' ') {
+                    if (x > (canvas.getWidth() - 200) && j + 1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr != ' ' && palabras.get(i).getPalabra().get(j+1).chr!='^') {
                         //colocamos un guion y hacemos un salto de linea
                         Pane sl = new Pane();
                         sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
