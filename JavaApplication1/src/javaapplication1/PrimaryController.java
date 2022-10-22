@@ -1316,7 +1316,7 @@ public class PrimaryController {
         int stt;
         int sttx = 0;
         //recorremos toda la frase identificando las palabras 
-        if (frase.charAt(0) == ' ') {
+        if (frase.length() > 0 && frase.charAt(0) == ' ') {
             sttx = 1;
         }
         for (int i = 0; i < frase.length(); i++) {
@@ -1359,7 +1359,7 @@ public class PrimaryController {
                 alert.showAndWait();
             }
         }
-        if (palabras.size() > 0 && palabras.get(0).getPalabra().get(0).chr == ' ') {
+        if (palabras.size() > 0 && palabras.get(0).getPalabra().size() >0 && palabras.get(0).getPalabra().get(0).chr == ' ') {
             comas = 1;
         }
         for (int i = 0; i < palabras.size(); i++) {

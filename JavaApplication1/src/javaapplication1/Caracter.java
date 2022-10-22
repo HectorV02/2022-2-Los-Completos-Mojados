@@ -210,6 +210,8 @@ public class Caracter {
         
     }
     
+    
+    
     public Pane getPanel() {
         return root;
     }
