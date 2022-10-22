@@ -1301,6 +1301,7 @@ public class PrimaryController {
         int tamanio1;
         int tamanio2;
         int pos = -1;
+        int max = 0;
         ArrayList<Palabra> palabras = new ArrayList();
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
@@ -1424,6 +1425,9 @@ public class PrimaryController {
             if (i > 0 && palabras.get(i).getT() != palabras.get(i-1).getT()) {
                 letras = Empezar(x, y, palabras.get(i).getT());
             }
+            if (palabras.get(i).getT() > max) {
+                max = palabras.get(i).getT();
+            }
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
                 b = 0;
                 Pane pp = new Pane();
@@ -1532,12 +1536,14 @@ public class PrimaryController {
                         }
                         pane.getChildren().add(letras.get(13).getPanel());
                         x = 10;
-                        y += tam * 7;
+                        y += max * 7;
+                        max = 0;
                     }
                     //revisamos si se llego al tope y hacemos salto de linea de ser necesario
                     if (x > (canvas.getWidth() - 150)) {
                         x = 10;
-                        y += tam * 7;
+                        y += max * 7;
+                        max = 0;
                     }
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
