@@ -22,11 +22,10 @@ public class PrimaryController {
     @FXML
     public CheckBox muestraPuntos;
     static int bandera;
-    static ArrayList<Caracter> letras;
 
     //Metodo donde se crean los paneles en que se trabajaran y llama a crear los caracteres
     @FXML
-    public void Empezar(int x, int y, int tam) {
+    public ArrayList<Caracter> Empezar(int x, int y, int tam) {
 
         ArrayList<ArrayList> puntos = new ArrayList();
         for (int i = 0; i < 8; i++) {
@@ -62,12 +61,13 @@ public class PrimaryController {
         smallP.setTranslateX(x);
         smallP.setTranslateY(y);
         //se crean caractereas
-        creaCaracteres(p, puntos, smallP, smallPuntos);
+        return creaCaracteres(p, puntos, smallP, smallPuntos);
     }
 
     //Metodo que crea caracteres y los guarda en una lista de acuerdo al codigo ASCII, partiendo del 32(espacio)
-    public static void creaCaracteres(Pane p, ArrayList<ArrayList> puntos, Pane smallP, ArrayList<ArrayList> smallPuntos) {
+    public ArrayList<Caracter> creaCaracteres(Pane p, ArrayList<ArrayList> puntos, Pane smallP, ArrayList<ArrayList> smallPuntos) {
 
+        ArrayList<Caracter> letras;
         //subrayado para SmallPane
         ArrayList<Integer> subSP = new ArrayList(Arrays.asList(smallPuntos.get(36).get(0), smallPuntos.get(36).get(1), smallPuntos.get(36).get(0), smallPuntos.get(36).get(1), smallPuntos.get(41).get(0), smallPuntos.get(41).get(1), smallPuntos.get(41).get(0), smallPuntos.get(41).get(1)));
 
@@ -1285,6 +1285,7 @@ public class PrimaryController {
         ch2y = new ArrayList(Arrays.asList(puntos.get(26).get(1), puntos.get(40).get(1), puntos.get(34).get(1), puntos.get(10).get(1)));
         c = new Caracter(ix, iy, fx, fy, ch1x, ch1y, ch2x, ch2y, p, ix.size(), subP, 'ú');
         letras.add(c);
+        return letras;
     }
 
     @FXML
@@ -1304,10 +1305,8 @@ public class PrimaryController {
         Pane pane = new Pane();
         String frase = (this.cuadroTexto.getText());
         //solo si es primera vez en ejecucion crea caracteres
-        if (bandera == 0) {
-            Empezar(x, y, tam);
-            bandera++;
-        }
+
+        ArrayList<Caracter> letras = Empezar(x, y, tam);
 
         //creamos una palabra inicial
         Palabra palabra = new Palabra();
@@ -1422,11 +1421,17 @@ public class PrimaryController {
         pos = -1;
         //Ingresamos los caracteres en cada letra
         for (int i = 0; i < palabras.size(); i++) {
+            if (i > 0 && palabras.get(i).getT() != palabras.get(i-1).getT()) {
+                letras = Empezar(x, y, palabras.get(i).getT());
+            }
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
                 b = 0;
                 Pane pp = new Pane();
-                pp.setMaxSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), 140);
-                pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), 140);
+                
+                palabras.get(i).getPalabra().get(j).replace(letras.get((int)palabras.get(i).getPalabra().get(j).chr - 32));
+                
+                pp.setMaxSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT()*7);
+                pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT()*7);
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
                 //revisa si caracter es acento circunflejo
@@ -1513,8 +1518,8 @@ public class PrimaryController {
                     if (x > (canvas.getWidth() - 200) && j + 1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr != ' ') {
                         //colocamos un guion y hacemos un salto de linea
                         Pane sl = new Pane();
-                        sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), 140);
-                        sl.setMinSize(letras.get(13).getPanel().getMaxWidth(), 140);
+                        sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), palabras.get(i).getT() *7);
+                        sl.setMinSize(letras.get(13).getPanel().getMaxWidth(), palabras.get(i).getT() *7);
                         sl.setTranslateX(x);
                         sl.setTranslateY(y);
                         letras.get(13).root = sl;

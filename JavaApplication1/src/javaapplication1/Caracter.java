@@ -193,7 +193,23 @@ public class Caracter {
             root.getChildren().add(a);
         }
     }
-
+    
+    public void replace(Caracter a){
+        Ix = a.Ix;
+        Iy = a.Iy;
+        Fx = a.Fx;
+        Fy = a.Fy;
+        ch1x = a.ch1x;
+        ch1y = a.ch1y;
+        ch2x = a.ch2x;
+        ch2y = a.ch2y;
+        subrayado = a.subrayado;
+        chr = a.chr;
+        root = a.root;
+        lineas = a.lineas;
+        
+    }
+    
     public Pane getPanel() {
         return root;
     }
