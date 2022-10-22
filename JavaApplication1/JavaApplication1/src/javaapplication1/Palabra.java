@@ -11,17 +11,16 @@ import java.util.ArrayList;
  * @author PC GAMER
  */
 public class Palabra {
-
     ArrayList<Caracter> palabra;
-    int n, s, k,t;
+    int n, s, k;
     
     
     public Palabra(){
         palabra = new ArrayList();
     }
-
-    public void addChar(Caracter a) {
-        palabra.add(a);
+    
+    public void addChar(Caracter a){
+        palabra.add(a);        
     }
 
     public ArrayList<Caracter> getPalabra() {
@@ -54,13 +53,5 @@ public class Palabra {
 
     public void setK(int k) {
         this.k = k;
-    }
-    
-    public int getT(){
-        return t;
-    }
-    
-    public void setT(int t){
-        this.t = t;
     }
 }
