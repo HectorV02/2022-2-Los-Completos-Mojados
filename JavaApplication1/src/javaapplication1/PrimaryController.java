@@ -1380,10 +1380,14 @@ public class PrimaryController {
                             if (palabras.get(i).getPalabra().size() > j + 2) {
                                 tamanio1 = (int) palabras.get(i).getPalabra().get(j + 1).chr;
                                 tamanio1 -= 48;
-                                tamanio1 *= 10;
-                                tamanio2 = (int) palabras.get(i).getPalabra().get(j + 2).chr;
-                                tamanio2 -= 48;
-                                palabras.get(comas).setT(tamanio1 + tamanio2);
+                                if (tamanio1 >= 0 && tamanio1 <= 9) {
+                                    tamanio1 *= 10;
+                                    tamanio2 = (int) palabras.get(i).getPalabra().get(j + 2).chr;
+                                    tamanio2 -= 48;
+                                    if (tamanio2 >= 0 && tamanio2 <= 9) {
+                                        palabras.get(comas).setT(tamanio1 + tamanio2);
+                                    }
+                                }
                             }
                         }
                         default -> {
@@ -1406,10 +1410,14 @@ public class PrimaryController {
                             if (palabras.get(i).getPalabra().size() > j + 2) {
                                 tamanio1 = (int) palabras.get(i).getPalabra().get(j + 1).chr;
                                 tamanio1 -= 48;
-                                tamanio1 *= 10;
-                                tamanio2 = (int) palabras.get(i).getPalabra().get(j + 2).chr;
-                                tamanio2 -= 48;
-                                palabras.get(i).setT(tamanio1 + tamanio2);
+                                if (tamanio1 >= 0 && tamanio1 <= 9) {
+                                    tamanio1 *= 10;
+                                    tamanio2 = (int) palabras.get(i).getPalabra().get(j + 2).chr;
+                                    tamanio2 -= 48;
+                                    if (tamanio2 >= 0 && tamanio2 <= 9) {
+                                        palabras.get(i).setT(tamanio1 + tamanio2);
+                                    }
+                                }
                             }
                         }
                         default -> {
@@ -1422,7 +1430,7 @@ public class PrimaryController {
         pos = -1;
         //Ingresamos los caracteres en cada letra
         for (int i = 0; i < palabras.size(); i++) {
-            if (i > 0 && palabras.get(i).getT() != palabras.get(i-1).getT()) {
+            if (i > 0 && palabras.get(i).getT() != palabras.get(i - 1).getT()) {
                 letras = Empezar(x, y, palabras.get(i).getT());
             }
             if (palabras.get(i).getT() > max) {
@@ -1431,11 +1439,11 @@ public class PrimaryController {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
                 b = 0;
                 Pane pp = new Pane();
-                
-                palabras.get(i).getPalabra().get(j).replace(letras.get((int)palabras.get(i).getPalabra().get(j).chr - 32));
-                
-                pp.setMaxSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT()*7);
-                pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT()*7);
+
+                palabras.get(i).getPalabra().get(j).replace(letras.get((int) palabras.get(i).getPalabra().get(j).chr - 32));
+
+                pp.setMaxSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
+                pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
                 //revisa si caracter es acento circunflejo
@@ -1483,6 +1491,8 @@ public class PrimaryController {
                         default -> {
                         }
                     }
+                } else if (pos >= 0 && (int) palabras.get(i).getPalabra().get(j).chr >= 48 && (int) palabras.get(i).getPalabra().get(j).chr <= 57 && ((int) palabras.get(i).getPalabra().get(j - 1).chr == 'T' || (int) palabras.get(i).getPalabra().get(j - 2).chr == 'T')) {
+                    b = 1;
                 }
                 //si no es estilo dibuja
                 if (b == 0) {
@@ -1522,8 +1532,8 @@ public class PrimaryController {
                     if (x > (canvas.getWidth() - 200) && j + 1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr != ' ') {
                         //colocamos un guion y hacemos un salto de linea
                         Pane sl = new Pane();
-                        sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), palabras.get(i).getT() *7);
-                        sl.setMinSize(letras.get(13).getPanel().getMaxWidth(), palabras.get(i).getT() *7);
+                        sl.setMaxSize(letras.get(13).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
+                        sl.setMinSize(letras.get(13).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
                         sl.setTranslateX(x);
                         sl.setTranslateY(y);
                         letras.get(13).root = sl;
@@ -1564,4 +1574,3 @@ public class PrimaryController {
         canvas.setGraphic(pane);
     }
 }
-//revisar si caracteres siguientes son numeros, no dibujar numeros y ver xq no dibuja con tamaño distinto
