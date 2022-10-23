@@ -210,6 +210,7 @@ public class Caracter {
         lineas = a.lineas;
         
     }
+    //movemos una letra hacia abajo 
     public void mover(int max, int size, int s){
         for (int i = 0; i < lineas; i++) {
             Iy.set(i, Iy.get(i) + (max - size)*5);
@@ -224,7 +225,7 @@ public class Caracter {
             subrayado.set(7, subrayado.get(7)+ (max - size)*6);
         }
     }
-    
+    //regresamos una letra a su posicion original
     public void regresar(int max, int size, int s){
         for (int i = 0; i < lineas; i++) {
             Iy.set(i, Iy.get(i) - (max - size)*5);
