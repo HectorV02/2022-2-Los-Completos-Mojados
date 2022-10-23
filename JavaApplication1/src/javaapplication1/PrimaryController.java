@@ -1552,6 +1552,7 @@ public class PrimaryController {
         //Ingresamos los caracteres en cada letra
         letras = Empezar(x, y, palabras.get(0).getT());
         for (int i = 0; i < palabras.size(); i++) {
+            //crea caracteres
             if (i > 0 && palabras.get(i).getT() != palabras.get(i - 1).getT()) {
                 letras = Empezar(x, y, palabras.get(i).getT());
             }
@@ -1563,7 +1564,7 @@ public class PrimaryController {
                 }
                 b = 0;
                 Pane pp = new Pane();
-                
+
                 //if para revisar comillas de cierre simple
                 if ((int) palabras.get(i).getPalabra().get(j).chr == 199) {
                     palabras.get(i).getPalabra().get(j).replace(letras.get(95));
@@ -1575,6 +1576,8 @@ public class PrimaryController {
                 pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
+                
+                //subraya espacios entre palabras que lo esten
                 if (palabras.get(i).getS() == 1 && i > 1 && palabras.get(i - 2).getS() == 1 && j == 0) {
                     for (int k = 0; k < palabras.get(i - 1).getPalabra().size(); k++) {
                         if (maximos.get(posMax) > palabras.get(i - 1).getT()) {
@@ -1648,9 +1651,12 @@ public class PrimaryController {
                     if (palabras.get(i).getK() == 1) {
                         palabras.get(i).getPalabra().get(j).muevePuntos(palabras.get(i).getT());
                     }
+
+                    //mueve puntos para alinearlos
                     if (maximos.get(posMax) > palabras.get(i).getT()) {
                         palabras.get(i).getPalabra().get(j).mover(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
                     }
+
                     //dibujamos la letras
                     palabras.get(i).getPalabra().get(j).root = pp;
                     palabras.get(i).getPalabra().get(j).dibujar(colores.getValue());
@@ -1687,17 +1693,23 @@ public class PrimaryController {
                         if (maximos.get(posMax) > palabras.get(i).getT()) {
                             letras.get(13).mover(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
                         }
+
+                        //dibuja guión
                         letras.get(13).dibujar(colores.getValue());
 
+                        //muestra checkpoints
                         if (muestraPuntos.isSelected()) {
                             letras.get(13).getCheckpoints(palabras.get(i).getS());
                         }
+
+                        //aplica negritas
                         if (palabras.get(i).getN() == 1) {
                             letras.get(13).negritas(colores.getValue(), 0);
                         }
 
                         pane.getChildren().add(letras.get(13).getPanel());
 
+                        //regresa puntos de guión
                         if (maximos.get(posMax) > palabras.get(i).getT()) {
                             letras.get(13).regresar(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
                         }
@@ -1705,9 +1717,11 @@ public class PrimaryController {
                         x = 10;
                         y += max * 7;
 
+                        //regresa puntos de caracter
                         if (maximos.get(posMax) > palabras.get(i).getT()) {
                             palabras.get(i).getPalabra().get(j).regresar(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
                         }
+
                         posMax++;
                         max = 0;
                     }
