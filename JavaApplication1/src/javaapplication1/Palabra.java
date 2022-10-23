@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Palabra {
 
     ArrayList<Caracter> palabra;
-    int n, s, k,t;
+    int n, s, k,t, maxLine;
     
     
     public Palabra(){

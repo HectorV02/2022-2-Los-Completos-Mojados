@@ -1429,11 +1429,41 @@ public class PrimaryController {
                         default -> {
                         }
                     }
+                } else {
+
+                    if (palabras.get(i).getT() > max) {
+                        max = palabras.get(i).getT();
+                    }
+                    if (palabras.get(i).getPalabra().get(j).width == 100) {
+
+                        x += palabras.get(i).getT() * 5;
+                    } else {
+
+                        x += (int) (3 * palabras.get(i).getT() / 4) * 5;
+                    }
+
+                    if (x > (canvas.getWidth() - 200) && j + 1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr != ' ') {
+                        salto = i;
+                        x = 10;
+                        max = 0;
+                    }
+                    if (x > (canvas.getWidth() - 150)) {
+                        salto = i;
+                        x = 10;
+                        max = 0;
+                    }
+                    for (int k = salto; k <= i; k++) {
+                        palabras.get(k).maxLine = max;
+                    }
                 }
+
             }
             pos = -1;
+
         }
         pos = -1;
+        x = 10;
+        max = 0;
         //Ingresamos los caracteres en cada letra
         letras = Empezar(x, y, palabras.get(0).getT());
         for (int i = 0; i < palabras.size(); i++) {
@@ -1456,8 +1486,9 @@ public class PrimaryController {
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
 
-
-                if (max > palabras.get(i).getT()) {
+                if (palabras.get(i).maxLine > palabras.get(i).getT()) {
+                    palabras.get(i).getPalabra().get(j).mover(palabras.get(i).maxLine, palabras.get(i).getT(), palabras.get(i).getS());
+                } else if (max > palabras.get(i).getT()) {
                     palabras.get(i).getPalabra().get(j).mover(max, palabras.get(i).getT(), palabras.get(i).getS());
                 }
 
@@ -1553,7 +1584,9 @@ public class PrimaryController {
                         sl.setTranslateY(y);
                         letras.get(13).root = sl;
 
-                        if (max > palabras.get(i).getT()) {
+                        if (palabras.get(i).maxLine > palabras.get(i).getT()) {
+                            letras.get(13).mover(palabras.get(i).maxLine, palabras.get(i).getT(), palabras.get(i).getS());
+                        } else if (max > palabras.get(i).getT()) {
                             letras.get(13).mover(max, palabras.get(i).getT(), palabras.get(i).getS());
                         }
 
@@ -1568,14 +1601,18 @@ public class PrimaryController {
 
                         pane.getChildren().add(letras.get(13).getPanel());
 
-                        if (max > palabras.get(i).getT()) {
+                        if (palabras.get(i).maxLine > palabras.get(i).getT()) {
+                            letras.get(13).regresar(palabras.get(i).maxLine, palabras.get(i).getT(), palabras.get(i).getS());
+                        } else if (max > palabras.get(i).getT()) {
                             letras.get(13).regresar(max, palabras.get(i).getT(), palabras.get(i).getS());
                         }
 
                         x = 10;
                         y += max * 7;
 
-                        if (max > palabras.get(i).getT()) {
+                        if (palabras.get(i).maxLine > palabras.get(i).getT()) {
+                            palabras.get(i).getPalabra().get(j).regresar(palabras.get(i).maxLine, palabras.get(i).getT(), palabras.get(i).getS());
+                        } else if (max > palabras.get(i).getT()) {
                             palabras.get(i).getPalabra().get(j).regresar(max, palabras.get(i).getT(), palabras.get(i).getS());
                         }
 
@@ -1590,10 +1627,12 @@ public class PrimaryController {
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
 
-                    if (max > palabras.get(i).getT()) {
+                    if (palabras.get(i).maxLine > palabras.get(i).getT()) {
+                        palabras.get(i).getPalabra().get(j).regresar(palabras.get(i).maxLine, palabras.get(i).getT(), palabras.get(i).getS());
+                    } else if (max > palabras.get(i).getT()) {
                         palabras.get(i).getPalabra().get(j).regresar(max, palabras.get(i).getT(), palabras.get(i).getS());
                     }
-                    
+
                     //regresamos letras a tipografia original
                     if (palabras.get(i).getK() == 1) {
                         palabras.get(i).getPalabra().get(j).regresaPuntos(palabras.get(i).getT());

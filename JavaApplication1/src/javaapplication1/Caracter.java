@@ -8,7 +8,7 @@ import javafx.scene.shape.CubicCurve;
 
 public class Caracter {
 
-    int lineas;
+    int lineas, width;
     char chr;
     ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y, subrayado = new ArrayList();
     Pane root;
@@ -24,6 +24,7 @@ public class Caracter {
         this.ch2x = ch2x;
         this.ch2y = ch2y;
         this.root = root;
+        width = (int)root.getMaxWidth();
         this.lineas = lineas;
         this.subrayado = subrayado;
         this.chr = chr;
