@@ -1484,7 +1484,10 @@ public class PrimaryController {
                 Pane pp = new Pane();
 
                 palabras.get(i).getPalabra().get(j).replace(letras.get((int) palabras.get(i).getPalabra().get(j).chr - 32));
-
+                //if para revisar comillas de cierre simple
+                if ((int) palabras.get(i).getPalabra().get(j).chr == 32) {
+                    palabras.get(i).getPalabra().get(j).replace(letras.get(95));
+                }
                 pp.setMaxSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
                 pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
                 pp.setTranslateX(x);
