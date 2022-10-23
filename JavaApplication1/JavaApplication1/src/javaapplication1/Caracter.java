@@ -8,13 +8,13 @@ import javafx.scene.shape.CubicCurve;
 
 public class Caracter {
 
-    int lineas, width;
+    int lineas;
     char chr;
-    ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y, subrayado = new ArrayList();
+    ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y, subrayado= new ArrayList();
     Pane root;
 
     public Caracter(ArrayList<Integer> Ix, ArrayList<Integer> Iy, ArrayList<Integer> Fx, ArrayList<Integer> Fy, ArrayList<Integer> ch1x,
-            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas, ArrayList<Integer> subrayado, char chr) {
+            ArrayList<Integer> ch1y, ArrayList<Integer> ch2x, ArrayList<Integer> ch2y, Pane root, int lineas, ArrayList<Integer> subrayado,char chr) {
         this.Ix = Ix;
         this.Iy = Iy;
         this.Fx = Fx;
@@ -24,11 +24,11 @@ public class Caracter {
         this.ch2x = ch2x;
         this.ch2y = ch2y;
         this.root = root;
-        width = (int)root.getMaxWidth();
         this.lineas = lineas;
         this.subrayado = subrayado;
         this.chr = chr;
     }
+    
 
     public void dibujar(Color color) {
         //dibujamos las lineas una por una 
@@ -44,7 +44,7 @@ public class Caracter {
     }
 
     public void getCheckpoints(int s) {
-
+        
         //dibujamos los checkpoints
         for (int i = 0; i < lineas; i++) {
             Circle n = new Circle();
@@ -68,7 +68,7 @@ public class Caracter {
             n.setRadius(2);
             root.getChildren().add(n);
         }
-        if (s == 1) {
+        if(s == 1){
             Circle n = new Circle();
             n.setCenterX(subrayado.get(0));
             n.setCenterY(subrayado.get(1));
@@ -82,71 +82,136 @@ public class Caracter {
         }
 
     }
-
+    
     //metodo que sube la primera linea de una letra
-    public void subir(int tam) {
-        Iy.set(0, Iy.get(0) - tam);
-        ch1y.set(0, ch1y.get(0) - tam);
+    public void subir() {  
+        Iy.set(0, Iy.get(0)-20);
+        ch1y.set(0, ch1y.get(0)-20);
 
     }
-
+    
     //metodo para bajar la primera linea de una letra
-    public void bajar(int tam) {
-        Iy.set(0, Iy.get(0) + tam);
-        ch1y.set(0, ch1y.get(0) + tam);
+    public void bajar(){
+        Iy.set(0, Iy.get(0)+20);
+        ch1y.set(0, ch1y.get(0)+20);
     }
-
-    public void subrayado(Color color) {
+    
+    public void subrayado (Color color){
         CubicCurve a = new CubicCurve(subrayado.get(0), subrayado.get(1), subrayado.get(2), subrayado.get(3), subrayado.get(4), subrayado.get(5), subrayado.get(6), subrayado.get(7));
         a.setFill(Color.TRANSPARENT);
         a.setStroke(color);
         root.getChildren().add(a);
     }
-
-    public void muevePuntos(int tam) {
-
+    
+    public void muevePuntos (){
         for (int i = 0; i < Ix.size(); i++) {
             //movimiento puntos de inicio
-            for (int j = 0; j < 8; j++) {
-                if (Iy.get(i) == tam * j) {
-                    Ix.set(i, Ix.get(i) + (int) ((tam * (7 - j)) / 4));
+            switch (Iy.get(i)) {
+                case 0 -> Ix.set(i, Ix.get(i)+35);
+                case 20 -> Ix.set(i, Ix.get(i)+30);
+                case 40 -> Ix.set(i, Ix.get(i)+25);
+                case 60 -> Ix.set(i, Ix.get(i)+20);
+                case 80 -> Ix.set(i, Ix.get(i)+15);
+                case 100 -> Ix.set(i, Ix.get(i)+10);
+                case 120 -> Ix.set(i, Ix.get(i)+5);
+                case 140 -> Ix.set(i, Ix.get(i));
+                default -> {
                 }
-
-                if (Fy.get(i) == tam * j) {
-                    Fx.set(i, Fx.get(i) + (int) ((tam * (7 - j)) / 4));
+            }
+            //movimiento puntos de fin
+            switch (Fy.get(i)) {
+                case 0 -> Fx.set(i, Fx.get(i)+35);
+                case 20 -> Fx.set(i, Fx.get(i)+30);
+                case 40 -> Fx.set(i, Fx.get(i)+25);
+                case 60 -> Fx.set(i, Fx.get(i)+20);
+                case 80 -> Fx.set(i, Fx.get(i)+15);
+                case 100 -> Fx.set(i, Fx.get(i)+10);
+                case 120 -> Fx.set(i, Fx.get(i)+5);
+                case 140 -> Fx.set(i, Fx.get(i));
+                default -> {
                 }
-
-                if (ch1y.get(i) == tam * j) {
-                    ch1x.set(i, ch1x.get(i) + (int) ((tam * (7 - j)) / 4));
+            }
+            //movimiento puntos de control 1
+            switch (ch1y.get(i)) {
+                case 0 -> ch1x.set(i, ch1x.get(i)+35);
+                case 20 -> ch1x.set(i, ch1x.get(i)+30);
+                case 40 -> ch1x.set(i, ch1x.get(i)+25);
+                case 60 -> ch1x.set(i, ch1x.get(i)+20);
+                case 80 -> ch1x.set(i, ch1x.get(i)+15);
+                case 100 -> ch1x.set(i, ch1x.get(i)+10);
+                case 120 -> ch1x.set(i, ch1x.get(i)+5);
+                case 140 -> ch1x.set(i, ch1x.get(i));
+                default -> {
                 }
-
-                if (ch2y.get(i) == tam * j) {
-                    ch2x.set(i, ch2x.get(i) + (int) ((tam * (7 - j)) / 4));
+            }
+            //movimiento puntos de control 2
+            switch (ch2y.get(i)) {
+                case 0 -> ch2x.set(i, ch2x.get(i)+35);
+                case 20 -> ch2x.set(i, ch2x.get(i)+30);
+                case 40 -> ch2x.set(i, ch2x.get(i)+25);
+                case 60 -> ch2x.set(i, ch2x.get(i)+20);
+                case 80 -> ch2x.set(i, ch2x.get(i)+15);
+                case 100 -> ch2x.set(i, ch2x.get(i)+10);
+                case 120 -> ch2x.set(i, ch2x.get(i)+5);
+                case 140 -> ch2x.set(i, ch2x.get(i));
+                default -> {
                 }
             }
         }
-        
     }
-
-    public void regresaPuntos(int tam) {
+    
+    public void regresaPuntos (){
         for (int i = 0; i < Ix.size(); i++) {
             //movimiento puntos de inicio
-
-            for (int j = 0; j < 8; j++) {
-                if (Iy.get(i) == tam * j) {
-                    Ix.set(i, Ix.get(i) - (int) ((tam * (7 - j)) / 4));
+            switch (Iy.get(i)) {
+                case 0 -> Ix.set(i, Ix.get(i)-35);
+                case 20 -> Ix.set(i, Ix.get(i)-30);
+                case 40 -> Ix.set(i, Ix.get(i)-25);
+                case 60 -> Ix.set(i, Ix.get(i)-20);
+                case 80 -> Ix.set(i, Ix.get(i)-15);
+                case 100 -> Ix.set(i, Ix.get(i)-10);
+                case 120 -> Ix.set(i, Ix.get(i)-5);
+                case 140 -> Ix.set(i, Ix.get(i));
+                default -> {
                 }
-
-                if (Fy.get(i) == tam * j) {
-                    Fx.set(i, Fx.get(i) - (int) ((tam * (7 - j)) / 4));
+            }
+            //movimiento puntos de fin
+            switch (Fy.get(i)) {
+                case 0 -> Fx.set(i, Fx.get(i)-35);
+                case 20 -> Fx.set(i, Fx.get(i)-30);
+                case 40 -> Fx.set(i, Fx.get(i)-25);
+                case 60 -> Fx.set(i, Fx.get(i)-20);
+                case 80 -> Fx.set(i, Fx.get(i)-15);
+                case 100 -> Fx.set(i, Fx.get(i)-10);
+                case 120 -> Fx.set(i, Fx.get(i)-5);
+                case 140 -> Fx.set(i, Fx.get(i));
+                default -> {
                 }
-
-                if (ch1y.get(i) == tam * j) {
-                    ch1x.set(i, ch1x.get(i) - (int) ((tam * (7 - j)) / 4));
+            }
+            //movimiento puntos de control 1
+            switch (ch1y.get(i)) {
+                case 0 -> ch1x.set(i, ch1x.get(i)-35);
+                case 20 -> ch1x.set(i, ch1x.get(i)-30);
+                case 40 -> ch1x.set(i, ch1x.get(i)-25);
+                case 60 -> ch1x.set(i, ch1x.get(i)-20);
+                case 80 -> ch1x.set(i, ch1x.get(i)-15);
+                case 100 -> ch1x.set(i, ch1x.get(i)-10);
+                case 120 -> ch1x.set(i, ch1x.get(i)-5);
+                case 140 -> ch1x.set(i, ch1x.get(i));
+                default -> {
                 }
-
-                if (ch2y.get(i) == tam * j) {
-                    ch2x.set(i, ch2x.get(i) - (int) ((tam * (7 - j)) / 4));
+            }
+            //movimiento puntos de control 2
+            switch (ch2y.get(i)) {
+                case 0 -> ch2x.set(i, ch2x.get(i)-35);
+                case 20 -> ch2x.set(i, ch2x.get(i)-30);
+                case 40 -> ch2x.set(i, ch2x.get(i)-25);
+                case 60 -> ch2x.set(i, ch2x.get(i)-20);
+                case 80 -> ch2x.set(i, ch2x.get(i)-15);
+                case 100 -> ch2x.set(i, ch2x.get(i)-10);
+                case 120 -> ch2x.set(i, ch2x.get(i)-5);
+                case 140 -> ch2x.set(i, ch2x.get(i));
+                default -> {
                 }
             }
         }
@@ -179,7 +244,7 @@ public class Caracter {
             e.setStroke(color);
             root.getChildren().add(e);
         }
-        if (s == 1) {
+        if(s == 1){
             CubicCurve a = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1) + 1, subrayado.get(2) + 1, subrayado.get(3) + 1, subrayado.get(4) + 1, subrayado.get(5) + 1, subrayado.get(6) + 1, subrayado.get(7) + 1);
             a.setFill(Color.TRANSPARENT);
             a.setStroke(color);
@@ -194,53 +259,7 @@ public class Caracter {
             root.getChildren().add(a);
         }
     }
-    
-    public void replace(Caracter a){
-        Ix = a.Ix;
-        Iy = a.Iy;
-        Fx = a.Fx;
-        Fy = a.Fy;
-        ch1x = a.ch1x;
-        ch1y = a.ch1y;
-        ch2x = a.ch2x;
-        ch2y = a.ch2y;
-        subrayado = a.subrayado;
-        chr = a.chr;
-        root = a.root;
-        lineas = a.lineas;
-        
-    }
-    //movemos una letra hacia abajo 
-    public void mover(int max, int size, int s){
-        for (int i = 0; i < lineas; i++) {
-            Iy.set(i, Iy.get(i) + (max - size)*5);
-            Fy.set(i, Fy.get(i) + (max - size)*5);
-            ch1y.set(i, ch1y.get(i) + (max - size)*5);
-            ch2y.set(i, ch2y.get(i) + (max - size)*5);
-        }
-        if (s == 1) {
-            subrayado.set(1, subrayado.get(1)+ (max - size)*6);
-            subrayado.set(3, subrayado.get(3)+ (max - size)*6);
-            subrayado.set(5, subrayado.get(5)+ (max - size)*6);
-            subrayado.set(7, subrayado.get(7)+ (max - size)*6);
-        }
-    }
-    //regresamos una letra a su posicion original
-    public void regresar(int max, int size, int s){
-        for (int i = 0; i < lineas; i++) {
-            Iy.set(i, Iy.get(i) - (max - size)*5);
-            Fy.set(i, Fy.get(i) - (max - size)*5);
-            ch1y.set(i, ch1y.get(i) - (max - size)*5);
-            ch2y.set(i, ch2y.get(i) - (max - size)*5);
-        }
-        if (s == 1) {
-            subrayado.set(1, subrayado.get(1)- (max - size)*6);
-            subrayado.set(3, subrayado.get(3)- (max - size)*6);
-            subrayado.set(5, subrayado.get(5)- (max - size)*6);
-            subrayado.set(7, subrayado.get(7)- (max - size)*6);
-        }
-    }
-    
+
     public Pane getPanel() {
         return root;
     }
