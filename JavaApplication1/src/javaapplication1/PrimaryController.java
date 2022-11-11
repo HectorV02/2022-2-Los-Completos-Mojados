@@ -1510,15 +1510,23 @@ public class PrimaryController {
                                 }
                             }
                         }
+                        case 'R' -> {
+                            reverse = 1;
+                        }
                         default -> {
                         }
                     }
                 }
-                
-
             }
             pos = -1;
-
+        }
+        for (int j = 2; j < palabras.size(); j+=2) {
+            if(palabras.get(j).getS()==1 && palabras.get(j-2).getS()==1){
+                palabras.get(j-1).setS(1);
+            }
+            if(palabras.get(j).getN()==1 && palabras.get(j-2).getN()==1){
+                palabras.get(j-1).setN(1);
+            }
         }
         if (reverse == 0) {
             //ciclo para ver el tam max de cada linea
@@ -1603,20 +1611,6 @@ public class PrimaryController {
                     pp.setTranslateX(x);
                     pp.setTranslateY(y);
 
-                    //subraya espacios entre palabras que lo esten
-                    if (palabras.get(i).getS() == 1 && i > 1 && palabras.get(i - 2).getS() == 1 && j == 0) {
-                        for (int k = 0; k < palabras.get(i - 1).getPalabra().size(); k++) {
-                            if (maximos.get(posMax) > palabras.get(i - 1).getT()) {
-                                palabras.get(i - 1).getPalabra().get(k).mover(maximos.get(posMax), palabras.get(i - 1).getT(), 1);
-                            }
-
-                            palabras.get(i - 1).getPalabra().get(k).subrayado(colores.getValue());
-
-                            if (maximos.get(posMax) > palabras.get(i - 1).getT()) {
-                                palabras.get(i - 1).getPalabra().get(k).regresar(maximos.get(posMax), palabras.get(i - 1).getT(), 1);
-                            }
-                        }
-                    }
                     //revisa si caracter es acento circunflejo
                     if (palabras.get(i).getPalabra().get(j).chr == '^') {
                         pos = j;
@@ -1657,6 +1651,9 @@ public class PrimaryController {
                                 b = 1;
                             }
                             case 'T' -> {
+                                b = 1;
+                            }
+                            case 'R' -> {
                                 b = 1;
                             }
                             default -> {
@@ -1860,21 +1857,6 @@ public class PrimaryController {
                     pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
                     pp.setTranslateX(x);
                     pp.setTranslateY(y);
-
-                    //subraya espacios entre palabras que lo esten
-                    if (palabras.get(i).getS() == 1 && i > 1 && palabras.get(i - 2).getS() == 1 && j == 0) {
-                        for (int k = 0; k < palabras.get(i - 1).getPalabra().size(); k++) {
-                            if (maximos.get(posMax) > palabras.get(i - 1).getT()) {
-                                palabras.get(i - 1).getPalabra().get(k).mover(maximos.get(posMax), palabras.get(i - 1).getT(), 1);
-                            }
-
-                            palabras.get(i - 1).getPalabra().get(k).subrayado(colores.getValue());
-
-                            if (maximos.get(posMax) > palabras.get(i - 1).getT()) {
-                                palabras.get(i - 1).getPalabra().get(k).regresar(maximos.get(posMax), palabras.get(i - 1).getT(), 1);
-                            }
-                        }
-                    }
                     //revisa si caracter es acento circunflejo
                     if (palabras.get(i).getPalabra().get(j).chr == '^') {
                         pos = j;
@@ -1915,6 +1897,9 @@ public class PrimaryController {
                                 b = 1;
                             }
                             case 'T' -> {
+                                b = 1;
+                            }
+                            case 'R' -> {
                                 b = 1;
                             }
                             default -> {
