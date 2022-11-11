@@ -1511,7 +1511,29 @@ public class PrimaryController {
                         }
                         default -> {
                         }
-                    }
+                    }                    
+                }
+
+            }
+            pos = -1;
+
+        }
+        //ciclo para ver el tam max de cada linea
+        for (int i = 0; i < palabras.size(); i++) {
+            for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
+                //revisa si caracter es acento circunflejo
+                if (palabras.get(i).getPalabra().get(j).chr == '^') {
+                   
+                } //contamos las comas
+                else if (palabras.get(i).getPalabra().get(j).chr == ',' && i == palabras.size() - 1 && pos > 0) {
+                    
+                } //revisa estilos combinados hacia atras
+                else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
+                    
+
+                } //revisa estilos hacia adelante
+                else if (pos == 0 && j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == '+')) {
+                                      
                 } else {
                     //identificamos el tamaño maximo de cada linea
                     if (palabras.get(i).getT() > max) {
@@ -1545,6 +1567,8 @@ public class PrimaryController {
             pos = -1;
 
         }
+        //fin ciclo anterior
+        
         posMax = 0;
         pos = -1;
         x = 10;
