@@ -8,7 +8,7 @@ import javafx.scene.shape.CubicCurve;
 
 public class Caracter {
 
-    int lineas;
+    int lineas, width;
     char chr;
     ArrayList<Integer> Ix, Iy, Fx, Fy, ch1x, ch1y, ch2x, ch2y, subrayado = new ArrayList();
     Pane root;
@@ -24,6 +24,7 @@ public class Caracter {
         this.ch2x = ch2x;
         this.ch2y = ch2y;
         this.root = root;
+        width = (int)root.getMaxWidth();
         this.lineas = lineas;
         this.subrayado = subrayado;
         this.chr = chr;
@@ -208,6 +209,36 @@ public class Caracter {
         root = a.root;
         lineas = a.lineas;
         
+    }
+    //movemos una letra hacia abajo 
+    public void mover(int max, int size, int s){
+        for (int i = 0; i < lineas; i++) {
+            Iy.set(i, Iy.get(i) + (max - size)*5);
+            Fy.set(i, Fy.get(i) + (max - size)*5);
+            ch1y.set(i, ch1y.get(i) + (max - size)*5);
+            ch2y.set(i, ch2y.get(i) + (max - size)*5);
+        }
+        if (s == 1) {
+            subrayado.set(1, subrayado.get(1)+ (max - size)*6);
+            subrayado.set(3, subrayado.get(3)+ (max - size)*6);
+            subrayado.set(5, subrayado.get(5)+ (max - size)*6);
+            subrayado.set(7, subrayado.get(7)+ (max - size)*6);
+        }
+    }
+    //regresamos una letra a su posicion original
+    public void regresar(int max, int size, int s){
+        for (int i = 0; i < lineas; i++) {
+            Iy.set(i, Iy.get(i) - (max - size)*5);
+            Fy.set(i, Fy.get(i) - (max - size)*5);
+            ch1y.set(i, ch1y.get(i) - (max - size)*5);
+            ch2y.set(i, ch2y.get(i) - (max - size)*5);
+        }
+        if (s == 1) {
+            subrayado.set(1, subrayado.get(1)- (max - size)*6);
+            subrayado.set(3, subrayado.get(3)- (max - size)*6);
+            subrayado.set(5, subrayado.get(5)- (max - size)*6);
+            subrayado.set(7, subrayado.get(7)- (max - size)*6);
+        }
     }
     
     public Pane getPanel() {
