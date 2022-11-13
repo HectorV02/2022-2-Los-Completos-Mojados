@@ -1383,6 +1383,7 @@ public class PrimaryController {
         int pos = -1;
         int max = 0;
         int posMax = 0;
+        int reverse = 0;
         ArrayList<Palabra> palabras = new ArrayList();
         ArrayList<Integer> maximos = new ArrayList();
         maximos.add(0);
@@ -1509,42 +1510,131 @@ public class PrimaryController {
                                 }
                             }
                         }
+                        case 'R' -> {
+                            reverse = 1;
+                        }
                         default -> {
                         }
                     }
-                } else {
-                    //identificamos el tamaño maximo de cada linea
-                    if (palabras.get(i).getT() > max) {
-                        max = palabras.get(i).getT();
-                        maximos.set(posMax, max);
-                    }
-                    if (palabras.get(i).getPalabra().get(j).width == 100) {
-
-                        x += palabras.get(i).getT() * 5;
-                    } else {
-
-                        x += (int) (3 * palabras.get(i).getT() / 4) * 5;
-                    }
-
-                    if (x > (canvas.getWidth() - 200) && j + 1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr != ' ') {
-                        maximos.add(max);
-                        posMax++;
-                        x = 10;
-                        max = 0;
-                    }
-                    if (x > (canvas.getWidth() - 150)) {
-                        maximos.add(max);
-                        posMax++;
-                        x = 10;
-                        max = 0;
-                    }
-
                 }
+            }
+            pos = -1;
+        }
+        for (int j = 2; j < palabras.size(); j += 2) {
+            if (palabras.get(j).getS() == 1 && palabras.get(j - 2).getS() == 1) {
+                palabras.get(j - 1).setS(1);
+            }
+            if (palabras.get(j).getN() == 1 && palabras.get(j - 2).getN() == 1) {
+                palabras.get(j - 1).setN(1);
+            }
+        }
 
+        if (reverse != 0) {
+            ArrayList<Palabra> aux = new ArrayList();
+
+            for (int i = palabras.size() - 1; i >= 0; i--) {
+                aux.add(palabras.get(i));
+            }
+
+            palabras = aux;
+        }
+
+        //ciclo para ver el tam max de cada linea
+        for (int i = 0; i < palabras.size(); i++) {
+            for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
+                if (reverse != 0) {
+                    //revisa si caracter es acento circunflejo
+                    if (palabras.get(i).getPalabra().get(j).chr == '^') {
+                        pos = j;
+                    } //contamos las comas
+                    else if (palabras.get(i).getPalabra().get(j).chr == ',' && i == 0 && pos > 0) {
+
+                    } else if (palabras.get(i).getPalabra().get(j).chr == '+') {
+                        
+                    }  //revisa estilos combinados hacia atras
+                    else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
+
+                    } //revisa estilos hacia adelante
+                    else if (pos == 0 && j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == '+')) {
+
+                    } else {
+                        //identificamos el tamaño maximo de cada linea
+                        if (palabras.get(i).getT() > max) {
+                            max = palabras.get(i).getT();
+                            maximos.set(posMax, max);
+                        }
+                        if (palabras.get(i).getPalabra().get(j).width == 100) {
+
+                            x += palabras.get(i).getT() * 5;
+                        } else {
+
+                            x += (int) (3 * palabras.get(i).getT() / 4) * 5;
+                        }
+
+                        if (x > (canvas.getWidth() - 200) && j + 1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr != ' ') {
+                            maximos.add(max);
+                            posMax++;
+                            x = 10;
+                            max = 0;
+                        }
+                        if (x > (canvas.getWidth() - 150)) {
+                            maximos.add(max);
+                            posMax++;
+                            x = 10;
+                            max = 0;
+                        }
+
+                    }
+                } else {
+                    //revisa si caracter es acento circunflejo
+                    if (palabras.get(i).getPalabra().get(j).chr == '^') {
+                        pos = j;
+                    } //contamos las comas
+                    else if (palabras.get(i).getPalabra().get(j).chr == ',' && i == palabras.size() - 1 && pos > 0) {
+
+                    } else if (palabras.get(i).getPalabra().get(j).chr == '+') {
+                        
+                    }  //revisa estilos combinados hacia atras
+                    else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
+
+                    } //revisa estilos hacia adelante
+                    else if (pos == 0 && j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == '+')) {
+
+                    } else {
+                        //identificamos el tamaño maximo de cada linea
+                        if (palabras.get(i).getT() > max) {
+                            max = palabras.get(i).getT();
+                            maximos.set(posMax, max);
+                        }
+                        if (palabras.get(i).getPalabra().get(j).width == 100) {
+
+                            x += palabras.get(i).getT() * 5;
+                        } else {
+
+                            x += (int) (3 * palabras.get(i).getT() / 4) * 5;
+                        }
+
+                        if (x > (canvas.getWidth() - 200) && j + 1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr != ' ') {
+                            maximos.add(max);
+                            posMax++;
+                            x = 10;
+                            max = 0;
+                        }
+                        if (x > (canvas.getWidth() - 150)) {
+                            maximos.add(max);
+                            posMax++;
+                            x = 10;
+                            max = 0;
+                        }
+
+                    }
+                }
             }
             pos = -1;
 
         }
+        //fin ciclo anterior
+
         posMax = 0;
         pos = -1;
         x = 10;
@@ -1576,68 +1666,110 @@ public class PrimaryController {
                 pp.setMinSize(palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth(), palabras.get(i).getT() * 7);
                 pp.setTranslateX(x);
                 pp.setTranslateY(y);
-                
-                //subraya espacios entre palabras que lo esten
-                if (palabras.get(i).getS() == 1 && i > 1 && palabras.get(i - 2).getS() == 1 && j == 0) {
-                    for (int k = 0; k < palabras.get(i - 1).getPalabra().size(); k++) {
-                        if (maximos.get(posMax) > palabras.get(i - 1).getT()) {
-                            palabras.get(i - 1).getPalabra().get(k).mover(maximos.get(posMax), palabras.get(i - 1).getT(), 1);
+                if (reverse != 0) {
+                    //revisa si caracter es acento circunflejo
+                    if (palabras.get(i).getPalabra().get(j).chr == '^') {
+                        pos = j;
+                        b = 1;
+                    } //contamos las comas
+                    else if (palabras.get(i).getPalabra().get(j).chr == ',' && i == 0 && pos > 0) {
+                        b = 1;
+                    } else if (palabras.get(i).getPalabra().get(j).chr == '+') {
+                        b = 1;
+                    } //revisa estilos combinados hacia atras
+                    else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
+                        switch (palabras.get(i).getPalabra().get(j).chr) {
+                            case 'K' -> {
+                                b = 1;
+                            }
+                            case 'S' -> {
+                                b = 1;
+                            }
+                            case 'N' -> {
+                                b = 1;
+                            }
+                            case 'T' -> {
+                                b = 1;
+                            }
+                            default -> {
+                            }
                         }
-
-                        palabras.get(i - 1).getPalabra().get(k).subrayado(colores.getValue());
-
-                        if (maximos.get(posMax) > palabras.get(i - 1).getT()) {
-                            palabras.get(i - 1).getPalabra().get(k).regresar(maximos.get(posMax), palabras.get(i - 1).getT(), 1);
+                    } //revisa estilos hacia adelante
+                    else if (pos == 0 && j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == '+')) {
+                        switch (palabras.get(i).getPalabra().get(j).chr) {
+                            case 'K' -> {
+                                b = 1;
+                            }
+                            case 'S' -> {
+                                b = 1;
+                            }
+                            case 'N' -> {
+                                b = 1;
+                            }
+                            case 'T' -> {
+                                b = 1;
+                            }
+                            case 'R' -> {
+                                b = 1;
+                            }
+                            default -> {
+                            }
                         }
+                    } else if (pos >= 0 && (int) palabras.get(i).getPalabra().get(j).chr >= 48 && (int) palabras.get(i).getPalabra().get(j).chr <= 57 && ((int) palabras.get(i).getPalabra().get(j - 1).chr == 'T' || (int) palabras.get(i).getPalabra().get(j - 2).chr == 'T')) {
+                        b = 1;
                     }
-                }
-                //revisa si caracter es acento circunflejo
-                if (palabras.get(i).getPalabra().get(j).chr == '^') {
-                    pos = j;
-                    b = 1;
-                } //contamos las comas
-                else if (palabras.get(i).getPalabra().get(j).chr == ',' && i == palabras.size() - 1 && pos > 0) {
-                    b = 1;
-                } else if (palabras.get(i).getPalabra().get(j).chr == '+') {
-                    b = 1;
-                } //revisa estilos combinados hacia atras
-                else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
-                    switch (palabras.get(i).getPalabra().get(j).chr) {
-                        case 'K' -> {
-                            b = 1;
+                } else {
+                    //revisa si caracter es acento circunflejo
+                    if (palabras.get(i).getPalabra().get(j).chr == '^') {
+                        pos = j;
+                        b = 1;
+                    } //contamos las comas
+                    else if (palabras.get(i).getPalabra().get(j).chr == ',' && i == palabras.size() - 1 && pos > 0) {
+                        b = 1;
+                    } else if (palabras.get(i).getPalabra().get(j).chr == '+') {
+                        b = 1;
+                    } //revisa estilos combinados hacia atras
+                    else if (pos > 0 && comas < palabras.size() && (palabras.get(i).getPalabra().get(j - 1).chr == ',' || palabras.get(i).getPalabra().get(j - 1).chr == '+' || palabras.get(i).getPalabra().get(j - 1).chr == '^')) {
+                        switch (palabras.get(i).getPalabra().get(j).chr) {
+                            case 'K' -> {
+                                b = 1;
+                            }
+                            case 'S' -> {
+                                b = 1;
+                            }
+                            case 'N' -> {
+                                b = 1;
+                            }
+                            case 'T' -> {
+                                b = 1;
+                            }
+                            default -> {
+                            }
                         }
-                        case 'S' -> {
-                            b = 1;
+                    } //revisa estilos hacia adelante
+                    else if (pos == 0 && j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == '+')) {
+                        switch (palabras.get(i).getPalabra().get(j).chr) {
+                            case 'K' -> {
+                                b = 1;
+                            }
+                            case 'S' -> {
+                                b = 1;
+                            }
+                            case 'N' -> {
+                                b = 1;
+                            }
+                            case 'T' -> {
+                                b = 1;
+                            }
+                            case 'R' -> {
+                                b = 1;
+                            }
+                            default -> {
+                            }
                         }
-                        case 'N' -> {
-                            b = 1;
-                        }
-                        case 'T' -> {
-                            b = 1;
-                        }
-                        default -> {
-                        }
+                    } else if (pos >= 0 && (int) palabras.get(i).getPalabra().get(j).chr >= 48 && (int) palabras.get(i).getPalabra().get(j).chr <= 57 && ((int) palabras.get(i).getPalabra().get(j - 1).chr == 'T' || (int) palabras.get(i).getPalabra().get(j - 2).chr == 'T')) {
+                        b = 1;
                     }
-                } //revisa estilos hacia adelante
-                else if (pos == 0 && j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == '+')) {
-                    switch (palabras.get(i).getPalabra().get(j).chr) {
-                        case 'K' -> {
-                            b = 1;
-                        }
-                        case 'S' -> {
-                            b = 1;
-                        }
-                        case 'N' -> {
-                            b = 1;
-                        }
-                        case 'T' -> {
-                            b = 1;
-                        }
-                        default -> {
-                        }
-                    }
-                } else if (pos >= 0 && (int) palabras.get(i).getPalabra().get(j).chr >= 48 && (int) palabras.get(i).getPalabra().get(j).chr <= 57 && ((int) palabras.get(i).getPalabra().get(j - 1).chr == 'T' || (int) palabras.get(i).getPalabra().get(j - 2).chr == 'T')) {
-                    b = 1;
                 }
                 //si no es estilo dibuja
                 if (b == 0) {
@@ -1729,6 +1861,12 @@ public class PrimaryController {
                     if (x > (canvas.getWidth() - 150)) {
                         x = 10;
                         y += max * 7;
+                        
+                        //regresa puntos de caracter
+                        if (maximos.get(posMax) > palabras.get(i).getT()) {
+                            palabras.get(i).getPalabra().get(j).regresar(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
+                        }
+                        
                         max = 0;
                         posMax++;
                     }
@@ -1752,8 +1890,8 @@ public class PrimaryController {
             }
             pos = -1;
         }
-        //finalente colocamos el panel con toda las letras
 
+        //finalente colocamos el panel con toda las letras
         canvas.setGraphic(pane);
     }
 }
