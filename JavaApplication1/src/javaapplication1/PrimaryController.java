@@ -1861,6 +1861,12 @@ public class PrimaryController {
                     if (x > (canvas.getWidth() - 150)) {
                         x = 10;
                         y += max * 7;
+                        
+                        //regresa puntos de caracter
+                        if (maximos.get(posMax) > palabras.get(i).getT()) {
+                            palabras.get(i).getPalabra().get(j).regresar(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
+                        }
+                        
                         max = 0;
                         posMax++;
                     }
