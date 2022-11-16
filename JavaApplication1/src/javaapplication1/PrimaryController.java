@@ -390,7 +390,12 @@ public class PrimaryController {
                     if (palabras.get(i).getK() == 1) {
                         palabras.get(i).getPalabra().get(j).muevePuntos(palabras.get(i).getT());
                     }
-
+                    
+                    //revisamos si hay que reflejar segun el eje Y
+                    if (palabras.get(i).rY == 1) {
+                        palabras.get(i).getPalabra().get(j).reflexY((int)pp.getMaxWidth());
+                    }
+                    
                     //mueve puntos para alinearlos
                     if (maximos.get(posMax) > palabras.get(i).getT()) {
                         palabras.get(i).getPalabra().get(j).mover(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
@@ -484,7 +489,12 @@ public class PrimaryController {
                     if (maximos.get(posMax) > palabras.get(i).getT() && max != 0) {
                         palabras.get(i).getPalabra().get(j).regresar(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
                     }
-
+                    
+                    //regresamos los puntos a su forma sin reflexion
+                    if (palabras.get(i).rY == 1) {
+                        palabras.get(i).getPalabra().get(j).reflexY((int)pp.getMaxWidth());
+                    }
+                    
                     //regresamos letras a tipografia original
                     if (palabras.get(i).getK() == 1) {
                         palabras.get(i).getPalabra().get(j).regresaPuntos(palabras.get(i).getT());
