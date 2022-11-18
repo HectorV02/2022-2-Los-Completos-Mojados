@@ -251,6 +251,16 @@ public class Caracter {
         }
     }
     
+    public void reflexX(int size){
+        int mid = (int)(size/2);
+        for (int i = 0; i < lineas; i++) {
+            Iy.set(i,2*mid- Iy.get(i));
+            Fy.set(i, 2*mid- Fy.get(i));
+            ch1y.set(i,2*mid- ch1y.get(i) );
+            ch2y.set(i, 2*mid- ch2y.get(i));
+        }
+    }
+    
     public Pane getPanel() {
         return root;
     }
