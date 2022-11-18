@@ -302,7 +302,11 @@ public class PrimaryController {
             if (i > 0 && palabras.get(i).getT() != palabras.get(i - 1).getT()) {
                 letras = Empezar(x, y, palabras.get(i).getT());
             }
-
+            
+            if (palabras.get(i).getRY() == 1) {
+                //reorganizar palabras
+            }
+            
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
 
                 if (palabras.get(i).getT() > max) {
@@ -380,6 +384,8 @@ public class PrimaryController {
 
                 //si no es estilo dibuja
                 if (b == 0) {
+                    
+                    
 
                     //revisamos si tenemos que subir el caracter
                     if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j - 1).chr == 'ó' || palabras.get(i).getPalabra().get(j - 1).chr == 'b' || palabras.get(i).getPalabra().get(j - 1).chr == 'o' || palabras.get(i).getPalabra().get(j - 1).chr == 'v' || palabras.get(i).getPalabra().get(j - 1).chr == 'w')) {

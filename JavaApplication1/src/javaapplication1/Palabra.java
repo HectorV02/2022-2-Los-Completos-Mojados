@@ -63,4 +63,12 @@ public class Palabra {
     public void setT(int t){
         this.t = t;
     }
+    
+    public int getRY(){
+        return rY;
+    }
+    
+    public void setRY(int rY){
+        this.rY = rY;
+    }
 }
