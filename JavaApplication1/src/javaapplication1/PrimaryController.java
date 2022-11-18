@@ -58,17 +58,16 @@ public class PrimaryController {
         smallP.setMinSize((int) (3 * tam / 4) * 5, tam * 7);
         smallP.setTranslateX(x);
         smallP.setTranslateY(y);
-        Dibujar d=new Dibujar();
+        Dibujar d = new Dibujar();
         //se crean caractereas
         return d.creaCaracteres(p, puntos, smallP, smallPuntos);
     }
 
     //Metodo que crea caracteres y los guarda en una lista de acuerdo al codigo ASCII, partiendo del 32(espacio)
-    
-
     @FXML
     public void dibuja() throws IOException {
         int x = 10;
+        int xi = 0;
         int y = 10;
         int com = 0;
         int dcom = 0;
@@ -208,6 +207,28 @@ public class PrimaryController {
                                 }
                             }
                         }
+                        case 'X' -> {
+                            int k = j + 1;
+                            String posicion = "";
+                            while (palabras.get(i).getPalabra().size() > k && (int) palabras.get(i).getPalabra().get(k).chr <= 57 && (int) palabras.get(i).getPalabra().get(k).chr >= 48) {
+                                posicion += palabras.get(i).getPalabra().get(k).chr;
+                                k += 1;
+                            }
+                            if (!"".equals(posicion)) {
+                                xi = x + Integer.parseInt(posicion);
+                            }
+                        }
+                        case 'Y' -> {
+                            int k = j + 1;
+                            String posicion = "";
+                            while (palabras.get(i).getPalabra().size() > k && (int) palabras.get(i).getPalabra().get(k).chr <= 57 && (int) palabras.get(i).getPalabra().get(k).chr >= 48) {
+                                posicion += palabras.get(i).getPalabra().get(k).chr;
+                                k += 1;
+                            }
+                            if (!"".equals(posicion)) {
+                                y = y + Integer.parseInt(posicion);
+                            }
+                        }
                         case 'R' -> {
                             reverse = i;
                         }
@@ -221,18 +242,18 @@ public class PrimaryController {
 
         if (reverse != -1) {
             ArrayList<Palabra> aux = new ArrayList();
-            
-            for(int i=0; i<reverse; i++){
+
+            for (int i = 0; i < reverse; i++) {
                 aux.add(palabras.get(i));
             }
-            
+
             for (int i = palabras.size() - 1; i >= reverse; i--) {
                 aux.add(palabras.get(i));
             }
 
             palabras = aux;
         }
-        
+
         for (int j = 2; j < palabras.size(); j += 2) {
             if (palabras.get(j).getS() == 1 && palabras.get(j - 2).getS() == 1) {
                 palabras.get(j - 1).setS(1);
@@ -293,7 +314,7 @@ public class PrimaryController {
 
         posMax = 0;
         pos = -1;
-        x = 10;
+        x = xi;
         max = 0;
         //Ingresamos los caracteres en cada letra
         letras = Empezar(x, y, palabras.get(0).getT());
@@ -354,6 +375,12 @@ public class PrimaryController {
                         case 'T' -> {
                             b = 1;
                         }
+                        case 'X' -> {
+                            b = 1;
+                        }
+                        case 'Y' -> {
+                            b = 1;
+                        }
                         default -> {
                         }
                     }
@@ -375,10 +402,17 @@ public class PrimaryController {
                         case 'R' -> {
                             b = 1;
                         }
+
+                        case 'X' -> {
+                            b = 1;
+                        }
+                        case 'Y' -> {
+                            b = 1;
+                        }
                         default -> {
                         }
                     }
-                } else if (pos >= 0 && (int) palabras.get(i).getPalabra().get(j).chr >= 48 && (int) palabras.get(i).getPalabra().get(j).chr <= 57 && ((int) palabras.get(i).getPalabra().get(j - 1).chr == 'T' || (int) palabras.get(i).getPalabra().get(j - 2).chr == 'T')) {
+                } else if ((int) palabras.get(i).getPalabra().get(j).chr >= 48 && (int) palabras.get(i).getPalabra().get(j).chr <= 57) {
                     b = 1;
                 }
 
@@ -492,6 +526,7 @@ public class PrimaryController {
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
 
                     //regresamos letras a su posicion
+                    //System.out.println(maximos.get(posMax) > palabras.get(i).getT());
                     if (maximos.get(posMax) > palabras.get(i).getT() && max != 0) {
                         palabras.get(i).getPalabra().get(j).regresar(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
                     }
