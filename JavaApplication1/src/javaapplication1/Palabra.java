@@ -79,4 +79,14 @@ public class Palabra {
     public void setRX(int rY){
         this.rX = rY;
     }
+    
+    public void reorganiza(){
+        int j=palabra.size()-1;
+        for (int i = 0; i < j; i++) {
+            Caracter aux=palabra.get(i);
+            palabra.set(i, palabra.get(j));
+            palabra.set(j, aux);
+            j--;
+        }
+    }
 }
