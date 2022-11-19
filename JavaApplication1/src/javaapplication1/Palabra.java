@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Palabra {
 
     ArrayList<Caracter> palabra;
-    int n, s, k,t;
+    int n, s, k,t,rY,rX;
     
     
     public Palabra(){
@@ -62,5 +62,21 @@ public class Palabra {
     
     public void setT(int t){
         this.t = t;
+    }
+    
+    public int getRY(){
+        return rY;
+    }
+    
+    public void setRY(int rY){
+        this.rY = rY;
+    }
+    
+    public int getRX(){
+        return rX;
+    }
+    
+    public void setRX(int rY){
+        this.rX = rY;
     }
 }

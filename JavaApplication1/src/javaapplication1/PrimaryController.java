@@ -67,7 +67,7 @@ public class PrimaryController {
     @FXML
     public void dibuja() throws IOException {
         int x = 10;
-        int xi = 0;
+        int xi = 10;
         int y = 10;
         int com = 0;
         int dcom = 0;
@@ -262,7 +262,7 @@ public class PrimaryController {
                 palabras.get(j - 1).setN(1);
             }
         }
-
+        x = xi;
         //ciclo para ver el tam max de cada linea
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
@@ -322,6 +322,10 @@ public class PrimaryController {
             //crea caracteres
             if (i > 0 && palabras.get(i).getT() != palabras.get(i - 1).getT()) {
                 letras = Empezar(x, y, palabras.get(i).getT());
+            }
+            
+            if (palabras.get(i).getRY() == 1) {
+                //reorganizar palabras
             }
 
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
@@ -414,7 +418,9 @@ public class PrimaryController {
 
                 //si no es estilo dibuja
                 if (b == 0) {
-
+                    
+                    
+                    
                     //revisamos si tenemos que subir el caracter
                     if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j - 1).chr == 'ó' || palabras.get(i).getPalabra().get(j - 1).chr == 'b' || palabras.get(i).getPalabra().get(j - 1).chr == 'o' || palabras.get(i).getPalabra().get(j - 1).chr == 'v' || palabras.get(i).getPalabra().get(j - 1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).subir(palabras.get(i).getT());
@@ -424,7 +430,17 @@ public class PrimaryController {
                     if (palabras.get(i).getK() == 1) {
                         palabras.get(i).getPalabra().get(j).muevePuntos(palabras.get(i).getT());
                     }
-
+                    
+                    //revisamos si hay que reflejar segun el eje Y
+                    if (palabras.get(i).rY == 1) {
+                        palabras.get(i).getPalabra().get(j).reflexY((int)pp.getMaxWidth());
+                    }
+                    
+                    //revisamos si hay que reflejar segun eje X
+                    if (palabras.get(i).rX == 1) {
+                        palabras.get(i).getPalabra().get(j).reflexX((int)pp.getMaxHeight());
+                    }
+                    
                     //mueve puntos para alinearlos
                     if (maximos.get(posMax) > palabras.get(i).getT()) {
                         palabras.get(i).getPalabra().get(j).mover(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
@@ -451,7 +467,7 @@ public class PrimaryController {
 
                     //avanzamos en la posicion
                     x += palabras.get(i).getPalabra().get(j).getPanel().getMaxWidth();
-
+                    
                     //revisamos si se llego al tope y si la palabra continua
                     if (x > (canvas.getWidth() - 200) && j + 1 < palabras.get(i).getPalabra().size() && palabras.get(i).getPalabra().get(j).chr != ' ' && palabras.get(i).getPalabra().get(j + 1).chr != '^') {
                         //colocamos un guion y hacemos un salto de linea
@@ -472,7 +488,7 @@ public class PrimaryController {
 
                         //muestra checkpoints
                         if (muestraPuntos.isSelected()) {
-                            letras.get(13).getCheckpoints(palabras.get(i).getS());
+                            letras.get(13).getCheckpoints(0);
                         }
 
                         //aplica negritas
@@ -498,6 +514,7 @@ public class PrimaryController {
                         posMax++;
                         max = 0;
                     }
+                    
                     //revisamos si se llego al tope y hacemos salto de linea de ser necesario
                     if (x > (canvas.getWidth() - 150)) {
                         x = 10;
@@ -511,6 +528,7 @@ public class PrimaryController {
                         max = 0;
                         posMax++;
                     }
+                    
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
 
@@ -519,7 +537,17 @@ public class PrimaryController {
                     if (maximos.get(posMax) > palabras.get(i).getT() && max != 0) {
                         palabras.get(i).getPalabra().get(j).regresar(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
                     }
-
+                    
+                    //regresamos los puntos a su forma sin reflexion
+                    if (palabras.get(i).rX == 1) {
+                        palabras.get(i).getPalabra().get(j).reflexX((int)pp.getMaxHeight());
+                    }
+                    
+                    //regresamos los puntos a su forma sin reflexion
+                    if (palabras.get(i).rY == 1) {
+                        palabras.get(i).getPalabra().get(j).reflexY((int)pp.getMaxWidth());
+                    }
+                    
                     //regresamos letras a tipografia original
                     if (palabras.get(i).getK() == 1) {
                         palabras.get(i).getPalabra().get(j).regresaPuntos(palabras.get(i).getT());
@@ -528,11 +556,12 @@ public class PrimaryController {
                     if (j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j - 1).chr == 'ó' || palabras.get(i).getPalabra().get(j - 1).chr == 'b' || palabras.get(i).getPalabra().get(j - 1).chr == 'o' || palabras.get(i).getPalabra().get(j - 1).chr == 'v' || palabras.get(i).getPalabra().get(j - 1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).bajar(palabras.get(i).getT());
                     }
+                    
                 }
             }
             pos = -1;
+            
         }
-
         //finalente colocamos el panel con toda las letras
         canvas.setGraphic(pane);
     }
