@@ -323,8 +323,8 @@ public class PrimaryController {
             if (i > 0 && palabras.get(i).getT() != palabras.get(i - 1).getT()) {
                 letras = Empezar(x, y, palabras.get(i).getT());
             }
-            palabras.get(i).setRX(1);
-            palabras.get(i).setRY(1);
+//            palabras.get(i).setRX(1);
+//            palabras.get(i).setRY(1);
             if (palabras.get(i).getRY() == 1) {
                 palabras.get(i).reorganiza();
             }
@@ -508,7 +508,7 @@ public class PrimaryController {
 
                     //revisamos si hay que reflejar segun eje X
                     if (palabras.get(i).rX == 1) {
-                        palabras.get(i).getPalabra().get(j).reflexX((int) pp.getMaxHeight());
+                        palabras.get(i).getPalabra().get(j).reflexX((int) pp.getMaxHeight(),palabras.get(i).getS());
                     }
 
                     //mueve puntos para alinearlos
@@ -610,7 +610,7 @@ public class PrimaryController {
 
                     //regresamos los puntos a su forma sin reflexion
                     if (palabras.get(i).rX == 1) {
-                        palabras.get(i).getPalabra().get(j).reflexX((int) pp.getMaxHeight());
+                        palabras.get(i).getPalabra().get(j).reflexX((int) pp.getMaxHeight(),palabras.get(i).getS());
                     }
 
                     //regresamos los puntos a su forma sin reflexion

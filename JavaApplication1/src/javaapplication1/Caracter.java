@@ -251,13 +251,19 @@ public class Caracter {
         }
     }
     
-    public void reflexX(int size){
+    public void reflexX(int size, int s){
         int mid = (int)(size/2);
         for (int i = 0; i < lineas; i++) {
             Iy.set(i,2*mid- Iy.get(i));
             Fy.set(i, 2*mid- Fy.get(i));
             ch1y.set(i,2*mid- ch1y.get(i) );
             ch2y.set(i, 2*mid- ch2y.get(i));
+        }
+        if (s == 1) {
+            subrayado.set(1, 2*mid - subrayado.get(1));
+            subrayado.set(3, 2*mid - subrayado.get(3));
+            subrayado.set(5, 2*mid - subrayado.get(5));
+            subrayado.set(7, 2*mid - subrayado.get(7));
         }
     }
     
