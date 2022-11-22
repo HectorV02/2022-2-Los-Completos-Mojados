@@ -252,6 +252,9 @@ public class PrimaryController {
             if (palabras.get(j).getN() == 1 && palabras.get(j - 2).getN() == 1) {
                 palabras.get(j - 1).setN(1);
             }
+            if (palabras.get(j).getRX()== 1 && palabras.get(j - 2).getRX() == 1) {
+                palabras.get(j - 1).setRX(1);
+            }
         }
         x = xi;
         //ciclo para ver el tam max de cada linea
@@ -430,13 +433,13 @@ public class PrimaryController {
                     if (palabras.get(i).rY == 1) {
                         palabras.get(i).getPalabra().get(j).reflexY((int) pp.getMaxWidth());
                     }
-                    //revisamos si hay que reflejar segun eje X
-                    if (palabras.get(i).rX == 1) {
-                        palabras.get(i).getPalabra().get(j).reflexX((int) pp.getMaxHeight(), palabras.get(i).getS());
-                    }
                     //mueve puntos para alinearlos
                     if (maximos.get(posMax) > palabras.get(i).getT()) {
                         palabras.get(i).getPalabra().get(j).mover(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
+                    }
+                    //revisamos si hay que reflejar segun eje X
+                    if (palabras.get(i).rX == 1) {
+                        palabras.get(i).getPalabra().get(j).reflexX((int)maximos.get(posMax)*7, palabras.get(i).getS());
                     }
                     //dibujamos la letras
                     palabras.get(i).getPalabra().get(j).root = pp;
@@ -505,13 +508,13 @@ public class PrimaryController {
                     }
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
+                    //regresamos reflejar segun eje X
+                    if (palabras.get(i).rX == 1) {
+                        palabras.get(i).getPalabra().get(j).reflexX((int)maximos.get(posMax)*7, palabras.get(i).getS());
+                    }
                     //regresamos letras a su posicion
                     if (maximos.get(posMax) > palabras.get(i).getT() && max != 0) {
                         palabras.get(i).getPalabra().get(j).regresar(maximos.get(posMax), palabras.get(i).getT(), palabras.get(i).getS());
-                    }
-                    //regresamos los puntos a su forma sin reflexion
-                    if (palabras.get(i).rX == 1) {
-                        palabras.get(i).getPalabra().get(j).reflexX((int) pp.getMaxHeight(), palabras.get(i).getS());
                     }
                     //regresamos los puntos a su forma sin reflexion
                     if (palabras.get(i).rY == 1) {
