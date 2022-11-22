@@ -13,10 +13,9 @@ import java.util.ArrayList;
 public class Palabra {
 
     ArrayList<Caracter> palabra;
-    int n, s, k,t,rY,rX;
-    
-    
-    public Palabra(){
+    int n, s, k, t, rY, rX;
+
+    public Palabra() {
         palabra = new ArrayList();
     }
 
@@ -55,38 +54,106 @@ public class Palabra {
     public void setK(int k) {
         this.k = k;
     }
-    
-    public int getT(){
+
+    public int getT() {
         return t;
     }
-    
-    public void setT(int t){
+
+    public void setT(int t) {
         this.t = t;
     }
-    
-    public int getRY(){
+
+    public int getRY() {
         return rY;
     }
-    
-    public void setRY(int rY){
+
+    public void setRY(int rY) {
         this.rY = rY;
     }
-    
-    public int getRX(){
+
+    public int getRX() {
         return rX;
     }
-    
-    public void setRX(int rY){
+
+    public void setRX(int rY) {
         this.rX = rY;
     }
-    
-    public void reorganiza(){
-        int j=palabra.size()-1;
-        for (int i = 0; i < j; i++) {
-            Caracter aux=palabra.get(i);
-            palabra.set(i, palabra.get(j));
-            palabra.set(j, aux);
-            j--;
+
+    public void reorganiza() {
+        int i, j = palabra.size() - 1;
+        //revisa estilos
+        if (palabra.get(0).chr == '^') {
+            i = 0;
+            //i aumenta hasta que ya no es estilo
+            while (i + 1 < palabra.size()) {
+                if (palabra.get(i + 1).chr == '+') {
+                    i++;
+                } else if (palabra.get(i).chr == '^' || palabra.get(i).chr == '+') {
+                    switch (palabra.get(i + 1).chr) {
+                        case 'K' -> {
+                            i++;
+                        }
+                        case 'S' -> {
+                            i++;
+                        }
+                        case 'N' -> {
+                            i++;
+                        }
+                        case 'T' -> {
+                            i++;
+                        }
+                        case 'R' -> {
+                            i++;
+                        }
+                        case 'X' -> {
+                            i++;
+                        }
+                        case 'Y' -> {
+                            i++;
+                        }
+                        case 'M' -> {
+                            i++;
+                        }
+                        case 'P' -> {
+                            i++;
+                        }
+                        default -> {
+                        }
+                    }
+                } else if ((int) palabra.get(i).chr >= 48 && (int) palabra.get(i).chr <= 57) {
+                    i++;
+                } else {
+                    break;
+                }
+            }
+            i++;
+            //revisa si hay estilos del final
+            for (int l = i; l <= j; l++) {
+                if (palabra.get(l).chr == '^') {
+                    j = l - 1;
+                }
+            }
+            //da vuelta palabra(solo lo escrito)
+            for (int l = i; l < j; l++) {
+                Caracter aux = palabra.get(l);
+                palabra.set(l, palabra.get(j));
+                palabra.set(j, aux);
+                j--;
+            }
+        } else {
+            //revisa si hay estilos del final
+            for (int l = 1; l <= j; l++) {
+                if (palabra.get(l).chr == '^') {
+                    j = l - 1;
+                }
+            }
+            //da vuelta palabra(solo lo escrito)
+            for (int l = 0; l < j; l++) {
+                Caracter aux = palabra.get(l);
+                palabra.set(l, palabra.get(j));
+                palabra.set(j, aux);
+                j--;
+            }
         }
     }
 }
