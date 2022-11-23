@@ -91,33 +91,34 @@ public class Palabra {
                 } else if (palabra.get(i).chr == '^' || palabra.get(i).chr == '+') {
                     switch (palabra.get(i + 1).chr) {
                         case 'K' -> {
-                            i++;
+                            i+=2;
                         }
                         case 'S' -> {
-                            i++;
+                            i+=2;
                         }
                         case 'N' -> {
-                            i++;
+                            i+=2;
                         }
                         case 'T' -> {
-                            i++;
+                            i+=2;
                         }
                         case 'R' -> {
-                            i++;
+                            i+=2;
                         }
                         case 'X' -> {
-                            i++;
+                            i+=2;
                         }
                         case 'Y' -> {
-                            i++;
+                            i+=2;
                         }
                         case 'M' -> {
-                            i++;
+                            i+=2;
                         }
                         case 'P' -> {
-                            i++;
+                            i+=2;
                         }
                         default -> {
+                            i++;
                         }
                     }
                 } else if ((int) palabra.get(i).chr >= 48 && (int) palabra.get(i).chr <= 57) {
@@ -126,7 +127,6 @@ public class Palabra {
                     break;
                 }
             }
-            i++;
             //revisa si hay estilos del final
             for (int l = i; l <= j; l++) {
                 if (palabra.get(l).chr == '^') {
