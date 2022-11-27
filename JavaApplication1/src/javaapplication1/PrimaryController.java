@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 public class PrimaryController {
+
     @FXML
     public TextField cuadroTexto;
     @FXML
@@ -19,6 +20,7 @@ public class PrimaryController {
     public ColorPicker colores;
     @FXML
     public CheckBox muestraPuntos;
+
     //Metodo donde se crean los paneles en que se trabajaran y llama a crear los caracteres
     @FXML
     public ArrayList<Caracter> Empezar(int x, int y, int tam) {
@@ -58,6 +60,7 @@ public class PrimaryController {
         //se crean caractereas
         return d.creaCaracteres(p, puntos, smallP, smallPuntos);
     }
+
     //Metodo que crea caracteres y los guarda en una lista de acuerdo al codigo ASCII, partiendo del 32(espacio)
     @FXML
     public void dibuja() throws IOException {
@@ -74,6 +77,7 @@ public class PrimaryController {
         int max = 0;
         int posMax = 0;
         int reverse = -1;
+        int ancho;
         ArrayList<Palabra> palabras = new ArrayList();
         ArrayList<Integer> maximos = new ArrayList();
         maximos.add(0);
@@ -252,7 +256,7 @@ public class PrimaryController {
             if (palabras.get(j).getN() == 1 && palabras.get(j - 2).getN() == 1) {
                 palabras.get(j - 1).setN(1);
             }
-            if (palabras.get(j).getRX()== 1 && palabras.get(j - 2).getRX() == 1) {
+            if (palabras.get(j).getRX() == 1 && palabras.get(j - 2).getRX() == 1) {
                 palabras.get(j - 1).setRX(1);
             }
         }
@@ -316,7 +320,9 @@ public class PrimaryController {
             }//reorganiza palabra si se aplica espejo segun eje X
             if (palabras.get(i).getRY() == 1) {
                 palabras.get(i).reorganiza();
-            } //recorre letras dentro de palabra
+            }
+            ancho = 0;
+//recorre letras dentro de palabra
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
                 //si tamaño de palabra supera el maximo de linea
                 if (palabras.get(i).getT() > max) {
@@ -418,11 +424,11 @@ public class PrimaryController {
                 }
                 //si no es estilo dibuja
                 if (b == 0) {
+
                     //revisamos si tenemos que subir el caracter
                     if (palabras.get(i).getRY() != 1 && j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j - 1).chr == 'ó' || palabras.get(i).getPalabra().get(j - 1).chr == 'b' || palabras.get(i).getPalabra().get(j - 1).chr == 'o' || palabras.get(i).getPalabra().get(j - 1).chr == 'v' || palabras.get(i).getPalabra().get(j - 1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).subir(palabras.get(i).getT());
-                    }
-                    else if (palabras.get(i).getRY() == 1 && palabras.get(i).palabra.size() > j + 1 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j + 1).chr == 'ó' || palabras.get(i).getPalabra().get(j + 1).chr == 'b' || palabras.get(i).getPalabra().get(j + 1).chr == 'o' || palabras.get(i).getPalabra().get(j + 1).chr == 'v' || palabras.get(i).getPalabra().get(j + 1).chr == 'w')) {
+                    } else if (palabras.get(i).getRY() == 1 && palabras.get(i).palabra.size() > j + 1 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j + 1).chr == 'ó' || palabras.get(i).getPalabra().get(j + 1).chr == 'b' || palabras.get(i).getPalabra().get(j + 1).chr == 'o' || palabras.get(i).getPalabra().get(j + 1).chr == 'v' || palabras.get(i).getPalabra().get(j + 1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).subir(palabras.get(i).getT());
                     }
                     //revisamos si estan activadas las cursivas
@@ -439,8 +445,19 @@ public class PrimaryController {
                     }
                     //revisamos si hay que reflejar segun eje X
                     if (palabras.get(i).rX == 1) {
-                        palabras.get(i).getPalabra().get(j).reflexX((int)maximos.get(posMax)*7, palabras.get(i).getS());
+                        palabras.get(i).getPalabra().get(j).reflexX((int) maximos.get(posMax) * 7, palabras.get(i).getS());
                     }
+                    
+                    // revisamos si hay que rotar
+                    if (palabras.get(i).ang != 0) {
+                        //si se activo A mayuscula(rota todo)
+                        if (true) {
+                            palabras.get(i).getPalabra().get(j).rotar( - x,  - y, palabras.get(i).ang);
+                        } else {
+                            palabras.get(i).getPalabra().get(j).rotar(-ancho, 20 * 7, palabras.get(i).ang);
+                        }
+                    }
+
                     //dibujamos la letras
                     palabras.get(i).getPalabra().get(j).root = pp;
                     palabras.get(i).getPalabra().get(j).dibujar(colores.getValue());
@@ -506,11 +523,22 @@ public class PrimaryController {
                         max = 0;
                         posMax++;
                     }
+                    
+                    //devuelve el rotar
+                    if (palabras.get(i).ang != 0) {
+                        if (true) {
+                            palabras.get(i).getPalabra().get(j).rotar( - x, - y, 360- palabras.get(i).ang);
+                        }else{
+                            palabras.get(i).getPalabra().get(j).rotar(-ancho, 20 * 7, 360 - palabras.get(i).ang);
+                        }
+                        
+                    }
+
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
                     //regresamos reflejar segun eje X
                     if (palabras.get(i).rX == 1) {
-                        palabras.get(i).getPalabra().get(j).reflexX((int)maximos.get(posMax)*7, palabras.get(i).getS());
+                        palabras.get(i).getPalabra().get(j).reflexX((int) maximos.get(posMax) * 7, palabras.get(i).getS());
                     }
                     //regresamos letras a su posicion
                     if (maximos.get(posMax) > palabras.get(i).getT() && max != 0) {
@@ -531,6 +559,7 @@ public class PrimaryController {
                     if (palabras.get(i).getRY() == 1 && palabras.get(i).getPalabra().size() > j + 1 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j + 1).chr == 'ó' || palabras.get(i).getPalabra().get(j + 1).chr == 'b' || palabras.get(i).getPalabra().get(j + 1).chr == 'o' || palabras.get(i).getPalabra().get(j + 1).chr == 'v' || palabras.get(i).getPalabra().get(j + 1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).bajar(palabras.get(i).getT());
                     }
+                    ancho = ancho + (int) palabras.get(i).getPalabra().get(j).root.getMaxWidth();
                 }
             }
             pos = -1;
