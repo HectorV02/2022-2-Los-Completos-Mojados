@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Palabra {
 
     ArrayList<Caracter> palabra;
-    int n, s, k, t, rY, rX,ang;
+    int n, s, k, t, rY, rX, ang;
 
     public Palabra() {
         palabra = new ArrayList();
@@ -79,6 +79,30 @@ public class Palabra {
         this.rX = rY;
     }
 
+    public int getrY() {
+        return rY;
+    }
+
+    public void setrY(int rY) {
+        this.rY = rY;
+    }
+
+    public int getrX() {
+        return rX;
+    }
+
+    public void setrX(int rX) {
+        this.rX = rX;
+    }
+
+    public int getAng() {
+        return ang;
+    }
+
+    public void setAng(int ang) {
+        this.ang = ang;
+    }
+
     public void reorganiza() {
         int i, j = palabra.size() - 1;
         //revisa estilos
@@ -91,31 +115,31 @@ public class Palabra {
                 } else if (palabra.get(i).chr == '^' || palabra.get(i).chr == '+') {
                     switch (palabra.get(i + 1).chr) {
                         case 'K' -> {
-                            i+=2;
+                            i += 2;
                         }
                         case 'S' -> {
-                            i+=2;
+                            i += 2;
                         }
                         case 'N' -> {
-                            i+=2;
+                            i += 2;
                         }
                         case 'T' -> {
-                            i+=2;
+                            i += 2;
                         }
                         case 'R' -> {
-                            i+=2;
+                            i += 2;
                         }
                         case 'X' -> {
-                            i+=2;
+                            i += 2;
                         }
                         case 'Y' -> {
-                            i+=2;
+                            i += 2;
                         }
                         case 'M' -> {
-                            i+=2;
+                            i += 2;
                         }
                         case 'P' -> {
-                            i+=2;
+                            i += 2;
                         }
                         default -> {
                             i++;
