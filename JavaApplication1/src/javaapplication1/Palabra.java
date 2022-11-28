@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Palabra {
 
     ArrayList<Caracter> palabra;
-    int n, s, k, t, rY, rX,ang;
+    int n, s, k, t, rY, rX, ang;
 
     public Palabra() {
         palabra = new ArrayList();
@@ -79,6 +79,30 @@ public class Palabra {
         this.rX = rY;
     }
 
+    public int getrY() {
+        return rY;
+    }
+
+    public void setrY(int rY) {
+        this.rY = rY;
+    }
+
+    public int getrX() {
+        return rX;
+    }
+
+    public void setrX(int rX) {
+        this.rX = rX;
+    }
+
+    public int getAng() {
+        return ang;
+    }
+
+    public void setAng(int ang) {
+        this.ang = ang;
+    }
+
     public void reorganiza() {
         int i, j = palabra.size() - 1;
         //revisa estilos
@@ -91,33 +115,34 @@ public class Palabra {
                 } else if (palabra.get(i).chr == '^' || palabra.get(i).chr == '+') {
                     switch (palabra.get(i + 1).chr) {
                         case 'K' -> {
-                            i++;
+                            i += 2;
                         }
                         case 'S' -> {
-                            i++;
+                            i += 2;
                         }
                         case 'N' -> {
-                            i++;
+                            i += 2;
                         }
                         case 'T' -> {
-                            i++;
+                            i += 2;
                         }
                         case 'R' -> {
-                            i++;
+                            i += 2;
                         }
                         case 'X' -> {
-                            i++;
+                            i += 2;
                         }
                         case 'Y' -> {
-                            i++;
+                            i += 2;
                         }
                         case 'M' -> {
-                            i++;
+                            i += 2;
                         }
                         case 'P' -> {
-                            i++;
+                            i += 2;
                         }
                         default -> {
+                            i++;
                         }
                     }
                 } else if ((int) palabra.get(i).chr >= 48 && (int) palabra.get(i).chr <= 57) {
@@ -126,7 +151,6 @@ public class Palabra {
                     break;
                 }
             }
-            i++;
             //revisa si hay estilos del final
             for (int l = i; l <= j; l++) {
                 if (palabra.get(l).chr == '^') {

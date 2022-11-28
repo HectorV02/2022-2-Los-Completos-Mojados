@@ -78,6 +78,7 @@ public class PrimaryController {
         int posMax = 0;
         int reverse = -1;
         int ancho;
+        int angulo = -1;
         ArrayList<Palabra> palabras = new ArrayList();
         ArrayList<Integer> maximos = new ArrayList();
         maximos.add(0);
@@ -175,6 +176,17 @@ public class PrimaryController {
                         case 'P' -> {
                             palabras.get(comas).setRX(1);
                         }
+                        case 'a' -> {
+                            int k = j + 1;
+                            String ang = "";
+                            while (palabras.get(i).getPalabra().size() > k && (int) palabras.get(i).getPalabra().get(k).chr <= 57 && (int) palabras.get(i).getPalabra().get(k).chr >= 48) {
+                                ang += palabras.get(i).getPalabra().get(k).chr;
+                                k += 1;
+                            }
+                            if (!"".equals(ang)) {
+                                palabras.get(comas).setAng(Integer.parseInt(ang));
+                            }
+                        }
                         default -> {
                         }
                     }
@@ -201,6 +213,17 @@ public class PrimaryController {
                                 palabras.get(i).setT(Integer.parseInt(tamanio));
                             }
                         }
+                        case 'a' -> {
+                            int k = j + 1;
+                            String ang = "";
+                            while (palabras.get(i).getPalabra().size() > k && (int) palabras.get(i).getPalabra().get(k).chr <= 57 && (int) palabras.get(i).getPalabra().get(k).chr >= 48) {
+                                ang += palabras.get(i).getPalabra().get(k).chr;
+                                k += 1;
+                            }
+                            if (!"".equals(ang)) {
+                                palabras.get(i).setAng(Integer.parseInt(ang));
+                            }
+                        }
                         case 'X' -> {
                             int k = j + 1;
                             String posicion = "";
@@ -225,6 +248,17 @@ public class PrimaryController {
                         }
                         case 'R' -> {
                             reverse = i;
+                        }
+                        case 'A' -> {
+                            int k = j + 1;
+                            String ang = "";
+                            while (palabras.get(i).getPalabra().size() > k && (int) palabras.get(i).getPalabra().get(k).chr <= 57 && (int) palabras.get(i).getPalabra().get(k).chr >= 48) {
+                                ang += palabras.get(i).getPalabra().get(k).chr;
+                                k += 1;
+                            }
+                            if (!"".equals(ang)) {
+                                angulo=Integer.parseInt(ang);
+                            }
                         }
                         case 'M' -> {
                             palabras.get(i).setRY(1);
@@ -322,7 +356,7 @@ public class PrimaryController {
                 palabras.get(i).reorganiza();
             }
             ancho = 0;
-//recorre letras dentro de palabra
+            //recorre letras dentro de palabra
             for (int j = 0; j < palabras.get(i).getPalabra().size(); j++) {
                 //si tamaño de palabra supera el maximo de linea
                 if (palabras.get(i).getT() > max) {
@@ -381,6 +415,9 @@ public class PrimaryController {
                         case 'P' -> {
                             b = 1;
                         }
+                        case 'a' -> {
+                            b = 1;
+                        }
                         default -> {
                         }
                     }
@@ -414,6 +451,12 @@ public class PrimaryController {
                         case 'P' -> {
                             b = 1;
                         }
+                        case 'a' -> {
+                            b = 1;
+                        }
+                        case 'A' -> {
+                            b = 1;
+                        }
                         default -> {
                         }
                     }
@@ -424,7 +467,6 @@ public class PrimaryController {
                 }
                 //si no es estilo dibuja
                 if (b == 0) {
-
                     //revisamos si tenemos que subir el caracter
                     if (palabras.get(i).getRY() != 1 && j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j - 1).chr == 'ó' || palabras.get(i).getPalabra().get(j - 1).chr == 'b' || palabras.get(i).getPalabra().get(j - 1).chr == 'o' || palabras.get(i).getPalabra().get(j - 1).chr == 'v' || palabras.get(i).getPalabra().get(j - 1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).subir(palabras.get(i).getT());
@@ -447,17 +489,15 @@ public class PrimaryController {
                     if (palabras.get(i).rX == 1) {
                         palabras.get(i).getPalabra().get(j).reflexX((int) maximos.get(posMax) * 7, palabras.get(i).getS());
                     }
-                    
                     // revisamos si hay que rotar
-                    if (palabras.get(i).ang != 0) {
+                    if (palabras.get(i).ang != 0 || angulo!=-1) {
                         //si se activo A mayuscula(rota todo)
-                        if (true) {
-                            palabras.get(i).getPalabra().get(j).rotar( - x,  - y, palabras.get(i).ang);
+                        if (angulo!=-1) {
+                            palabras.get(i).getPalabra().get(j).rotar(-x, -y, palabras.get(i).ang);
                         } else {
                             palabras.get(i).getPalabra().get(j).rotar(-ancho, 20 * 7, palabras.get(i).ang);
                         }
                     }
-
                     //dibujamos la letras
                     palabras.get(i).getPalabra().get(j).root = pp;
                     palabras.get(i).getPalabra().get(j).dibujar(colores.getValue());
@@ -523,17 +563,14 @@ public class PrimaryController {
                         max = 0;
                         posMax++;
                     }
-                    
                     //devuelve el rotar
                     if (palabras.get(i).ang != 0) {
-                        if (true) {
-                            palabras.get(i).getPalabra().get(j).rotar( - x, - y, 360- palabras.get(i).ang);
-                        }else{
+                        if (angulo!=-1) {
+                            palabras.get(i).getPalabra().get(j).rotar(-x, -y, 360 - palabras.get(i).ang);
+                        } else {
                             palabras.get(i).getPalabra().get(j).rotar(-ancho, 20 * 7, 360 - palabras.get(i).ang);
                         }
-                        
                     }
-
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());
                     //regresamos reflejar segun eje X
