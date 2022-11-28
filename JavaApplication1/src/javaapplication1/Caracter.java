@@ -24,7 +24,7 @@ public class Caracter {
         this.ch2x = ch2x;
         this.ch2y = ch2y;
         this.root = root;
-        width = (int)root.getMaxWidth();
+        width = (int) root.getMaxWidth();
         this.lineas = lineas;
         this.subrayado = subrayado;
         this.chr = chr;
@@ -125,7 +125,7 @@ public class Caracter {
                 }
             }
         }
-        
+
     }
 
     public void regresaPuntos(int tam) {
@@ -194,8 +194,8 @@ public class Caracter {
             root.getChildren().add(a);
         }
     }
-    
-    public void replace(Caracter a){
+
+    public void replace(Caracter a) {
         Ix = a.Ix;
         Iy = a.Iy;
         Fx = a.Fx;
@@ -208,69 +208,71 @@ public class Caracter {
         chr = a.chr;
         root = a.root;
         lineas = a.lineas;
-        
+
     }
+
     //movemos una letra hacia abajo 
-    public void mover(int max, int size, int s){
+    public void mover(int max, int size, int s) {
         for (int i = 0; i < lineas; i++) {
-            Iy.set(i, Iy.get(i) + (max - size)*5);
-            Fy.set(i, Fy.get(i) + (max - size)*5);
-            ch1y.set(i, ch1y.get(i) + (max - size)*5);
-            ch2y.set(i, ch2y.get(i) + (max - size)*5);
+            Iy.set(i, Iy.get(i) + (max - size) * 5);
+            Fy.set(i, Fy.get(i) + (max - size) * 5);
+            ch1y.set(i, ch1y.get(i) + (max - size) * 5);
+            ch2y.set(i, ch2y.get(i) + (max - size) * 5);
         }
         if (s == 1) {
-            subrayado.set(1, subrayado.get(1)+ (max - size)*6);
-            subrayado.set(3, subrayado.get(3)+ (max - size)*6);
-            subrayado.set(5, subrayado.get(5)+ (max - size)*6);
-            subrayado.set(7, subrayado.get(7)+ (max - size)*6);
+            subrayado.set(1, subrayado.get(1) + (max - size) * 6);
+            subrayado.set(3, subrayado.get(3) + (max - size) * 6);
+            subrayado.set(5, subrayado.get(5) + (max - size) * 6);
+            subrayado.set(7, subrayado.get(7) + (max - size) * 6);
         }
     }
+
     //regresamos una letra a su posicion original
-    public void regresar(int max, int size, int s){
+    public void regresar(int max, int size, int s) {
         for (int i = 0; i < lineas; i++) {
-            Iy.set(i, Iy.get(i) - (max - size)*5);
-            Fy.set(i, Fy.get(i) - (max - size)*5);
-            ch1y.set(i, ch1y.get(i) - (max - size)*5);
-            ch2y.set(i, ch2y.get(i) - (max - size)*5);
+            Iy.set(i, Iy.get(i) - (max - size) * 5);
+            Fy.set(i, Fy.get(i) - (max - size) * 5);
+            ch1y.set(i, ch1y.get(i) - (max - size) * 5);
+            ch2y.set(i, ch2y.get(i) - (max - size) * 5);
         }
         if (s == 1) {
-            subrayado.set(1, subrayado.get(1)- (max - size)*6);
-            subrayado.set(3, subrayado.get(3)- (max - size)*6);
-            subrayado.set(5, subrayado.get(5)- (max - size)*6);
-            subrayado.set(7, subrayado.get(7)- (max - size)*6);
+            subrayado.set(1, subrayado.get(1) - (max - size) * 6);
+            subrayado.set(3, subrayado.get(3) - (max - size) * 6);
+            subrayado.set(5, subrayado.get(5) - (max - size) * 6);
+            subrayado.set(7, subrayado.get(7) - (max - size) * 6);
         }
     }
-    
-    public void reflexY(int size){
-        int mid = (int)(size/2);
+
+    public void reflexY(int size) {
+        int mid = (int) (size / 2);
         for (int i = 0; i < lineas; i++) {
-            Ix.set(i,2*mid- Ix.get(i));
-            Fx.set(i, 2*mid- Fx.get(i));
-            ch1x.set(i,2*mid- ch1x.get(i) );
-            ch2x.set(i, 2*mid- ch2x.get(i));
+            Ix.set(i, 2 * mid - Ix.get(i));
+            Fx.set(i, 2 * mid - Fx.get(i));
+            ch1x.set(i, 2 * mid - ch1x.get(i));
+            ch2x.set(i, 2 * mid - ch2x.get(i));
         }
     }
-    
-    public void reflexX(int size, int s){
-        int mid = (int)(size/2);
+
+    public void reflexX(int size, int s) {
+        int mid = (int) (size / 2);
         for (int i = 0; i < lineas; i++) {
-            Iy.set(i,2*mid- Iy.get(i));
-            Fy.set(i, 2*mid- Fy.get(i));
-            ch1y.set(i,2*mid- ch1y.get(i) );
-            ch2y.set(i, 2*mid- ch2y.get(i));
+            Iy.set(i, 2 * mid - Iy.get(i));
+            Fy.set(i, 2 * mid - Fy.get(i));
+            ch1y.set(i, 2 * mid - ch1y.get(i));
+            ch2y.set(i, 2 * mid - ch2y.get(i));
         }
         if (s == 1) {
-            subrayado.set(1, 2*mid - subrayado.get(1));
-            subrayado.set(3, 2*mid - subrayado.get(3));
-            subrayado.set(5, 2*mid - subrayado.get(5));
-            subrayado.set(7, 2*mid - subrayado.get(7));
+            subrayado.set(1, 2 * mid - subrayado.get(1));
+            subrayado.set(3, 2 * mid - subrayado.get(3));
+            subrayado.set(5, 2 * mid - subrayado.get(5));
+            subrayado.set(7, 2 * mid - subrayado.get(7));
         }
     }
-    
-    public void rotar(double x, double y, double ang) {
+
+    public void rotar(double x, double y, double ang, int s) {
         double x1, x2, x3, x4;
         double y1, y2, y3, y4;
-        
+
         ang = Math.toRadians(ang);
         //System.out.println(Math.cos(ang));
         for (int i = 0; i < lineas; i++) {
@@ -303,8 +305,27 @@ public class Caracter {
             ch2y.set(i, (int) (y + y4));
 
         }
+        if (s == 1) {
+            x1 = subrayado.get(0);
+            y1 = subrayado.get(1);
+            subrayado.set(0, (int) (x + (x1 - x) * Math.cos(ang) - ((y1 - y) * Math.sin(ang))));
+            subrayado.set(1, (int) (y + ((x1 - x) * Math.sin(ang)) + (y1 - y) * Math.cos(ang)));
+            x1 = subrayado.get(2);
+            y1 = subrayado.get(3);
+            subrayado.set(2, (int) (x + (x1 - x) * Math.cos(ang) - ((y1 - y) * Math.sin(ang))));
+            subrayado.set(3, (int) (y + ((x1 - x) * Math.sin(ang)) + (y1 - y) * Math.cos(ang)));
+            x1 = subrayado.get(4);
+            y1 = subrayado.get(5);
+            subrayado.set(4, (int) (x + (x1 - x) * Math.cos(ang) - ((y1 - y) * Math.sin(ang))));
+            subrayado.set(5, (int) (y + ((x1 - x) * Math.sin(ang)) + (y1 - y) * Math.cos(ang)));
+            x1 = subrayado.get(6);
+            y1 = subrayado.get(7);
+            subrayado.set(7, (int) (y + ((x1 - x) * Math.sin(ang)) + (y1 - y) * Math.cos(ang)));
+            subrayado.set(6, (int) (x + (x1 - x) * Math.cos(ang) - ((y1 - y) * Math.sin(ang))));
+
+        }
     }
-    
+
     public Pane getPanel() {
         return root;
     }
