@@ -257,7 +257,7 @@ public class PrimaryController {
                                 k += 1;
                             }
                             if (!"".equals(ang)) {
-                                angulo=Integer.parseInt(ang);
+                                angulo = Integer.parseInt(ang);
                             }
                         }
                         case 'M' -> {
@@ -490,14 +490,14 @@ public class PrimaryController {
                         palabras.get(i).getPalabra().get(j).reflexX((int) maximos.get(posMax) * 7, palabras.get(i).getS());
                     }
                     // revisamos si hay que rotar
-                    if (palabras.get(i).ang != 0 || angulo!=0) {
+                    if (palabras.get(i).ang != 0 || angulo != 0) {
                         //si se activo A mayuscula(rota todo)
-                        if (angulo!=0) {
-                            palabras.get(i).getPalabra().get(j).rotar((int)(canvas.getWidth()/2)-x, (int)(canvas.getHeight()/2)-y, angulo);
-                        } 
-                        if (palabras.get(i).ang!=0) {
-                            
-                            palabras.get(i).getPalabra().get(j).rotar(-ancho, 20 * 7, palabras.get(i).ang);
+                        if (angulo != 0) {
+                            palabras.get(i).getPalabra().get(j).rotar((int) (canvas.getWidth() / 2) - x, (int) (canvas.getHeight() / 2) - y, angulo, palabras.get(i).getS());
+                        }
+                        if (palabras.get(i).ang != 0) {
+
+                            palabras.get(i).getPalabra().get(j).rotar(-ancho, 20 * 7, palabras.get(i).ang, palabras.get(i).getS());
                         }
                     }
                     //dibujamos la letras
@@ -566,13 +566,8 @@ public class PrimaryController {
                         posMax++;
                     }
                     //devuelve el rotar
-                    if (palabras.get(i).ang != 0 || angulo!=0) {
+                    if (palabras.get(i).ang != 0 || angulo != 0) {
                         letras = Empezar(x, y, palabras.get(i).getT());
-//                        if (angulo!=-1) {
-//                            palabras.get(i).getPalabra().get(j).rotar(-x, -y, 360 - angulo);
-//                        } else {
-//                            palabras.get(i).getPalabra().get(j).rotar(-ancho, 20 * 7, 360 - palabras.get(i).ang);
-//                        }
                     }
                     //colocamos el panel dentro 
                     pane.getChildren().add(palabras.get(i).getPalabra().get(j).getPanel());

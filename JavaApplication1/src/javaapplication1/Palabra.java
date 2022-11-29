@@ -141,6 +141,12 @@ public class Palabra {
                         case 'P' -> {
                             i += 2;
                         }
+                        case 'a' -> {
+                            i += 2;
+                        }
+                        case 'A' -> {
+                            i += 2;
+                        }
                         default -> {
                             i++;
                         }
