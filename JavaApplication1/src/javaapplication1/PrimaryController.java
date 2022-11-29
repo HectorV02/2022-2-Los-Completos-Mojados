@@ -491,14 +491,17 @@ public class PrimaryController {
                     }
                     // revisamos si hay que rotar
                     if (palabras.get(i).ang != 0 || angulo != 0) {
-                        //si se activo A mayuscula(rota todo)
-                        if (angulo != 0) {
-                            palabras.get(i).getPalabra().get(j).rotar((int) (canvas.getWidth() / 2) - x, (int) (canvas.getHeight() / 2) - y, angulo, palabras.get(i).getS());
-                        }
+                        
                         if (palabras.get(i).ang != 0) {
 
                             palabras.get(i).getPalabra().get(j).rotar(-ancho, 20 * 7, palabras.get(i).ang, palabras.get(i).getS());
                         }
+                        
+                        //si se activo A mayuscula(rota todo)
+                        if (angulo != 0) {
+                            palabras.get(i).getPalabra().get(j).rotar((int) (canvas.getWidth() / 2) - x, (int) (canvas.getHeight() / 2) - y, angulo, palabras.get(i).getS());
+                        }
+                        
                     }
                     //dibujamos la letras
                     palabras.get(i).getPalabra().get(j).root = pp;
