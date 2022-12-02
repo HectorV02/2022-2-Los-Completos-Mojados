@@ -105,14 +105,16 @@ public class Palabra {
 
     public void reorganiza() {
         int i, j = palabra.size() - 1;
-        //revisa estilos
+        //revisa estilos si es que hay estilos hacia adelante
         if (palabra.get(0).chr == '^') {
             i = 0;
             //i aumenta hasta que ya no es estilo
             while (i + 1 < palabra.size()) {
+                //si es signo + avanza i
                 if (palabra.get(i + 1).chr == '+') {
                     i++;
-                } else if (palabra.get(i).chr == '^' || palabra.get(i).chr == '+') {
+                } //revisa estilos hacia adelante (avanza i en 2)
+                else if (palabra.get(i).chr == '^' || palabra.get(i).chr == '+') {
                     switch (palabra.get(i + 1).chr) {
                         case 'K' -> {
                             i += 2;
@@ -151,11 +153,14 @@ public class Palabra {
                             i++;
                         }
                     }
-                } else if ((int) palabra.get(i).chr >= 48 && (int) palabra.get(i).chr <= 57) {
+                } //revisa si son numeros y avanza i
+                else if ((int) palabra.get(i).chr >= 48 && (int) palabra.get(i).chr <= 57) {
                     i++;
-                } else if ((int) palabra.get(i).chr == 45) {
+                } //revisa si es signo negativo y avanza i
+                else if ((int) palabra.get(i).chr == 45) {
                     i++;
-                } else {
+                } //si no es estilo sale del while
+                else {
                     break;
                 }
             }

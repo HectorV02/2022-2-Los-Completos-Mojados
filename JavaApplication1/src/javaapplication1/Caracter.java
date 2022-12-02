@@ -131,7 +131,6 @@ public class Caracter {
     public void regresaPuntos(int tam) {
         for (int i = 0; i < Ix.size(); i++) {
             //movimiento puntos de inicio
-
             for (int j = 0; j < 8; j++) {
                 if (Iy.get(i) == tam * j) {
                     Ix.set(i, Ix.get(i) - (int) ((tam * (7 - j)) / 4));
@@ -243,6 +242,7 @@ public class Caracter {
         }
     }
 
+    //reflejamos caracter según eje Y
     public void reflexY(int size) {
         int mid = (int) (size / 2);
         for (int i = 0; i < lineas; i++) {
@@ -253,6 +253,7 @@ public class Caracter {
         }
     }
 
+    //reflejamos caracter según eje X
     public void reflexX(int size, int s) {
         int mid = (int) (size / 2);
         for (int i = 0; i < lineas; i++) {
@@ -272,35 +273,27 @@ public class Caracter {
     public void rotar(double x, double y, double ang, int s) {
         double x1;
         double y1;
-
         ang = Math.toRadians(ang);
+        //rotamos puntos del caracter
         for (int i = 0; i < lineas; i++) {
-
             x1 = ((Ix.get(i) - x) * Math.cos(ang)) - ((Iy.get(i) - y) * Math.sin(ang));
             y1 = ((Ix.get(i) - x) * Math.sin(ang)) + ((Iy.get(i) - y) * Math.cos(ang));
-            
             Ix.set(i, (int) (x + x1));
             Iy.set(i, (int) (y + y1));
-            
             x1 = ((Fx.get(i) - x) * Math.cos(ang)) - ((Fy.get(i) - y) * Math.sin(ang));
             y1 = ((Fx.get(i) - x) * Math.sin(ang)) + ((Fy.get(i) - y) * Math.cos(ang));
-            
             Fx.set(i, (int) (x + x1));
             Fy.set(i, (int) (y + y1));
-            
             x1 = ((ch1x.get(i) - x) * Math.cos(ang)) - ((ch1y.get(i) - y)  * Math.sin(ang));
             y1 = ((ch1x.get(i) - x) * Math.sin(ang)) + ((ch1y.get(i) - y) * Math.cos(ang));
-            
             ch1x.set(i, (int) (x + x1));
             ch1y.set(i, (int) (y + y1));
-            
             x1 = ((ch2x.get(i) - x) * Math.cos(ang)) - ((ch2y.get(i) - y) * Math.sin(ang));
             y1 = ((ch2x.get(i) - x) * Math.sin(ang)) + ((ch2y.get(i) - y) * Math.cos(ang));
-
             ch2x.set(i, (int) (x + x1));
             ch2y.set(i, (int) (y + y1));
-
         }
+        //rotamos subrayado
         if (s == 1) {
             x1 = subrayado.get(0);
             y1 = subrayado.get(1);

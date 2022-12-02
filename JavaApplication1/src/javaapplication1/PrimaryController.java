@@ -92,10 +92,11 @@ public class PrimaryController {
         //estate y estate aux
         int stt;
         int sttx = 0;
-        //recorremos toda la frase identificando las palabras 
+        //si primer caracter es espacio avanza una palabra
         if (frase.length() > 0 && frase.charAt(0) == ' ') {
             sttx = 1;
         }
+        //recorremos toda la frase identificando las palabras 
         for (int i = 0; i < frase.length(); i++) {
             caracter = (int) frase.charAt(i) - 32;
             if ((0 <= caracter && caracter <= 250 && letras.get(caracter).lineas != -1)) {
@@ -281,6 +282,7 @@ public class PrimaryController {
             }
             pos = -1;
         }
+        //cambia orden de palabras desde reverse en adelante
         if (reverse != -1) {
             ArrayList<Palabra> aux = new ArrayList();
             for (int i = 0; i < reverse; i++) {
@@ -291,6 +293,7 @@ public class PrimaryController {
             }
             palabras = aux;
         }
+        //subraya espacios entre palabras subrayadas y aplica estilos
         for (int j = 2; j < palabras.size(); j += 2) {
             if (palabras.get(j).getS() == 1 && palabras.get(j - 2).getS() == 1) {
                 palabras.get(j - 1).setS(1);
@@ -312,10 +315,10 @@ public class PrimaryController {
                 } //contamos las comas
                 else if (palabras.get(i).getPalabra().get(j).chr == ',' && pos > 0 && ((reverse != -1 && i == reverse) || (reverse == -1 && i == palabras.size() - 1))) {
 
-                }
+                } //no dibuja signo negativo en comandos
                 else if (j > 1 && palabras.get(i).getPalabra().get(j).chr == '-' && (palabras.get(i).getPalabra().get(j - 1).chr == 'A' || palabras.get(i).getPalabra().get(j - 1).chr == 'a' || palabras.get(i).getPalabra().get(j - 1).chr == 'X' || palabras.get(i).getPalabra().get(j - 1).chr == 'Y') && (palabras.get(i).getPalabra().get(j - 2).chr == '^' || palabras.get(i).getPalabra().get(j - 2).chr == '+')) {
                     
-                }
+                } //no dibuja signo +
                 else if (palabras.get(i).getPalabra().get(j).chr == '+') {
 
                 } //revisa estilos combinados hacia atras
@@ -324,7 +327,7 @@ public class PrimaryController {
                 } //revisa estilos hacia adelante
                 else if (pos == 0 && j > 0 && (palabras.get(i).getPalabra().get(j - 1).chr == '^' || palabras.get(i).getPalabra().get(j - 1).chr == '+')) {
 
-                }
+                } //no dibuja numeros
                 else if ((int) palabras.get(i).getPalabra().get(j).chr >= 48 && (int) palabras.get(i).getPalabra().get(j).chr <= 57) {
                     
                 }
@@ -510,17 +513,14 @@ public class PrimaryController {
                     }
                     // revisamos si hay que rotar
                     if (palabras.get(i).ang != 0 || angulo != 0) {
-
+                        //si se activo a minúscula (rota la palabra)
                         if (palabras.get(i).ang != 0) {
-
                             palabras.get(i).getPalabra().get(j).rotar(-ancho, 20 * 7, palabras.get(i).ang, palabras.get(i).getS());
                         }
-
                         //si se activo A mayuscula(rota todo)
                         if (angulo != 0) {
                             palabras.get(i).getPalabra().get(j).rotar((int) (canvas.getWidth() / 2) - x, (int) (canvas.getHeight() / 2) - y, angulo, palabras.get(i).getS());
                         }
-
                     }
                     //dibujamos la letras
                     palabras.get(i).getPalabra().get(j).root = pp;
@@ -555,12 +555,13 @@ public class PrimaryController {
                         }
                         // revisamos si hay que rotar
                         if (palabras.get(i).ang != 0 || angulo != 0) {
+                            //si se activo a minúscula (tota palabra)
+                            if (palabras.get(i).ang != 0) {
+                                letras.get(13).rotar(-ancho, 20 * 7, palabras.get(i).ang, 0);
+                            }
                             //si se activo A mayuscula(rota todo)
                             if (angulo != 0) {
                                 letras.get(13).rotar((int) (canvas.getWidth() / 2) - x, (int) (canvas.getHeight() / 2) - y, angulo, 0);
-                            }
-                            if (palabras.get(i).ang != 0) {
-                                letras.get(13).rotar(-ancho, 20 * 7, palabras.get(i).ang, 0);
                             }
                         }
                         //dibuja guión
@@ -573,8 +574,6 @@ public class PrimaryController {
                         if (palabras.get(i).getN() == 1) {
                             letras.get(13).negritas(colores.getValue(), 0);
                         }
-                        //rotar
-
                         pane.getChildren().add(letras.get(13).getPanel());
                         //regresa puntos de guión
                         if (maximos.get(posMax) > palabras.get(i).getT()) {
@@ -623,10 +622,11 @@ public class PrimaryController {
                     if (palabras.get(i).getK() == 1) {
                         palabras.get(i).getPalabra().get(j).regresaPuntos(palabras.get(i).getT());
                     }
-                    //bajamos la letra si se subio 
+                    //bajamos la letra si se subio (sin reversa)
                     if (palabras.get(i).getRY() != 1 && j > 0 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j - 1).chr == 'ó' || palabras.get(i).getPalabra().get(j - 1).chr == 'b' || palabras.get(i).getPalabra().get(j - 1).chr == 'o' || palabras.get(i).getPalabra().get(j - 1).chr == 'v' || palabras.get(i).getPalabra().get(j - 1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).bajar(palabras.get(i).getT());
                     }
+                    //bajamos la letra si se subio (con reversa)
                     if (palabras.get(i).getRY() == 1 && palabras.get(i).getPalabra().size() > j + 1 && ((int) palabras.get(i).getPalabra().get(j).chr >= 97 && (int) palabras.get(i).getPalabra().get(j).chr <= 122 || ((int) palabras.get(i).getPalabra().get(j).chr >= 225 && (int) palabras.get(i).getPalabra().get(j).chr <= 250)) && (palabras.get(i).getPalabra().get(j + 1).chr == 'ó' || palabras.get(i).getPalabra().get(j + 1).chr == 'b' || palabras.get(i).getPalabra().get(j + 1).chr == 'o' || palabras.get(i).getPalabra().get(j + 1).chr == 'v' || palabras.get(i).getPalabra().get(j + 1).chr == 'w')) {
                         palabras.get(i).getPalabra().get(j).bajar(palabras.get(i).getT());
                     }
