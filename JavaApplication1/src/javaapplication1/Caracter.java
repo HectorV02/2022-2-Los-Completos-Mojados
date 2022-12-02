@@ -270,39 +270,35 @@ public class Caracter {
     }
 
     public void rotar(double x, double y, double ang, int s) {
-        double x1, x2, x3, x4;
-        double y1, y2, y3, y4;
+        double x1;
+        double y1;
 
         ang = Math.toRadians(ang);
-        //System.out.println(Math.cos(ang));
         for (int i = 0; i < lineas; i++) {
-            x1 = Ix.get(i) - x;
-            y1 = Iy.get(i) - y;
-            x2 = Fx.get(i) - x;
-            y2 = Fy.get(i) - y;
-            x3 = ch1x.get(i) - x;
-            y3 = ch1y.get(i) - y;
-            x4 = ch2x.get(i) - x;
-            y4 = ch2y.get(i) - y;
-            x1 = (x1 * Math.cos(ang)) - (y1 * Math.sin(ang));
-            y1 = ((Ix.get(i) - x) * Math.sin(ang)) + (y1 * Math.cos(ang));
-            x2 = (x2 * Math.cos(ang)) - (y2 * Math.sin(ang));
-            y2 = ((Fx.get(i) - x) * Math.sin(ang)) + (y2 * Math.cos(ang));
-            x3 = (x3 * Math.cos(ang)) - (y3 * Math.sin(ang));
-            y3 = ((ch1x.get(i) - x) * Math.sin(ang)) + (y3 * Math.cos(ang));
-            x4 = (x4 * Math.cos(ang)) - (y4 * Math.sin(ang));
-            y4 = ((ch2x.get(i) - x) * Math.sin(ang)) + (y4 * Math.cos(ang));
+
+            x1 = ((Ix.get(i) - x) * Math.cos(ang)) - ((Iy.get(i) - y) * Math.sin(ang));
+            y1 = ((Ix.get(i) - x) * Math.sin(ang)) + ((Iy.get(i) - y) * Math.cos(ang));
+            
             Ix.set(i, (int) (x + x1));
             Iy.set(i, (int) (y + y1));
-            //System.out.println(Ix.get(i)+","+Iy.get(i));
-            Fx.set(i, (int) (x + x2));
-            Fy.set(i, (int) (y + y2));
+            
+            x1 = ((Fx.get(i) - x) * Math.cos(ang)) - ((Fy.get(i) - y) * Math.sin(ang));
+            y1 = ((Fx.get(i) - x) * Math.sin(ang)) + ((Fy.get(i) - y) * Math.cos(ang));
+            
+            Fx.set(i, (int) (x + x1));
+            Fy.set(i, (int) (y + y1));
+            
+            x1 = ((ch1x.get(i) - x) * Math.cos(ang)) - ((ch1y.get(i) - y)  * Math.sin(ang));
+            y1 = ((ch1x.get(i) - x) * Math.sin(ang)) + ((ch1y.get(i) - y) * Math.cos(ang));
+            
+            ch1x.set(i, (int) (x + x1));
+            ch1y.set(i, (int) (y + y1));
+            
+            x1 = ((ch2x.get(i) - x) * Math.cos(ang)) - ((ch2y.get(i) - y) * Math.sin(ang));
+            y1 = ((ch2x.get(i) - x) * Math.sin(ang)) + ((ch2y.get(i) - y) * Math.cos(ang));
 
-            ch1x.set(i, (int) (x + x3));
-            ch1y.set(i, (int) (y + y3));
-
-            ch2x.set(i, (int) (x + x4));
-            ch2y.set(i, (int) (y + y4));
+            ch2x.set(i, (int) (x + x1));
+            ch2y.set(i, (int) (y + y1));
 
         }
         if (s == 1) {
