@@ -153,6 +153,8 @@ public class Palabra {
                     }
                 } else if ((int) palabra.get(i).chr >= 48 && (int) palabra.get(i).chr <= 57) {
                     i++;
+                } else if ((int) palabra.get(i).chr == 45) {
+                    i++;
                 } else {
                     break;
                 }
