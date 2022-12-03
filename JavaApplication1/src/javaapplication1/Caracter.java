@@ -104,7 +104,6 @@ public class Caracter {
     }
 
     public void muevePuntos(int tam) {
-
         for (int i = 0; i < Ix.size(); i++) {
             //movimiento puntos de inicio
             for (int j = 0; j < 8; j++) {
@@ -125,7 +124,6 @@ public class Caracter {
                 }
             }
         }
-
     }
 
     public void regresaPuntos(int tam) {
@@ -162,35 +160,35 @@ public class Caracter {
             c.setStroke(color);
             root.getChildren().add(c);
 
-            CubicCurve d = new CubicCurve(Ix.get(i) + 1, Iy.get(i), ch1x.get(i) + 1, ch1y.get(i), ch2x.get(i) + 1, ch2y.get(i), Fx.get(i) + 1, Fy.get(i));
-            d.setFill(Color.TRANSPARENT);
+            c = new CubicCurve(Ix.get(i) + 1, Iy.get(i), ch1x.get(i) + 1, ch1y.get(i), ch2x.get(i) + 1, ch2y.get(i), Fx.get(i) + 1, Fy.get(i));
+            c.setFill(Color.TRANSPARENT);
             if (Ix.get(i) == Fx.get(i) && Iy.get(i) == Fy.get(i)) {
-                d.setFill(color);
+                c.setFill(color);
             }
-            d.setStroke(color);
-            root.getChildren().add(d);
+            c.setStroke(color);
+            root.getChildren().add(c);
 
-            CubicCurve e = new CubicCurve(Ix.get(i), Iy.get(i) + 1, ch1x.get(i), ch1y.get(i) + 1, ch2x.get(i), ch2y.get(i) + 1, Fx.get(i), Fy.get(i) + 1);
-            e.setFill(Color.TRANSPARENT);
+            c = new CubicCurve(Ix.get(i), Iy.get(i) + 1, ch1x.get(i), ch1y.get(i) + 1, ch2x.get(i), ch2y.get(i) + 1, Fx.get(i), Fy.get(i) + 1);
+            c.setFill(Color.TRANSPARENT);
             if (Ix.get(i) == Fx.get(i) && Iy.get(i) == Fy.get(i)) {
-                e.setFill(color);
+                c.setFill(color);
             }
-            e.setStroke(color);
-            root.getChildren().add(e);
+            c.setStroke(color);
+            root.getChildren().add(c);
         }
         if (s == 1) {
-            CubicCurve a = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1) + 1, subrayado.get(2) + 1, subrayado.get(3) + 1, subrayado.get(4) + 1, subrayado.get(5) + 1, subrayado.get(6) + 1, subrayado.get(7) + 1);
-            a.setFill(Color.TRANSPARENT);
-            a.setStroke(color);
-            root.getChildren().add(a);
-            a = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1), subrayado.get(2) + 1, subrayado.get(3), subrayado.get(4) + 1, subrayado.get(5), subrayado.get(6) + 1, subrayado.get(7));
-            a.setFill(Color.TRANSPARENT);
-            a.setStroke(color);
-            root.getChildren().add(a);
-            a = new CubicCurve(subrayado.get(0), subrayado.get(1) + 1, subrayado.get(2), subrayado.get(3) + 1, subrayado.get(4), subrayado.get(5) + 1, subrayado.get(6), subrayado.get(7) + 1);
-            a.setFill(Color.TRANSPARENT);
-            a.setStroke(color);
-            root.getChildren().add(a);
+            CubicCurve c = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1) + 1, subrayado.get(2) + 1, subrayado.get(3) + 1, subrayado.get(4) + 1, subrayado.get(5) + 1, subrayado.get(6) + 1, subrayado.get(7) + 1);
+            c.setFill(Color.TRANSPARENT);
+            c.setStroke(color);
+            root.getChildren().add(c);
+            c = new CubicCurve(subrayado.get(0) + 1, subrayado.get(1), subrayado.get(2) + 1, subrayado.get(3), subrayado.get(4) + 1, subrayado.get(5), subrayado.get(6) + 1, subrayado.get(7));
+            c.setFill(Color.TRANSPARENT);
+            c.setStroke(color);
+            root.getChildren().add(c);
+            c = new CubicCurve(subrayado.get(0), subrayado.get(1) + 1, subrayado.get(2), subrayado.get(3) + 1, subrayado.get(4), subrayado.get(5) + 1, subrayado.get(6), subrayado.get(7) + 1);
+            c.setFill(Color.TRANSPARENT);
+            c.setStroke(color);
+            root.getChildren().add(c);
         }
     }
 

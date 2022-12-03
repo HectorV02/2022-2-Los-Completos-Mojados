@@ -163,8 +163,7 @@ public class Palabra {
                 else {
                     break;
                 }
-            }
-            //revisa si hay estilos del final
+            }//revisa si hay estilos del final
             for (int l = i; l <= j; l++) {
                 if (palabra.get(l).chr == '^') {
                     j = l - 1;
