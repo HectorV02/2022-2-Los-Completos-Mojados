@@ -179,12 +179,14 @@ public class PrimaryController {
                         case 'a' -> {
                             int k = j + 1;
                             String ang = "";
-                            while (palabras.get(i).getPalabra().size() > k && (int) palabras.get(i).getPalabra().get(k).chr <= 57 && (int) palabras.get(i).getPalabra().get(k).chr >= 48) {
+                            while (palabras.get(i).getPalabra().size() > k && (((int) palabras.get(i).getPalabra().get(k).chr <= 57 && (int) palabras.get(i).getPalabra().get(k).chr >= 48) || (int) palabras.get(i).getPalabra().get(k).chr == 45)) {
                                 ang += palabras.get(i).getPalabra().get(k).chr;
                                 k += 1;
                             }
                             if (!"".equals(ang)) {
-                                palabras.get(comas).setAng(Integer.parseInt(ang));
+                                if (ang.charAt(0) != '-' || ang.length() > 1) {
+                                    palabras.get(comas).setAng(Integer.parseInt(ang));
+                                }
                             }
                         }
                         case 'R' -> {
